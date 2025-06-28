@@ -1,0 +1,53 @@
+{% load static %}
+<footer>
+    <div class="container">
+    <hr>
+    <a href="#"><span class="span-title">Numi</span>Track</a>
+    <h3>Try NumiTrack now and store your own collections at your convenience.</h3>
+    <address>
+      <ul id="contact">
+        <li>
+          <a href="https://www.instagram.com/ffooxxyy/?next=%2F"><img src="{% static "images/instagram.svg" %}"
+                                                                      alt="instagram"/></a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/oleksandr-khlivniuk-27a413352/"><img
+              src="{% static 'images/linkedin.svg' %}" alt="linkedin" height="35px" width="27px"></a>
+        </li>
+        <li>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <a href="tel:380997577256">+38 (099) 75-77-256</a>
+        </li>
+        <li>
+          <a href="mailto:sasha2056083@gmail.com">sasha2056083@gmail.com</a>
+        </li>
+      </ul>
+    </address>
+    <nav class="header-navigation">
+      <ul>
+        <li>
+          <a href="{% url 'home' %}">Home</a>
+        </li>
+        <li>
+          {# Головна секція з описом функціоналу сторінки #}
+          <a href="#about">About</a>
+        </li>
+        <li>
+          {# Опис можливостей сервісу#}
+          <a href="#features">Features</a>
+        </li>
+        <li>
+          {#  статистика доданих монет {У колекції вже 235 монет із 47 країн} #}
+          <a href="#stats">Stats</a>
+        </li>
+        <li>
+          {#  Контакти та форма зворотного зв'язку #}
+          <a href="#contact">Contacts</a>
+        </li>
+      </ul>
+    </nav>
+    </div>
+  </footer>

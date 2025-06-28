@@ -1,0 +1,40 @@
+{% load static %}
+<div class="div-sidebar">
+<ul class="sidebar-list">
+  {% if user.is_authenticated %}
+    <li class="sidebar-list-item">
+      {# Має перенаправити на стоірнку користувача #}
+      <a href="#"><img src="{% static 'images/authorize-icon.png' %}" width="25" class="icon-authenticate" alt="Icon"/>My
+        profile</a>
+    </li>
+  {% else %}
+    <li class="sidebar-list-item">
+      {# Має перенаправити на форму логіну #}
+      <a href="#"><img src="{% static 'images/authorize-icon.png' %}" width="25"
+                       class="icon-not-authenticate" alt="Icon"/>Login</a>
+    </li>
+  {% endif %}
+  <li class="sidebar-list-item">
+    {# Перенаправлення на сторінку моїх колекцій#}
+    <a href="#">My collections</a>
+  </li>
+  <li class="sidebar-list-item">
+    <a href="#">Add new item</a>
+  </li>
+  <li class="sidebar-list-item">
+    <a href="#">Search</a>
+  </li>
+<li class="sidebar-list-item">
+  <a href="#">All collections</a>
+</li>
+  <li class="sidebar-list-item">
+    <a href="#">View collectors</a>
+  </li>
+  <li class="sidebar-list-item">
+    <a href="#">News</a>
+  </li>
+ <li class="sidebar-list-item">
+    <a href="#">Guides & FAQs</a>
+  </li>
+</ul>
+</div>

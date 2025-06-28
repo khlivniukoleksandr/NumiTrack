@@ -20,14 +20,44 @@ a {
     text-decoration: none;
     cursor: pointer;
 }
-
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
 button {
     cursor: pointer;
 }
+.container {
+  width: 1136px;
+  padding-left: 33px;
+  padding-right: 33px;
+  margin: 0 auto;
+}
+/*Sidebar*/
+.div-sidebar {
+    display:flex;
+    justify-content: flex-end;
+}
+.sidebar-list {
+    display:flex;
+    flex-direction: column;
+}
+
 
 /* Header */
 .span-title {
     color: #004225;
+}
+.header-navigation,
+.header-list {
+    display:flex;
+}
+.header-list {
+    gap:15px;
+}
+.header-navigation{
+    justify-content: center;
 }
 
 .icon-authenticate,
