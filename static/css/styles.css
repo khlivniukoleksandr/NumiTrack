@@ -1,0 +1,54 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+div,
+a {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+ul li {
+    list-style-type: none;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* Header */
+.span-title {
+    color: #004225;
+}
+
+.icon-authenticate,
+.icon-not-authenticate {
+    border: 1px solid #c1bdbd;
+    border-radius: 10px;
+}
+
+.icon-authenticate {
+    background-color: #0eb6df;
+}
+
+/*First section description*/
+.section-description {
+    background-color: black;
+    background-image: url(/static/images/hero-banner.jpg);
+    width:1200px;
+    height: 800px;
+    background-size: contain;
+    border-radius: 20px;
+    margin-bottom: 72px;
+    background-repeat: no-repeat;
+    color:#fff;
+}
