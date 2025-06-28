@@ -15,6 +15,7 @@ class Coin(models.Model):
     material = models.CharField(max_length=65, default="Unknown", blank=True, null=True)
     tirage = models.CharField(max_length=65, default="Unknown", blank=True, null=True)
     image = models.ImageField(upload_to="coins/", blank=True, null=True)
+    owner = models.ForeignKey(Collector, on_delete=models.CASCADE)
 
     def __str__(self):
         return f"Coin {self.name} (Country:{self.country} Year: {self.year})"
@@ -26,6 +27,7 @@ class Banknote(models.Model):
     value = models.CharField(max_length=65)
     tirage = models.CharField(max_length=65, default="Unknown", blank=True, null=True)
     image = models.ImageField(upload_to="banknotes/", blank=True, null=True)
+    owner = models.ForeignKey(Collector, on_delete=models.CASCADE)
 
     def __str__(self):
         return f"Banknote {self.name} (Country:{self.country} Year: {self.year})"

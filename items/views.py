@@ -1,5 +1,7 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
+from django.views import generic
 
 from items.models import (Collector,
                           Collection,
@@ -23,3 +25,12 @@ def index(request: HttpRequest) -> HttpResponse:
         "num_country": num_country,
     }
     return render(request, "home_page.html", context)
+
+class ProfileView(LoginRequiredMixin, generic.DetailView):
+    model = Collector
+    template_name = "profile/profile_detail.html"
+    context_object_name = "collector"
+
+    def get_object(self, queryset=None):
+        return self.request.user
+

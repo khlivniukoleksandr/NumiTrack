@@ -82,3 +82,8 @@ button {
     background-repeat: no-repeat;
     color:#fff;
 }
+
+/*Profile-page*/
+.img-profile {
+    border-radius:50%;
+}

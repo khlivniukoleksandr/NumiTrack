@@ -20,11 +20,13 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
-from items.views import index
+from items.views import (index,
+                         )
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", index, name="home"),
+    path("profile/", include("items.urls")),
     path("__debug__/", include("debug_toolbar.urls")),
 ]
 

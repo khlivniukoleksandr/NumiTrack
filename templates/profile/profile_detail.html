@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+  <img src="{{ user.avatar.url }}" alt="Avatar" width="120" height="120" class="img-profile">
+  <h2>{{ user.first_name }} {{ user.last_name }}</h2>
+  <h3>Information:</h3>
+  <p>{{ user.bio }}</p>
+  <h3>Total number of coins</h3>
+  <p>{{ user.coins }}</p>
+{% endblock %}
+
+
+{% block footer %}
+{% endblock %}
