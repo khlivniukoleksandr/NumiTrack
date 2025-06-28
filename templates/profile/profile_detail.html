@@ -1,18 +1,40 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block header %}
-{% endblock %}
+
 
 {% block content %}
   <img src="{{ user.avatar.url }}" alt="Avatar" width="120" height="120" class="img-profile">
   <h2>{{ user.first_name }} {{ user.last_name }}</h2>
   <h3>Information:</h3>
   <p>{{ user.bio }}</p>
-  <h3>Total number of coins</h3>
-  <p>{{ user.coins }}</p>
+  <ul>
+  <li>
+  <h3>Number of coins</h3>
+    {% if user.coins.count >= 1 %}
+  <p>{{ user.coins.count }}</p>
+    {% else %}
+    <p>No coins</p>
+    {% endif %}
+  </li>
+  <li>
+    <h3>Number of banknotes</h3>
+    {% if user.banknotes.count >= 1 %}
+    <p>{{ user.banknotes.count }}</p>
+    {% else %}
+    <p>No banknotes</p>
+    {% endif %}
+  </li>
+  <li>
+    <p>Rank: {{ user.level }}</p>
+  </li>
+  <li>Total items : {{ user.total_items }}</li>
+  </ul>
+<form method="post" action="{% url 'logout' %}">
+{% csrf_token %}
+<button type="submit">Logout</button>
+</form>
+
 {% endblock %}
-
-
 {% block footer %}
 {% endblock %}

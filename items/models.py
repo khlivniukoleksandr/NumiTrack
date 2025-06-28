@@ -6,6 +6,24 @@ class Collector(AbstractUser):
     bio = models.CharField(max_length=500, blank=True, null=True)
     avatar = models.ImageField(upload_to="avatars/", blank=True, null=True)
 
+    def total_items(self):
+        return self.coins.count() + self.banknotes.count()
+
+    # Для цікавості додав систему рівнів на сайті)
+    def level(self):
+        total = self.total_items()
+        if total < 50:
+            return "Beginner"
+        elif total < 90:
+            return "The collector 🎖️"
+        elif total < 150:
+            return "Silver Seeker 🎖️"
+        elif total < 300:
+            return "Elite collector 📚"
+        elif total < 500:
+            return "Collector of history 🕰️"
+        else:
+            return "Legendary collector ✨"
 
 class Coin(models.Model):
     name = models.CharField(max_length=60)
@@ -15,7 +33,7 @@ class Coin(models.Model):
     material = models.CharField(max_length=65, default="Unknown", blank=True, null=True)
     tirage = models.CharField(max_length=65, default="Unknown", blank=True, null=True)
     image = models.ImageField(upload_to="coins/", blank=True, null=True)
-    owner = models.ForeignKey(Collector, on_delete=models.CASCADE)
+    owner = models.ForeignKey(Collector, on_delete=models.CASCADE, related_name="coins")
 
     def __str__(self):
         return f"Coin {self.name} (Country:{self.country} Year: {self.year})"
@@ -27,7 +45,7 @@ class Banknote(models.Model):
     value = models.CharField(max_length=65)
     tirage = models.CharField(max_length=65, default="Unknown", blank=True, null=True)
     image = models.ImageField(upload_to="banknotes/", blank=True, null=True)
-    owner = models.ForeignKey(Collector, on_delete=models.CASCADE)
+    owner = models.ForeignKey(Collector, on_delete=models.CASCADE, related_name="banknotes")
 
     def __str__(self):
         return f"Banknote {self.name} (Country:{self.country} Year: {self.year})"
