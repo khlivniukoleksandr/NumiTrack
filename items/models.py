@@ -52,6 +52,7 @@ class Banknote(models.Model):
 
 
 class Collection(models.Model):
+    cover = models.ImageField(upload_to="collections/covers/", blank=True, null=True)
     owner = models.ForeignKey(Collector, on_delete=models.CASCADE)
     name = models.CharField(max_length=70)
     description = models.CharField(max_length=100, null=True, blank=True)

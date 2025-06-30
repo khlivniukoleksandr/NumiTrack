@@ -2,7 +2,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
 from django.views import generic
+from django.views.generic import FormView
 
+from items.forms import CustomCollectionForm
 from items.models import (Collector,
                           Collection,
                           Coin, Banknote
@@ -34,3 +36,32 @@ class ProfileView(LoginRequiredMixin, generic.DetailView):
     def get_object(self, queryset=None):
         return self.request.user
 
+
+class CollectionListView(LoginRequiredMixin, generic.ListView):
+    model = Collection
+    template_name = "collections/my_collections.html"
+    context_object_name = "collections"
+
+    def get_queryset(self):
+        return Collection.objects.filter(owner=self.request.user)
+
+
+
+
+class CollectionCreateView(LoginRequiredMixin, FormView):
+    template_name = "collections/collection_form.html"
+    form_class = CustomCollectionForm
+    success_url = "/profile/my-collections/"
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs["user"] = self.request.user
+        return kwargs
+
+    def form_valid(self, form):
+        Collection.objects.create(owner=self.request.user,
+                                  name=form.cleaned_data["name"],
+                                  description=form.cleaned_data["description"],
+                                  cover=form.cleaned_data["cover"]
+        )
+        return super().form_valid(form)

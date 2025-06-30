@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <h2>{{ user.username }}' Collections</h2>
+  {% if collections %}
+  {% for collection in collections %}
+  {% if collection.cover %}
+  <img src="{{ collection.cover.url }}" alt="{{ collection.name }}" width="150" height="150"/>
+       {% else %}
+  <img src="{% static 'images/default-cover-collections.png' %}" alt="{{ collection.name }}"/>
+  {% endif %}
+  <h4>{{ collection.name }}</h4>
+  <p>{{ collection.description }}</p>
+  {% endfor %}
+  {% else %}
+  <h4>No collections</h4>
+  {% endif %}
+  <a href="{% url "items:create-collection" %}">Create new collection</a>
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
