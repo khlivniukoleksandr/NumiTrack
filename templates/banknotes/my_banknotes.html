@@ -5,7 +5,7 @@
     <a href="{% url 'items:banknote-create' %}">Add new banknote</a>
   {% if banknotes %}
   {% for banknote in banknotes %}
-{#    <a href="{% url 'items:banknote-detail' pk=coin.pk %}" class="collection-card">#}
+    <a href="{% url 'items:banknote-detail' pk=banknote.pk %}" class="collection-card">
   {% if banknote.image %}
   <img src="{{ banknote.image.url }}" alt="{{ banknote.name }}" width="150" height="150"/>
        {% else %}

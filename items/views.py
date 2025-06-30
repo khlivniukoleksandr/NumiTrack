@@ -186,3 +186,8 @@ class BanknoteCreateView(LoginRequiredMixin, CreateView):
         # Автоматично встановлюємо власника перед збереженням
         form.instance.owner = self.request.user
         return super().form_valid(form)
+
+
+class BanknoteDetailView(LoginRequiredMixin, generic.DetailView):
+    model = Banknote
+    template_name = "banknotes/banknote_detail.html"

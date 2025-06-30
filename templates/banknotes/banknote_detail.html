@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+   <div class="container">
+   <ul>
+      <li>
+        <a href="{% url 'items:my-banknotes' %}">Back to my banknotes</a>
+      </li>
+      <li>
+{#        <a href="{% url 'items:coin-edit' pk=coin.id %}">Update banknote</a>#}
+      </li>
+      <li>
+{#        <a href="{% url 'items:coin-delete' pk=coin.pk %}">#}
+{#          Delete Coin#}
+{#        </a>#}
+      </li>
+    </ul>
+   {% if banknote.image %}
+  <img src="{{ banknote.image.url }}" alt="{{ banknote.name }}" width="100" height="100">
+{% else %}
+  <img src="{% static 'images/default-cover-collections.png' %}" alt="No image" width="100" height="100">
+{% endif %}
+   <p>Coin name: {{ banknote.name }}</p>
+   <p>Country: {{ banknote.country }} </p>
+   <p>Year: {{ banknote.year }}</p>
+   <p>Value: {{ banknote.value }}</p>
+   <p>Tirage: {{ coin.tirage }}</p>
+   </div>
+{% endblock %}
