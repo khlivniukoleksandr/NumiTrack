@@ -26,8 +26,7 @@ from items.views import (index,
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", index, name="home"),
-    path("profile/", include("items.urls")),
-    path("collections/", include("items.urls")),
+    path("", include("items.urls")),
     path("accounts/", include("django.contrib.auth.urls")),
     path("__debug__/", include("debug_toolbar.urls")),
 ]

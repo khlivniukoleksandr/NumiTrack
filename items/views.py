@@ -1,8 +1,9 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpRequest, HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from django.urls import reverse_lazy
 from django.views import generic
-from django.views.generic import FormView
+from django.views.generic import FormView, UpdateView, CreateView, DeleteView
 
 from items.forms import CustomCollectionForm
 from items.models import (Collector,
@@ -48,20 +49,46 @@ class CollectionListView(LoginRequiredMixin, generic.ListView):
 
 
 
-class CollectionCreateView(LoginRequiredMixin, FormView):
-    template_name = "collections/collection_form.html"
+class CollectionCreateView(LoginRequiredMixin, CreateView):
+    model = Collection
     form_class = CustomCollectionForm
+    template_name = "collections/collection_form.html"
     success_url = "/profile/my-collections/"
 
-    def get_form_kwargs(self):
-        kwargs = super().get_form_kwargs()
-        kwargs["user"] = self.request.user
-        return kwargs
-
     def form_valid(self, form):
-        Collection.objects.create(owner=self.request.user,
-                                  name=form.cleaned_data["name"],
-                                  description=form.cleaned_data["description"],
-                                  cover=form.cleaned_data["cover"]
-        )
+        # Автоматично встановлюємо власника перед збереженням
+        form.instance.owner = self.request.user
         return super().form_valid(form)
+
+class CollectionDetailView(LoginRequiredMixin, generic.DetailView):
+    model = Collection
+    template_name = "collections/collection_detail.html"
+
+
+class CollectionUpdateView(LoginRequiredMixin, UpdateView):
+    model = Collection
+    form_class = CustomCollectionForm
+    template_name = "collections/collection_form.html"
+    success_url = "/profile/my-collections/"
+
+    def get_queryset(self):
+        return Collection.objects.filter(owner=self.request.user)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['collection'] = self.object  # або self.get_object()
+        return context
+
+    def get_object(self, queryset=None):
+        return get_object_or_404(Collection, pk=self.kwargs["pk"], owner=self.request.user)
+
+class CollectionDeleteView(LoginRequiredMixin, DeleteView):
+    model = Collection
+    template_name = "collections/collection_confirm_delete.html"
+    success_url = reverse_lazy('items:my-collections')
+
+    def get_queryset(self):
+        return Collection.objects.filter(owner=self.request.user)
+
+    def get_object(self, queryset=None):
+        return get_object_or_404(Collection, pk=self.kwargs["pk"], owner=self.request.user)

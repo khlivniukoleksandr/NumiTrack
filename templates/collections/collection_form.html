@@ -1,25 +1,13 @@
 {% extends 'base.html' %}
 {% load static %}
+
 {% block content %}
-  <form method="post" enctype="multipart/form-data">
+<form method="post" enctype="multipart/form-data">
   {% csrf_token %}
-
-    <p>Collection name</p>{{ form.name }}
-  {% if form.name.errors %}
-    {{ form.name.errors }}
-  {% endif %}
-  <p>Description</p>{{ form.description }}
-  {% if form.description.errors %}
-    {{ form.description.errors }}
-  {% endif %}
-  <p>Image</p>{{ form.cover }}
-  {% if form.cover.errors %}
-    {{ form.cover.errors }}
-  {% endif %}
-{#Додати превьюшку зображення#}
-  <button type="submit" class="btn btn-primary">Створити колекцію</button>
+  {{ form.as_p }}
+  <button type="submit">Submit</button>
 </form>
-
 {% endblock %}
+
 {% block footer %}
 {% endblock %}

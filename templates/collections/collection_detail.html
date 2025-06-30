@@ -1,10 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "base.html" %}
+{% block content %}
+  <div class="container">
+    <ul>
+      <li>
+        <a href="{% url 'items:my-collections' %}">Back to my collections</a>
+      </li>
+      <li>
+        <a href="{% url 'items:collection-edit' pk=collection.id %}">Update collection</a>
+      </li>
+      <li>
+        <a href="{% url 'items:collection-delete' pk=collection.pk %}">
+          Delete Collection
+        </a>
+      </li>
+    </ul>
+    {% if collection.cover %}
+      <img src="{{ collection.cover.url }}" alt="{{ collection.name }}" width="150" height="150"/>
+    {% endif %}
+    <h3>{{ collection.name }}</h3>
+    <p>{{ collection.description }}</p>
+    <h3>Coins</h3>
+    {% for coin in collection.coins.all %}
+      <a href="#Тут буде посилання на деталі монети">
+        <img src="{{ coin.image.url }}" alt="{{ coin.name }}" width="100" height="100"/>
+        <p>{{ coin.name }}</p>
+        <p>{{ coin.country }}</p>
+        <p>{{ coin.year }}</p>
+        <p>{{ coin.tirage }}</p>
+        <p>{{ coin.material }}</p>
+      </a>
+    {% empty %}
+      <p>No coins</p>
+    {% endfor %}
+    <h3>Banknotes</h3>
+    {% for banknote in collection.banknotes.all %}
+      <a href="#тут має бути посилання на ідеталі банкноти">
+        <img src="{{ banknote.image.url }}" alt="{{ banknote.name }}" width="100" height="100"/>
+        <p>{{ banknote.name }}</p>
+        <p>Year: {{ banknote.year }}</p>
+        <p>Country: {{ banknote.country }}</p>
+        <p>Tirage: {{ banknote.tirage }}</p>
+      </a>
+    {% empty %}
+      <p>No banknotes</p>
+    {% endfor %}
+  </div>
+{% endblock %}

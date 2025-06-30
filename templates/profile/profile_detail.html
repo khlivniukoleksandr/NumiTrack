@@ -4,6 +4,7 @@
 
 
 {% block content %}
+  <div class="container">
   <img src="{{ user.avatar.url }}" alt="Avatar" width="120" height="120" class="img-profile">
   <h2>{{ user.first_name }} {{ user.last_name }}</h2>
   <h3>Information:</h3>
@@ -30,11 +31,12 @@
   </li>
   <li>Total items : {{ user.total_items }}</li>
   </ul>
+  <a href="{% url 'items:my-collections' %}">My collections</a>
 <form method="post" action="{% url 'logout' %}">
 {% csrf_token %}
 <button type="submit">Logout</button>
 </form>
-
+</div>
 {% endblock %}
 {% block footer %}
 {% endblock %}

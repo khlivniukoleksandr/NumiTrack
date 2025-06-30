@@ -20,43 +20,93 @@ a {
     text-decoration: none;
     cursor: pointer;
 }
+
 img {
-  display: block;
-  max-width: 100%;
-  height: auto;
+    display: block;
+    max-width: 100%;
+    height: auto;
 }
+
 button {
     cursor: pointer;
 }
+
 .container {
-  width: 1136px;
-  padding-left: 33px;
-  padding-right: 33px;
-  margin: 0 auto;
+    width: 1136px;
+    padding-left: 33px;
+    padding-right: 33px;
+    margin: 0 auto;
 }
+
 /*Sidebar*/
 .div-sidebar {
-    display:flex;
+    display: flex;
     justify-content: flex-end;
 }
+
 .sidebar-list {
-    display:flex;
+    display: flex;
     flex-direction: column;
 }
 
+.hamburger-menu {
+    position: relative;
+    z-index: 1100;
+    cursor: pointer;
+}
+
+.hamburger-icon {
+    font-size: 28px;
+    color: #4d5ae5;
+    transition: color 200ms ease;
+}
+
+.hamburger-icon:hover {
+    color: #31d0aa;
+}
+
+.div-sidebar {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 150px;
+    height: 100%;
+    transform: translateY(-100%);
+    transition: transform 250ms;
+    z-index: 1000;
+}
+
+.sidebar-list {
+    display: flex;
+    flex-direction: column;
+    transform: translateY(-20px); /* зсув вгору */
+    opacity: 0;
+    visibility: hidden;
+    transition: all 250ms ease;
+    background-color: #fff;
+}
+
+.hamburger-menu:hover .sidebar-list {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+}
 
 /* Header */
 .span-title {
     color: #004225;
 }
+
 .header-navigation,
 .header-list {
-    display:flex;
+    display: flex;
 }
+
 .header-list {
-    gap:15px;
+    gap: 15px;
 }
-.header-navigation{
+
+.header-navigation {
     justify-content: center;
 }
 
@@ -74,16 +124,27 @@ button {
 .section-description {
     background-color: black;
     background-image: url(/static/images/hero-banner.jpg);
-    width:1200px;
+    width: 1200px;
     height: 800px;
     background-size: contain;
     border-radius: 20px;
     margin-bottom: 72px;
     background-repeat: no-repeat;
-    color:#fff;
+    color: #fff;
 }
 
 /*Profile-page*/
 .img-profile {
-    border-radius:50%;
+    border-radius: 50%;
+}
+
+
+/*Collections*/
+
+/*My collections*/
+.collection-card {
+    display: block;
+    margin-bottom: 10px;
+    width: 200px;
+    border: 2px solid gray;
 }

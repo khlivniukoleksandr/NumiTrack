@@ -1,25 +1,14 @@
 from django import forms
 
-from items.models import Collection, Coin, Banknote
+from items.models import Collection
 
 
-class CustomCollectionForm(forms.Form):
-    name = forms.CharField(
-        label="Collection Name",
-        max_length=100,
-        widget=forms.TextInput(attrs={"class": "form-control"})
-    )
-    description = forms.CharField(
-        label="Description of Collection",
-        required=False,
-        widget=forms.Textarea(attrs={"class": "form-control"})
-    )
-    cover = forms.ImageField(
-        label="Cover Image",
-        required=False
-    )
-    def __init__(self, *args, **kwargs):
-        self.user = kwargs.pop("user")
-        super().__init__(*args, **kwargs)
-
-
+class CustomCollectionForm(forms.ModelForm):
+    class Meta:
+        model = Collection
+        fields = ["name", "description", "cover"]
+        widgets = {
+            "name": forms.TextInput(attrs={"class": "form-control my-custom-class"}),
+            "description": forms.Textarea(attrs={"class": "form-control my-custom-class"}),
+            "cover": forms.ClearableFileInput(attrs={"class": "form-control-file"})
+        }
