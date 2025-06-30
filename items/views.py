@@ -54,7 +54,7 @@ class CollectionCreateView(LoginRequiredMixin, CreateView):
     model = Collection
     form_class = CustomCollectionForm
     template_name = "collections/collection_form.html"
-    success_url = "/profile/my-collections/"
+    success_url = reverse_lazy("items:my-collections")
 
     def form_valid(self, form):
         # Автоматично встановлюємо власника перед збереженням
@@ -221,3 +221,12 @@ class BanknoteDeleteView(LoginRequiredMixin, generic.DeleteView):
 
     def get_object(self, queryset=None):
         return get_object_or_404(Banknote, pk=self.kwargs["pk"], owner=self.request.user)
+
+
+class PublicCollectionListView(generic.ListView):
+    model = Collection
+    template_name = "collections/public_collections.html"
+    context_object_name = "public_collections"
+
+    def get_queryset(self):
+        return Collection.objects.all()

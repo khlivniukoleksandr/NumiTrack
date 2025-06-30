@@ -2,28 +2,34 @@
 {% load static %}
 {% block content %}
   <div class="container">
-    <ul>
-      <li>
-        <a href="{% url 'items:my-collections' %}">Back to my collections</a>
-      </li>
-      <li>
-        <a href="{% url 'items:collection-edit' pk=collection.id %}">Update collection</a>
-      </li>
-      <li>
-        <a href="{% url 'items:collection-delete' pk=collection.pk %}">
-          Delete Collection
-        </a>
-      </li>
-    </ul>
+    {% if collection.owner == user %}
+      <ul>
+        <li>
+          <a href="{% url 'items:my-collections' %}">Back to my collections</a>
+        </li>
+        <li>
+          <a href="{% url 'items:collection-edit' pk=collection.id %}">Update collection</a>
+        </li>
+        <li>
+          <a href="{% url 'items:collection-delete' pk=collection.pk %}">
+            Delete Collection
+          </a>
+        </li>
+      </ul>
+    {% else %}
+      <a href="{% url 'items:public-collections' %}">Back to all collections</a>
+    {% endif %}
     {% if collection.cover %}
       <img src="{{ collection.cover.url }}" alt="{{ collection.name }}" width="150" height="150"/>
     {% endif %}
     <h3>{{ collection.name }}</h3>
     <p>{{ collection.description }}</p>
     <h3>Coins</h3>
-    <a href="{% url 'items:add-coin-to-collection' pk=collection.pk %}">Add coin to this collection</a>
+    {% if collection.owner == user %}
+      <a href="{% url 'items:add-coin-to-collection' pk=collection.pk %}">Add coin to this collection</a>
+    {% endif %}
     {% for coin in collection.coins.all %}
-      <a href="#Тут буде посилання на деталі монети">
+      <a href="{% url 'items:coin-detail' pk=coin.pk %}">
         {% if coin.image %}
           <img src="{{ coin.image.url }}" alt="{{ coin.name }}" width="100" height="100"/>
         {% else %}
@@ -41,8 +47,13 @@
     {% endfor %}
     <h3>Banknotes</h3>
     {% for banknote in collection.banknotes.all %}
-      <a href="#тут має бути посилання на ідеталі банкноти">
-        <img src="{{ banknote.image.url }}" alt="{{ banknote.name }}" width="100" height="100"/>
+      <a href="{% url 'items:banknote-detail' pk=banknote.pk %}">
+        {% if banknote.image %}
+          <img src="{{ banknote.image.url }}" alt="{{ banknote.name }}" width="100" height="100"/>
+        {% else %}
+          <img src="{% static 'images/default-cover-collections.png' %}" alt="No image" width="100" height="100"/>
+        {% endif %}
+
         <p>{{ banknote.name }}</p>
         <p>Year: {{ banknote.year }}</p>
         <p>Country: {{ banknote.country }}</p>

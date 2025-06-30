@@ -7,12 +7,16 @@
         <a href="{% url 'items:my-banknotes' %}">Back to my banknotes</a>
       </li>
       <li>
+        {% if banknote.owner == user %}
         <a href="{% url 'items:banknote-edit' pk=banknote.id %}">Update banknote</a>
+        {% endif %}
       </li>
       <li>
+        {% if banknote.owner == user %}
         <a href="{% url 'items:banknote-delete' pk=banknote.pk %}">
           Delete Banknote
         </a>
+        {% endif %}
       </li>
     </ul>
    {% if banknote.image %}

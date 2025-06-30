@@ -5,7 +5,11 @@
 
 {% block content %}
   <div class="container">
+  {% if user.avatar %}
   <img src="{{ user.avatar.url }}" alt="Avatar" width="120" height="120" class="img-profile">
+  {% else %}
+  <img src="{% static 'images/logo-default-profile-photo.png' %}" alt="Photo" width="120" height="120" class="img-profile"/>
+  {% endif %}
   <h2>{{ user.first_name }} {{ user.last_name }}</h2>
   <h3>Information:</h3>
   <p>{{ user.bio }}</p>

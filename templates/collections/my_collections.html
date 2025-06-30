@@ -3,7 +3,6 @@
 {% block content %}
   <h2>{{ user.username }}' Collections</h2>
     <a href="{% url "items:create-collection" %}">Create new collection</a>
-  {% if collections %}
   {% for collection in collections %}
     <a href="{{ collection.get_absolute_url }}" class="collection-card">
   {% if collection.cover %}
@@ -15,9 +14,7 @@
   <p>{{ collection.description }}</p>
     </a>
   {% endfor %}
-  {% else %}
-  <h4>No collections</h4>
-  {% endif %}
+  <h4>No collections 🤷</h4>
 {% endblock %}
 
 {% block footer %}

@@ -7,12 +7,16 @@
         <a href="{% url 'items:my-coins' %}">Back to my coins</a>
       </li>
       <li>
+        {% if coin.owner == user %}
         <a href="{% url 'items:coin-edit' pk=coin.id %}">Update coin</a>
+        {% endif %}
       </li>
       <li>
+        {% if coin.owner == user %}
         <a href="{% url 'items:coin-delete' pk=coin.pk %}">
           Delete Coin
         </a>
+        {% endif %}
       </li>
     </ul>
    {% if coin.image %}
@@ -23,7 +27,7 @@
    <p>Coin name: {{ coin.name }}</p>
    <p>Country: {{ coin.country }} </p>
    <p>Year: {{ coin.year }}</p>
-   <p>Nominate: {{ coin.denomination }}</p>
+   <p>Denomination: {{ coin.denomination }}</p>
    <p>Material: {{ coin.material }}</p>
    <p>Tirage: {{ coin.tirage }}</p>
    </div>

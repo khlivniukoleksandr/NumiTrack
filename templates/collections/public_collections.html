@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <div class="container">
+  <h2>All collections</h2>
+  {% for collection in public_collections %}
+    <a href="{% url 'items:collection-detail' pk=collection.pk%}" class="collection-card">
+      {% if collection.cover %}
+        <img src="{{ collection.cover.url }}" alt="{{ collection.name }}" width="150" height="150"/>
+      {% else %}
+        <img src="{% static 'images/default-cover-collections.png' %}" alt="{{ collection.name }}" width="150"
+             height="150"/>
+      {% endif %}
+    <h3>Owner:{{ collection.owner.username }}</h3>
+      <h3>{{ collection.name }}</h3>
+      <p>{{ collection.description }}</p>
+    </a>
+  {% empty %}
+    <p>No collections 🤷</p>
+  {% endfor %}
+  </div>
+{% endblock %}
