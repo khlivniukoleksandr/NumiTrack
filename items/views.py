@@ -209,3 +209,15 @@ class BanknoteUpdateView(LoginRequiredMixin, UpdateView):
 
     def get_object(self, queryset=None):
         return get_object_or_404(Banknote, pk=self.kwargs["pk"], owner=self.request.user)
+
+
+class BanknoteDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Banknote
+    template_name = "banknotes/banknote_confirm_delete.html"
+    success_url = reverse_lazy('items:my-banknotes')
+
+    def get_queryset(self):
+        return Banknote.objects.filter(owner=self.request.user)
+
+    def get_object(self, queryset=None):
+        return get_object_or_404(Banknote, pk=self.kwargs["pk"], owner=self.request.user)

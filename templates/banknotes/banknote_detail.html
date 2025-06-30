@@ -10,9 +10,9 @@
         <a href="{% url 'items:banknote-edit' pk=banknote.id %}">Update banknote</a>
       </li>
       <li>
-{#        <a href="{% url 'items:coin-delete' pk=coin.pk %}">#}
-{#          Delete Coin#}
-{#        </a>#}
+        <a href="{% url 'items:banknote-delete' pk=banknote.pk %}">
+          Delete Banknote
+        </a>
       </li>
     </ul>
    {% if banknote.image %}
