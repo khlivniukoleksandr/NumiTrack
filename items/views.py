@@ -6,7 +6,7 @@ from django.urls import reverse_lazy
 from django.views import generic
 from django.views.generic import FormView, UpdateView, CreateView, DeleteView, TemplateView
 
-from items.forms import CustomCollectionForm, CustomCoinForm
+from items.forms import CustomCollectionForm, CustomCoinForm, CustomBanknoteForm
 from items.models import (Collector,
                           Collection,
                           Coin, Banknote
@@ -168,10 +168,21 @@ class AddCoinToCollectionView(LoginRequiredMixin, TemplateView):
         return redirect("items:add-coin-to-collection", pk=collection.pk)
 
 
-class BanknoteListView(LoginRequiredMixin, TemplateView):
+class BanknoteListView(LoginRequiredMixin, generic.ListView):
     model = Banknote
     template_name = "banknotes/my_banknotes.html"
     context_object_name = "banknotes"
 
     def get_queryset(self):
-        return Coin.objects.filter(owner=self.request.user)
+        return Banknote.objects.filter(owner=self.request.user)
+
+
+class BanknoteCreateView(LoginRequiredMixin, CreateView):
+    form_class = CustomBanknoteForm
+    template_name = "banknotes/banknote_form.html"
+    success_url = reverse_lazy('items:my-banknotes')
+
+    def form_valid(self, form):
+        # Автоматично встановлюємо власника перед збереженням
+        form.instance.owner = self.request.user
+        return super().form_valid(form)

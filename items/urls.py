@@ -13,7 +13,8 @@ from items.views import (ProfileView,
                          CoinUpdateView,
                          CoinCreateView,
                          AddCoinToCollectionView,
-                         BanknoteListView)
+                         BanknoteListView,
+                         BanknoteCreateView)
 
 urlpatterns = [
     path("profile/", ProfileView.as_view(), name="profile"),
@@ -35,9 +36,11 @@ urlpatterns = [
     path("my-coins/detail/<int:pk>/delete/", CoinDeleteView.as_view(), name="coin-delete"),
     path("my-coins/detail/<int:pk>/edit/", CoinUpdateView.as_view(), name="coin-edit"),
 
-    #Banknotes
+    # Banknotes
 
     path("my-banknotes/", BanknoteListView.as_view(), name="my-banknotes"),
+    path("my-banknotes/create/", BanknoteCreateView.as_view(), name="banknote-create"),
+
 ]
 
 app_name = "items"
