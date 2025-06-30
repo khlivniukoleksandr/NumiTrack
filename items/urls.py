@@ -6,15 +6,38 @@ from items.views import (ProfileView,
                          CollectionCreateView,
                          CollectionDetailView,
                          CollectionUpdateView,
-                         CollectionDeleteView)
+                         CollectionDeleteView,
+                         CoinListView,
+                         CoinDetailView,
+                         CoinDeleteView,
+                         CoinUpdateView,
+                         CoinCreateView,
+                         AddCoinToCollectionView,
+                         BanknoteListView)
 
 urlpatterns = [
     path("profile/", ProfileView.as_view(), name="profile"),
+
+    # Collections
+
     path("my-collections/", CollectionListView.as_view(), name="my-collections"),
     path("my-collections/detail/<int:pk>/", CollectionDetailView.as_view(), name="collection-detail"),
     path("my-collections/<int:pk>/delete/", CollectionDeleteView.as_view(), name="collection-delete"),
     path("my-collections/<int:pk>/edit/", CollectionUpdateView.as_view(), name="collection-edit"),
     path("my-collections/create/", CollectionCreateView.as_view(), name="create-collection"),
+    path("my-collections/<int:pk>/add-coin/", AddCoinToCollectionView.as_view(), name="add-coin-to-collection"),
+
+    # Coins
+
+    path("my-coins/", CoinListView.as_view(), name="my-coins"),
+    path("my-coins/create", CoinCreateView.as_view(), name="coin-create"),
+    path("my-coins/detail/<int:pk>/", CoinDetailView.as_view(), name="coin-detail"),
+    path("my-coins/detail/<int:pk>/delete/", CoinDeleteView.as_view(), name="coin-delete"),
+    path("my-coins/detail/<int:pk>/edit/", CoinUpdateView.as_view(), name="coin-edit"),
+
+    #Banknotes
+
+    path("my-banknotes/", BanknoteListView.as_view(), name="my-banknotes"),
 ]
 
 app_name = "items"

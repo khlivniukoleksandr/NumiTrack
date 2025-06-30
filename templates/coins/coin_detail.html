@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+   <div class="container">
+   <ul>
+      <li>
+        <a href="{% url 'items:my-coins' %}">Back to my coins</a>
+      </li>
+      <li>
+        <a href="{% url 'items:coin-edit' pk=coin.id %}">Update coin</a>
+      </li>
+      <li>
+        <a href="{% url 'items:coin-delete' pk=coin.pk %}">
+          Delete Coin
+        </a>
+      </li>
+    </ul>
+   {% if coin.image %}
+  <img src="{{ coin.image.url }}" alt="{{ coin.name }}" width="100" height="100">
+{% else %}
+  <img src="{% static 'images/default-cover-collections.png' %}" alt="No image" width="100" height="100">
+{% endif %}
+   <p>Coin name: {{ coin.name }}</p>
+   <p>Country: {{ coin.country }} </p>
+   <p>Year: {{ coin.year }}</p>
+   <p>Nominate: {{ coin.denomination }}</p>
+   <p>Material: {{ coin.material }}</p>
+   <p>Tirage: {{ coin.tirage }}</p>
+   </div>
+{% endblock %}

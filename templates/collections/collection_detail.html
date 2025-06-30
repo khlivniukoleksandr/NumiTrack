@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 {% block content %}
   <div class="container">
     <ul>
@@ -20,9 +21,15 @@
     <h3>{{ collection.name }}</h3>
     <p>{{ collection.description }}</p>
     <h3>Coins</h3>
+    <a href="{% url 'items:add-coin-to-collection' pk=collection.pk %}">Add coin to this collection</a>
     {% for coin in collection.coins.all %}
       <a href="#Тут буде посилання на деталі монети">
-        <img src="{{ coin.image.url }}" alt="{{ coin.name }}" width="100" height="100"/>
+        {% if coin.image %}
+          <img src="{{ coin.image.url }}" alt="{{ coin.name }}" width="100" height="100"/>
+        {% else %}
+          <img src="{% static 'images/default-cover-collections.png' %}" alt="No image" width="100" height="100">
+        {% endif %}
+
         <p>{{ coin.name }}</p>
         <p>{{ coin.country }}</p>
         <p>{{ coin.year }}</p>

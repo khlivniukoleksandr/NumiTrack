@@ -1,45 +1,49 @@
 {% load static %}
 <div class="sidebar-container">
-<div class="hamburger-menu">
-  <span class="hamburger-icon">☰</span>
-<div class="div-sidebar">
-<ul class="sidebar-list">
-  {% if user.is_authenticated %}
-    <li class="sidebar-list-item">
-      {# Має перенаправити на стоірнку користувача #}
-      <a href="{% url 'items:profile' %}"><img src="{% static 'images/authorize-icon.png' %}" width="25" class="icon-authenticate" alt="Icon"/>My
-        profile</a>
-    </li>
-  {% else %}
-    <li class="sidebar-list-item">
-      {# Має перенаправити на форму логіну #}
-      <a href="{% url 'login' %}"><img src="{% static 'images/authorize-icon.png' %}" width="25"
-                       class="icon-not-authenticate" alt="Icon"/>Login</a>
-    </li>
-  {% endif %}
-  <li class="sidebar-list-item">
-    {# Перенаправлення на сторінку моїх колекцій#}
-    <a href="{% url 'items:my-collections' %}">My collections</a>
-  </li>
-  <li class="sidebar-list-item">
-    <a href="#">Add new item</a>
-  </li>
-  <li class="sidebar-list-item">
-    <a href="#">Search</a>
-  </li>
-<li class="sidebar-list-item">
-  <a href="#">All collections</a>
-</li>
-  <li class="sidebar-list-item">
-    <a href="#">View collectors</a>
-  </li>
-  <li class="sidebar-list-item">
-    <a href="#">News</a>
-  </li>
- <li class="sidebar-list-item">
-    <a href="#">Guides & FAQs</a>
-  </li>
-</ul>
-</div>
-</div>
+  <div class="hamburger-menu">
+    <span class="hamburger-icon">☰</span>
+    <div class="div-sidebar">
+      <ul class="sidebar-list">
+        {% if user.is_authenticated %}
+          <li class="sidebar-list-item">
+            {# Має перенаправити на стоірнку користувача #}
+            <a href="{% url 'items:profile' %}"><img src="{% static 'images/authorize-icon.png' %}" width="25"
+                                                     class="icon-authenticate" alt="Icon"/>My
+              profile</a>
+          </li>
+        {% else %}
+          <li class="sidebar-list-item">
+            {# Має перенаправити на форму логіну #}
+            <a href="{% url 'login' %}"><img src="{% static 'images/authorize-icon.png' %}" width="25"
+                                             class="icon-not-authenticate" alt="Icon"/>Login</a>
+          </li>
+        {% endif %}
+        <li class="sidebar-list-item">
+          {# Перенаправлення на сторінку моїх колекцій#}
+          <a href="{% url 'items:my-collections' %}">My collections</a>
+        </li>
+        <li class="sidebar-list-item">
+          <a href="{% url "items:my-coins" %}">My coins</a>
+        </li>
+        <li class="sidebar-list-item">
+          <a href="#">My banknotes</a>
+        </li>
+        <li class="sidebar-list-item">
+          <a href="#">Search</a>
+        </li>
+        <li class="sidebar-list-item">
+          <a href="#">All collections</a>
+        </li>
+        <li class="sidebar-list-item">
+          <a href="#">View collectors</a>
+        </li>
+        <li class="sidebar-list-item">
+          <a href="#">News</a>
+        </li>
+        <li class="sidebar-list-item">
+          <a href="#">Guides & FAQs</a>
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>

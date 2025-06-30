@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>Add coin to collection: {{ collection.name }}</h2>
+
+  {% if available_coins %}
+    <ul>
+      {% for coin in available_coins %}
+        <li>
+          {{ coin.name }} ({{ coin.year }})
+          <form method="post" style="display:inline;">
+            {% csrf_token %}
+            <input type="hidden" name="coin_id" value="{{ coin.id }}">
+            <button type="submit" class="btn btn-sm btn-outline-success">Add</button>
+          </form>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>All your coins are already in this collection 🎉</p>
+  {% endif %}
+
+  <a href="{% url 'items:collection-detail' pk=collection.pk %}">← Back to collection</a>
+{% endblock %}

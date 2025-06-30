@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <h2>{{ user.username }}' Coins</h2>
+    <a href="{% url 'items:coin-create' %}">Add new coin</a>
+  {% if coins %}
+  {% for coin in coins %}
+    <a href="{% url 'items:coin-detail' pk=coin.pk %}" class="collection-card">
+  {% if coin.image %}
+  <img src="{{ coin.image.url }}" alt="{{ coin.name }}" width="150" height="150"/>
+       {% else %}
+  <img src="{% static 'images/default-cover-collections.png' %}" alt="{{ coin.name }}" width="150" height="150"/>
+  {% endif %}
+  <h4>{{ coin.name }}</h4>
+    <p>Year: {{ coin.year }}</p>
+    <p>Country: {{ coin.country }}</p>
+    <p>Material: {{ coin.material }}</p>
+    <p>Tirage: {{ coin.tirage }}</p>
+    </a>
+  {% endfor %}
+  {% else %}
+  <h4>No collections</h4>
+  {% endif %}
+{% endblock %}
+
+{% block footer %}
+{% endblock %}

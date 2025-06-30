@@ -39,6 +39,9 @@ class Coin(models.Model):
     def __str__(self):
         return f"Coin {self.name} (Country:{self.country} Year: {self.year})"
 
+    def get_absolute_url(self):
+        return reverse("items:coin-detail", args=[str(self.id)])
+
 class Banknote(models.Model):
     name = models.CharField(max_length=60)
     country = models.CharField(max_length=60)
@@ -51,6 +54,8 @@ class Banknote(models.Model):
     def __str__(self):
         return f"Banknote {self.name} (Country:{self.country} Year: {self.year})"
 
+    def get_absolute_url(self):
+        return reverse("items:banknote-detail", args=[str(self.id)])
 
 class Collection(models.Model):
     cover = models.ImageField(upload_to="collections/covers/", blank=True, null=True)
