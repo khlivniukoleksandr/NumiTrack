@@ -191,3 +191,21 @@ class BanknoteCreateView(LoginRequiredMixin, CreateView):
 class BanknoteDetailView(LoginRequiredMixin, generic.DetailView):
     model = Banknote
     template_name = "banknotes/banknote_detail.html"
+
+
+class BanknoteUpdateView(LoginRequiredMixin, UpdateView):
+    model = Banknote
+    form_class = CustomBanknoteForm
+    template_name = "banknotes/banknote_form.html"
+    success_url = reverse_lazy('items:my-banknotes')
+
+    def get_queryset(self):
+        return Coin.objects.filter(owner=self.request.user)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['banknote'] = self.object
+        return context
+
+    def get_object(self, queryset=None):
+        return get_object_or_404(Banknote, pk=self.kwargs["pk"], owner=self.request.user)

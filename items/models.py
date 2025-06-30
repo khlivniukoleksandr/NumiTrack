@@ -70,3 +70,4 @@ class Collection(models.Model):
 
     def get_absolute_url(self):
         return reverse("items:collection-detail", args=[str(self.id)])
+
