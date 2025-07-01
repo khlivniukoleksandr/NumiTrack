@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+        <form method="get" action="{% url 'items:search-coins' %}" class="search-form">
+    <input type="text" name="q" placeholder="Search coins" />
+    <button type="submit">🔍</button>
+      </form>
   <h2>{{ user.username }}'s Coins</h2>
   <a href="{% url 'items:coin-create' %}">Add new coin</a>
 

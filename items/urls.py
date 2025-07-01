@@ -19,7 +19,8 @@ from items.views import (ProfileView,
                          BanknoteUpdateView,
                          BanknoteDeleteView,
                          PublicCollectionListView,
-                         AddBanknoteToCollectionView)
+                         AddBanknoteToCollectionView,
+                         SearchView)
 
 urlpatterns = [
     path("profile/", ProfileView.as_view(), name="profile"),
@@ -53,6 +54,10 @@ urlpatterns = [
     # All collections
 
     path("collections/", PublicCollectionListView.as_view(), name="public-collections"),
+
+    #Search
+
+    path("search/coins/", SearchView.as_view(), name="search-coins"),
 ]
 
 app_name = "items"

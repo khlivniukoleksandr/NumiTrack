@@ -34,10 +34,12 @@
           {#  Контакти та форма зворотного зв'язку #}
           <a href="{% url 'home' %}#contact">Contacts</a>
         </li>
-      </ul>
+      <li>
       {% block sidebar %}
         {% include "includes/sidebar.html" %}
       {% endblock %}
+      </li>
+      </ul>
     </nav>
     </div>
   </header>

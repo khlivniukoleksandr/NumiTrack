@@ -1,5 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django import forms
+from django.db.models import Q
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
@@ -252,3 +253,24 @@ class PublicCollectionListView(generic.ListView):
 
     def get_queryset(self):
         return Collection.objects.all()
+
+
+class SearchView(generic.ListView):
+    template_name = "search/results.html"
+    context_object_name = "coins"
+
+    def get_queryset(self):
+        query = self.request.GET.get("q", "")
+        return Coin.objects.filter(
+            Q(name__icontains=query) |
+            Q(country__icontains=query) |
+            Q(material__icontains=query) |
+            Q(denomination__icontains=query)
+        )
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["query"] = self.request.GET.get("q", "")
+        return context
+
+
