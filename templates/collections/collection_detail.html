@@ -46,6 +46,9 @@
       <p>No coins</p>
     {% endfor %}
     <h3>Banknotes</h3>
+  {% if collection.owner == user %}
+  <a href="{% url 'items:add-banknote-to-collection' pk=collection.pk%}">Add banknote to collection</a>
+  {% endif %}
     {% for banknote in collection.banknotes.all %}
       <a href="{% url 'items:banknote-detail' pk=banknote.pk %}">
         {% if banknote.image %}

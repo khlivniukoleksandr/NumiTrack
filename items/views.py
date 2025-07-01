@@ -4,7 +4,7 @@ from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.views import generic
-from django.views.generic import FormView, UpdateView, CreateView, DeleteView, TemplateView
+from django.views.generic import UpdateView, CreateView, DeleteView, TemplateView
 
 from items.forms import CustomCollectionForm, CustomCoinForm, CustomBanknoteForm
 from items.models import (Collector,
@@ -95,6 +95,48 @@ class CollectionDeleteView(LoginRequiredMixin, DeleteView):
         return get_object_or_404(Collection, pk=self.kwargs["pk"], owner=self.request.user)
 
 
+class AddCoinToCollectionView(LoginRequiredMixin, TemplateView):
+    template_name = "collections/add_coin_to_collection.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        collection = get_object_or_404(Collection, pk=self.kwargs["pk"], owner=self.request.user)
+        available_coins = self.request.user.coins.exclude(pk__in=collection.coins.values_list("pk", flat=True))
+        context["collection"] = collection
+        context["available_coins"] = available_coins
+        return context
+
+    def post(self, request, *args, **kwargs):
+        collection = get_object_or_404(Collection, pk=self.kwargs["pk"], owner=self.request.user)
+        coin_id = request.POST.get("coin_id")
+        if coin_id:
+            coin = get_object_or_404(Coin, pk=coin_id, owner=request.user)
+            collection.coins.add(coin)
+        return redirect("items:add-coin-to-collection", pk=collection.pk)
+
+
+
+class AddBanknoteToCollectionView(LoginRequiredMixin, TemplateView):
+    template_name = "collections/add_banknote_to_collection.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        collection = get_object_or_404(Collection, pk=self.kwargs["pk"], owner=self.request.user)
+        available_banknotes = self.request.user.banknotes.exclude(pk__in=collection.banknotes.values_list("pk", flat=True))
+        context["collection"] = collection
+        context["available_banknotes"] = available_banknotes
+        return context
+
+    def post(self, request, *args, **kwargs):
+        collection = get_object_or_404(Collection, pk=self.kwargs["pk"], owner=self.request.user)
+        banknote_id = request.POST.get("banknote_id")
+        if banknote_id:
+            banknote = get_object_or_404(Banknote, pk=banknote_id, owner=request.user)
+            collection.banknotes.add(banknote)
+        return redirect("items:add-banknote-to-collection", pk=collection.pk)
+
+
+
 class CoinListView(LoginRequiredMixin, generic.ListView):
     model = Coin
     template_name = "coins/my_coins.html"
@@ -146,26 +188,6 @@ class CoinUpdateView(LoginRequiredMixin, UpdateView):
 
     def get_object(self, queryset=None):
         return get_object_or_404(Coin, pk=self.kwargs["pk"], owner=self.request.user)
-
-
-class AddCoinToCollectionView(LoginRequiredMixin, TemplateView):
-    template_name = "collections/add_coin_to_collection.html"
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        collection = get_object_or_404(Collection, pk=self.kwargs["pk"], owner=self.request.user)
-        available_coins = self.request.user.coins.exclude(pk__in=collection.coins.values_list("pk", flat=True))
-        context["collection"] = collection
-        context["available_coins"] = available_coins
-        return context
-
-    def post(self, request, *args, **kwargs):
-        collection = get_object_or_404(Collection, pk=self.kwargs["pk"], owner=self.request.user)
-        coin_id = request.POST.get("coin_id")
-        if coin_id:
-            coin = get_object_or_404(Coin, pk=coin_id, owner=request.user)
-            collection.coins.add(coin)
-        return redirect("items:add-coin-to-collection", pk=collection.pk)
 
 
 class BanknoteListView(LoginRequiredMixin, generic.ListView):

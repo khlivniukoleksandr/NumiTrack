@@ -35,11 +35,17 @@
   </li>
   <li>Total items : {{ user.total_items }}</li>
   </ul>
+  {% if request.user == user %}
   <a href="{% url 'items:my-collections' %}">My collections</a>
+  {% else %}
+  <a href="{% url 'items:my-collections' %}">View all {{ user.username }} collections</a>
+  {% endif %}
+     {% if request.user == user %}
 <form method="post" action="{% url 'logout' %}">
 {% csrf_token %}
 <button type="submit">Logout</button>
 </form>
+    {% endif %}
 </div>
 {% endblock %}
 {% block footer %}

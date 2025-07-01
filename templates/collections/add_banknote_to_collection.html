@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>Add banknote to collection: {{ collection.name }}</h2>
+
+  {% if available_banknotes %}
+    <ul>
+      {% for banknote in available_banknotes %}
+        <li>
+          {{ banknote.name }} ({{ banknote.year }})
+          <form method="post" style="display:inline;">
+            {% csrf_token %}
+            <input type="hidden" name="banknote_id" value="{{ banknote.id }}">
+            <button type="submit" class="btn btn-sm btn-outline-success">Add</button>
+          </form>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>All your banknotes are already in this collection 🎉</p>
+  {% endif %}
+
+  <a href="{% url 'items:collection-detail' pk=collection.pk %}">← Back to collection</a>
+{% endblock %}
