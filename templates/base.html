@@ -20,19 +20,19 @@
         </li>
         <li>
           {# Головна секція з описом функціоналу сторінки #}
-          <a href="#about">About</a>
+          <a href="{% url 'home' %}#about">About</a>
         </li>
         <li>
           {# Опис можливостей сервісу#}
-          <a href="#features">Features</a>
+          <a href="{% url 'home' %}#features">Features</a>
         </li>
         <li>
           {#  статистика доданих монет {У колекції вже 235 монет із 47 країн} #}
-          <a href="#stats">Stats</a>
+          <a href="{% url 'home' %}#stats">Stats</a>
         </li>
         <li>
           {#  Контакти та форма зворотного зв'язку #}
-          <a href="#contact">Contacts</a>
+          <a href="{% url 'home' %}#contact">Contacts</a>
         </li>
       </ul>
       {% block sidebar %}

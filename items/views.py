@@ -157,10 +157,10 @@ class CoinDeleteView(LoginRequiredMixin, generic.DeleteView):
     success_url = reverse_lazy('items:my-coins')
 
     def get_queryset(self):
-        return Collection.objects.filter(owner=self.request.user)
+        return Coin.objects.filter(owner=self.request.user)
 
     def get_object(self, queryset=None):
-        return get_object_or_404(Collection, pk=self.kwargs["pk"], owner=self.request.user)
+        return get_object_or_404(Coin, pk=self.kwargs["pk"], owner=self.request.user)
 
 class CoinCreateView(LoginRequiredMixin, CreateView):
     model = Coin

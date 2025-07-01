@@ -75,9 +75,11 @@ button {
     transition: transform 250ms;
     z-index: 1000;
 }
+
 .sidebar-list-item {
     background-color: white;
 }
+
 .sidebar-list {
     display: flex;
     flex-direction: column;
@@ -147,5 +149,128 @@ button {
     display: block;
     margin-bottom: 10px;
     width: 200px;
-    border: 2px solid gray;
+    border: 2px solid #004225;
+}
+
+
+/*Coins*/
+/*Silver card*/
+.card-silver {
+  position: relative;
+  overflow: hidden;
+  border: 2px solid #C0C0C0;
+  border-radius: 12px;
+  box-shadow: 0 0 6px #C0C0C0, 0 0 12px rgba(192, 192, 192, 0.4);
+  background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 50%, #f5f5f5 100%);
+}
+
+.card-silver::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-20deg);
+  animation: shimmer-silver 3s infinite;
+}
+
+@keyframes shimmer-silver {
+  0% {
+    left: -50%;
+  }
+  100% {
+    left: 120%;
+  }
+}
+/*Gold card*/
+.card-gold {
+  position: relative;
+  overflow: hidden;
+  border: 2px solid #FFD700;
+  border-radius: 12px;
+  background: linear-gradient(
+    135deg,
+    #ffcc00 0%,
+    #fff8a0 30%,
+    #fff9b8 50%,
+    #fff8a0 70%,
+    #ffcc00 100%
+  );
+  box-shadow: 0 0 6px #ffd700, 0 0 12px rgba(255, 215, 0, 0.5);
+}
+
+.card-gold::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.6) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-20deg);
+  animation: shimmer-gold 3s infinite;
+}
+
+@keyframes shimmer-gold {
+  0% {
+    left: -50%;
+  }
+  100% {
+    left: 120%;
+  }
+}
+ /*Bronze card*/
+.card-bronze {
+  position: relative;
+  overflow: hidden;
+  border: 2px solid #CD7F32;
+  border-radius: 12px;
+  box-shadow: 0 0 6px #cd7f32, 0 0 12px rgba(205, 127, 50, 0.4);
+  background: linear-gradient(
+    135deg,
+    #cd7f32 0%,
+    #e0a15a 30%,
+    #f5c292 50%,
+    #e0a15a 70%,
+    #cd7f32 100%
+  );
+}
+
+/* shimmer смуга */
+.card-bronze::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-20deg);
+  animation: shimmer-bronze 3s infinite;
+}
+
+@keyframes shimmer-bronze {
+  0% {
+    left: -50%;
+  }
+  100% {
+    left: 120%;
+  }
 }

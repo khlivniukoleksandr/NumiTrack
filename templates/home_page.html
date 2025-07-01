@@ -4,9 +4,8 @@
     <section id="about" class="section-description">
       <h1>A site for those who create real digital treasures</h1>
       <h2>Keep your own collection. View others'. Join forces with numismatists.</h2>
-      {# !!!!!!!!!!!! Кнопка має перенаправляти на реєстрацію та після реєстрації до створення колекцій#}
-      <button type="button">Create collection</button>
-      <button type="button">View collections</button>
+      <a href="{% url 'items:create-collection' %}">Create collection</a>
+      <a href="{% url 'items:public-collections' %}">View all collections</a>
     </section>
   </div>
   <section id="features" class="section-features">
