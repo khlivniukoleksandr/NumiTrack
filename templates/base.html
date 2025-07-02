@@ -13,14 +13,12 @@
 {% block header %}
   <header>
       <nav class="header-navigation">
+      <ul class="header-list">
+      <li>
         <a href="{% url 'home' %}"><span class="span-title">Numi</span>Track</a>
-        <ul class="header-list">
+      </li>
           <li>
             <a href="{% url 'home' %}">Home</a>
-          </li>
-          <li>
-            {# Головна секція з описом функціоналу сторінки #}
-            <a href="{% url 'home' %}#about">About</a>
           </li>
           <li>
             {# Опис можливостей сервісу#}
@@ -48,11 +46,9 @@
 
   {% endblock %}
         </main>
-<div class="container">
     {% block pagination %}
       {% include "includes/pagination.html" %}
     {% endblock %}
-</div>
 
 {% block footer %}
   {% include "includes/footer.html" %}

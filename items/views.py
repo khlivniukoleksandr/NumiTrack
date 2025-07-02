@@ -38,6 +38,19 @@ class ProfileView(LoginRequiredMixin, generic.DetailView):
     def get_object(self, queryset=None):
         return self.request.user
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["edit_mode"] = self.request.GET.get("edit") == "true"
+        return context
+
+    def post(self, request, *args, **kwargs):
+        user = self.get_object()
+        user.first_name = request.POST.get("first_name", user.first_name)
+        user.last_name = request.POST.get("last_name", user.last_name)
+        user.bio = request.POST.get("bio", user.bio)
+        user.save()
+        return redirect("items:profile")
+
 
 class CollectionListView(LoginRequiredMixin, generic.ListView):
     model = Collection
@@ -142,7 +155,7 @@ class CoinListView(LoginRequiredMixin, generic.ListView):
     model = Coin
     template_name = "coins/my_coins.html"
     context_object_name = "coins"
-    paginate_by = 15
+    paginate_by = 10
 
     def get_queryset(self):
         queryset = Coin.objects.filter(owner=self.request.user)

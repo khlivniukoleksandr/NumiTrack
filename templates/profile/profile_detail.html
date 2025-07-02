@@ -1,52 +1,106 @@
 {% extends "base.html" %}
 {% load static %}
 
-
-
 {% block content %}
   <div class="container">
-  {% if user.avatar %}
-  <img src="{{ user.avatar.url }}" alt="Avatar" width="120" height="120" class="img-profile">
-  {% else %}
-  <img src="{% static 'images/logo-default-profile-photo.png' %}" alt="Photo" width="120" height="120" class="img-profile"/>
-  {% endif %}
-  <h2>{{ user.first_name }} {{ user.last_name }}</h2>
-  <h3>Information:</h3>
-  <p>{{ user.bio }}</p>
-  <ul>
-  <li>
-  <h3>Number of coins</h3>
-    {% if user.coins.count >= 1 %}
-  <p>{{ user.coins.count }}</p>
-    {% else %}
-    <p>No coins</p>
-    {% endif %}
-  </li>
-  <li>
-    <h3>Number of banknotes</h3>
-    {% if user.banknotes.count >= 1 %}
-    <p>{{ user.banknotes.count }}</p>
-    {% else %}
-    <p>No banknotes</p>
-    {% endif %}
-  </li>
-  <li>
-    <p>Rank: {{ user.level }}</p>
-  </li>
-  <li>Total items : {{ user.total_items }}</li>
-  </ul>
-  {% if request.user == user %}
-  <a href="{% url 'items:my-collections' %}">My collections</a>
-  {% else %}
-  <a href="{% url 'items:my-collections' %}">View all {{ user.username }} collections</a>
-  {% endif %}
-     {% if request.user == user %}
-<form method="post" action="{% url 'logout' %}">
-{% csrf_token %}
-<button type="submit">Logout</button>
-</form>
-    {% endif %}
-</div>
+    <div class="profile-header">
+      <div class="profile-info">
+        {% if collector.avatar %}
+          <img src="{{ collector.avatar.url }}" alt="Avatar" class="img-profile">
+        {% else %}
+          <img src="{% static 'images/logo-default-profile-photo.png' %}" alt="Photo" class="img-profile"/>
+        {% endif %}
+
+        <div class="profile-details">
+          <p class="profile-bio">Rank: {{ collector.level }}</p>
+
+          {% if edit_mode %}
+            <form method="post">
+              {% csrf_token %}
+              <input type="text" name="first_name" value="{{ collector.first_name }}"/>
+              <input type="text" name="last_name" value="{{ collector.last_name }}"/>
+              <textarea name="bio">{{ collector.bio }}</textarea>
+
+              <ul class="profile-stats-list">
+                <li>
+                  <p class="stats">
+                    {% if collector.coins.count >= 1 %}
+                      {{ collector.coins.count }} coins
+                    {% else %}
+                      No coins
+                    {% endif %}
+                  </p>
+                </li>
+                <li>
+                  <p class="stats">
+                    {% if collector.banknotes.count >= 1 %}
+                      {{ collector.banknotes.count }} banknotes
+                    {% else %}
+                      No banknotes
+                    {% endif %}
+                  </p>
+                </li>
+                <li>
+                  <p class="stats">Total items: {{ collector.total_items }}</p>
+                </li>
+              </ul>
+              <button type="submit" class="profile-button-save">Save</button>
+              <a href="{% url 'items:profile' %}" class="profile-cancel-button">Cancel</a>
+            </form>
+          {% else %}
+            <div class="profile-edit-buttons">
+            <h2 class="profile-name">{{ collector.first_name }} {{ collector.last_name }}</h2>
+            {% if request.user == collector %}
+              <a href="?edit=true" class="edit-profile-link">Edit profile</a>
+            {% endif %}
+            </div>
+            <p class="profile-bio">{{ collector.bio }}</p>
+
+            <ul class="profile-stats-list">
+              <li>
+                <p class="stats">
+                  {% if collector.coins.count >= 1 %}
+                    {{ collector.coins.count }} coins
+                  {% else %}
+                    No coins
+                  {% endif %}
+                </p>
+              </li>
+              <li>
+                <p class="stats">
+                  {% if collector.banknotes.count >= 1 %}
+                    {{ collector.banknotes.count }} banknotes
+                  {% else %}
+                    No banknotes
+                  {% endif %}
+                </p>
+              </li>
+              <li>
+                <p class="stats">Total items: {{ collector.total_items }}</p>
+              </li>
+            </ul>
+
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <div class="profile-content">
+      {% if request.user == collector %}
+        <a href="{% url 'items:my-collections' %}">My collections</a>
+      {% else %}
+        <a href="{% url 'items:my-collections' %}">View all {{ collector.username }} collections</a>
+      {% endif %}
+
+      {% if request.user == collector %}
+        <form method="post" action="{% url 'logout' %}">
+          {% csrf_token %}
+          <button type="submit" class="button-profile-logout">Logout</button>
+        </form>
+      {% endif %}
+    </div>
+  </div>
 {% endblock %}
+
 {% block footer %}
 {% endblock %}
