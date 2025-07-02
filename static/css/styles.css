@@ -48,6 +48,7 @@ button {
 
 }
 
+/*_________________________________Sidebar__________________________________*/
 /*Sidebar*/
 .div-sidebar {
     display: flex;
@@ -55,8 +56,9 @@ button {
 }
 
 .sidebar-list {
-    display: flex;
+    display: none;
     flex-direction: column;
+
 }
 
 .hamburger-menu {
@@ -105,22 +107,40 @@ button {
     visibility: visible;
 }
 
+/*___________________________Header__________________________________*/
 /* Header */
 .span-title {
     color: #05472d;
 }
 
-.header-navigation,
+
 .header-list {
     display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.header-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 32px;
+    border: 2px solid #e0e0e0;
+    border-radius: 60px;
+    background-color: #fff7f4eb;;
+
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    width: 700px;
+    max-height: 20px;
+
 }
 
 .header-list {
     gap: 15px;
-}
-
-.header-navigation {
-    justify-content: center;
 }
 
 .icon-authenticate,
@@ -260,9 +280,9 @@ button {
 }
 
 .section-stats {
-    max-width:100%;
+    max-width: 100%;
     position: relative;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), url("../images/coins_background.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../images/coins_background.jpg");
     background-size: cover;
     background-position: center;
     padding: 60px 20px;
@@ -277,7 +297,7 @@ button {
 }
 
 .stats-title {
-        margin-top: 150px;
+    margin-top: 150px;
     font-size: 2.5rem;
     margin-bottom: 10px;
 }
@@ -304,6 +324,7 @@ button {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     transition: background-color 0.3s ease, transform 0.3s ease-in-out;
 }
+
 .stats-list-item:hover {
     cursor: pointer;
     background-color: #fff7f4;
@@ -323,12 +344,14 @@ button {
     font-size: 1.2rem;
     font-weight: bold;
     margin-bottom: 10px;
-        color: #2b2b2b;
+    color: #2b2b2b;
 }
+
 .stats-list-description {
     font-size: 1rem;
-        color: #7e7e7e;
+    color: #7e7e7e;
 }
+
 /*________________________Profile_______________________*/
 /*Profile-page*/
 .img-profile {

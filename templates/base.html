@@ -12,7 +12,6 @@
 <body>
 {% block header %}
   <header>
-    <div class="container">
       <nav class="header-navigation">
         <a href="{% url 'home' %}"><span class="span-title">Numi</span>Track</a>
         <ul class="header-list">
@@ -42,18 +41,19 @@
           </li>
         </ul>
       </nav>
-    </div>
   </header>
 {% endblock %}
+    <main>
   {% block content %}
 
   {% endblock %}
+        </main>
 <div class="container">
     {% block pagination %}
       {% include "includes/pagination.html" %}
     {% endblock %}
 </div>
-</main>
+
 {% block footer %}
   {% include "includes/footer.html" %}
 {% endblock %}
