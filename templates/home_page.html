@@ -1,54 +1,102 @@
 {% extends "base.html" %}
+{% load static %}
 {% block content %}
   <div class="container">
     <section id="about" class="hero-section">
       <div class="hero-section-text">
         <h1 class="hero-section-title">A site for those <br>Who create real digital treasures</h1>
-        <h2 class="hero-section-description">Keep your own collection<br>View others'.<br>Join forces with numismatists.</h2>
+        <h2 class="hero-section-description">Keep your own collection<br>View others'.<br>Join forces with numismatists.
+        </h2>
         <a href="{% url 'items:create-collection' %}" class="hero-section-button">Create collection</a>
         <a href="{% url 'items:public-collections' %}" class="hero-section-button">View all collections</a>
       </div>
     </section>
     <section id="features" class="section-features">
 
-      <h2>Create, browse, connect with like-minded people and store information about your treasures in one place.</h2>
-      <h3>What you can do with NumiTrack?</h3>
-      <ul>
-        <li>
-          <h3>Create</h3>
-          <p>Create and store information about your own collections</p>
+      <h2 class="features-title">Create, browse, connect with like-minded people and store information about your
+        treasures in one place.</h2>
+      <h3 class="features-subtitle">Explore all the ways <span class="span-title">Numi</span>Track empowers your
+        collecting journey.</h3>
+      <ul class="features-list">
+
+        <li class="features-list-item">
+          <div class="icon-second-section-wrapper">
+            <svg width="40" height="40">
+              <use href="/static/images/icons.svg#icon-pencil"></use>
+            </svg>
+          </div>
+          <h3 class="features-list-title">Create</h3>
+          <p class="features-list-subtitle">Create and store information about your own collections, coins and
+            banknotes</p>
         </li>
-        <li>
-          <h3>Browse</h3>
-          <p>Browse other members' collections, find rare items, and get inspired.</p>
+
+        <li class="features-list-item">
+          <div class="icon-second-section-wrapper">
+            <svg width="40" height="40">
+              <use href="/static/images/icons.svg#icon-search"></use>
+            </svg>
+          </div>
+          <h3 class="features-list-title">Browse</h3>
+          <p class="features-list-subtitle">Browse other members' collections, find rare items, and get inspired.</p>
         </li>
-        <li>
-          <h3>Wish list</h3>
-          <p>Keep a wishlist so you don't forget what you're after.</p>
+
+        <li class="features-list-item">
+          <div class="icon-second-section-wrapper">
+            <svg width="40" height="40">
+              <use href="/static/images/icons.svg#icon-wishlist"></use>
+            </svg>
+          </div>
+          <h3 class="features-list-title">Wish list</h3>
+          <p class="features-list-subtitle">Keep a wishlist so you don't forget what you're after.</p>
         </li>
-        <li>
-          <h3>News</h3>
-          <p>Stay tuned for interesting news in the field of numismatics.</p>
+
+        <li class="features-list-item">
+          <div class="icon-second-section-wrapper">
+            <svg width="40" height="40">
+              <use href="/static/images/icons.svg#icon-newspaper"></use>
+            </svg>
+          </div>
+          <h3 class="features-list-title">News</h3>
+          <p class="features-list-subtitle">Stay tuned for interesting news in the field of numismatics.</p>
         </li>
+
       </ul>
     </section>
     <section id="stats" class="section-stats">
-      <h2>Statistics</h2>
-      <ul>
-        <li>
-          <p>{{ num_coins }} coins and {{ num_banknotes }} banknotes in the catalog</p>
-        </li>
-        <li>
-          <p>Diversity from {{ num_country }} countries and growing</p>
-        </li>
-        <li>
-          <p>Built by {{ count_collectors }} collectors across {{ count_collections }} unique collections</p>
-        </li>
-      </ul>
-      {% if not user.is_authenticated %}
-        <h3>Become part of the community</h3>
-        <a href="{% url 'login' %}">Join us</a>
-      {% endif %}
+      <div class="stats-wrapper">
+        <h2 class="stats-title"><span class="span-title">Numi</span>Track</h2>
+        <h3 class="stats-subtitle">The Best numismatic system</h3>
+
+        <ul class="stats-list">
+          <li class="stats-list-item">
+            <a href="Має бути посилання на всі монети" class="stats-list-link">
+              <p class="stats-number">{{ num_coins }}+</p>
+              <h3 class="stats-list-title">Coins</h3>
+              <p class="stats-list-description">More than {{ num_coins }} coins have already been added. Change this
+                number to a bigger one!</p>
+            </a>
+          </li>
+          <li class="stats-list-item">
+            <a href="Має бути посилання на всі банкноти" class="stats-list-link">
+            <p class="stats-number">{{ num_banknotes }}+</p>
+            <h3 class="stats-list-title">Banknotes</h3>
+            <p class="stats-list-description">Collectors have added over {{ num_banknotes }} banknotes</p>
+            </a>
+          </li>
+          <li class="stats-list-item">
+          <a href="{% url 'items:public-collections' %}" class="stats-list-link">
+            <p class="stats-number">{{ count_collections }}</p>
+            <h3 class="stats-list-title">Collections</h3>
+            <p class="stats-list-description">Built by {{ count_collectors }} collectors across {{ count_collections }}
+              unique collections</p>
+            </a>
+          </li>
+        </ul>
+        {% if not user.is_authenticated %}
+          <h3>Become part of the community</h3>
+          <a href="{% url 'login' %}">Join us</a>
+        {% endif %}
+      </div>
     </section>
   </div>
 {% endblock %}

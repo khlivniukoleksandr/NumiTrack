@@ -2,6 +2,13 @@
     font-family: "Montserrat", Helvetica;
 }
 
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color: #efeeee;
+}
+
 h1,
 h2,
 h3,
@@ -36,9 +43,8 @@ button {
 }
 
 .container {
-    max-width: 1200px;
+    width: 100%;
     margin: 0 auto;
-    padding: 0 16px;
 
 }
 
@@ -101,7 +107,7 @@ button {
 
 /* Header */
 .span-title {
-    color: #004225;
+    color: #05472d;
 }
 
 .header-navigation,
@@ -127,32 +133,32 @@ button {
     background-color: #0eb6df;
 }
 
+/*___________________________Home page______________________________*/
 /* Home page */
 
 /* 1 section Hero-section*/
 .hero-section {
+    padding-top: 60px;
     background-color: black;
     background-image: linear-gradient(to top, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05)),
     url(/static/images/hero-banner.jpg);
     background-position: center;
-    width: 1200px;
-    height: 800px;
     background-size: contain;
     border-radius: 20px;
     margin-bottom: 72px;
     background-repeat: no-repeat;
+    height: 800px;
 }
 
 .hero-section-title {
     font-size: 42px;
-    padding-top: 150px;
     color: #ffffff;
     margin-bottom: 170px;
     text-align: center;
 }
 
 .hero-section-text {
-    padding: 80px 40px 40px 40px;
+    padding: 100px 40px 40px 40px;
 }
 
 .hero-section-description {
@@ -181,14 +187,156 @@ button {
     color: #00fa8a;
 }
 
+/* 2 Second section description*/
+.section-features {
+    background-color: #fcfffa;
+    border-radius: 10px;
+    margin-bottom: 72px;
+}
 
+.features-title {
+    font-size: 42px;
+    font-weight: 700;
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+    color: #2c3e50;
+    text-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+    font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+    letter-spacing: 1px;
+    padding-top: 20px;
+
+}
+
+.features-subtitle {
+    font-size: 28px;
+    font-weight: 400;
+    text-align: center;
+    max-width: 650px;
+    margin: 25px auto 0 auto;
+    color: #4a4a4a;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+    letter-spacing: normal;
+}
+
+.features-list {
+    display: flex;
+    gap: 24px;
+    margin-top: 40px;
+    margin-right: 24px;
+}
+
+.features-list-item {
+    width: calc((100% - 72px) / 4);
+}
+
+.features-list-title {
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+.features-list-subtitle {
+    color: #434455;
+    margin-bottom: 40px;
+    max-width: 240px;
+}
+
+.icon-second-section-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 240px;
+    height: 50px;
+    border: 1px solid #434455;
+    background-color: #fcfdf3;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+/*3 Section statistics*/
+.stats-list-link {
+    color: black;
+}
+
+.section-stats {
+    max-width:100%;
+    position: relative;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), url("../images/coins_background.jpg");
+    background-size: cover;
+    background-position: center;
+    padding: 60px 20px;
+    color: white;
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.stats-wrapper {
+    padding: 40px;
+    border-radius: 20px;
+}
+
+.stats-title {
+        margin-top: 150px;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.stats-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 280px;
+    color: #e0e0e0;
+}
+
+.stats-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.stats-list-item {
+    background: #f1eeee;
+    color: black;
+    border-radius: 15px;
+    padding: 20px;
+    width: 250px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.3s ease-in-out;
+}
+.stats-list-item:hover {
+    cursor: pointer;
+    background-color: #fff7f4;
+    transform: scale(1.15);
+    text-decoration: none;
+    color: #434455;
+}
+
+.stats-number {
+    font-size: 2rem;
+    color: #a12eba;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.stats-list-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+        color: #2b2b2b;
+}
+.stats-list-description {
+    font-size: 1rem;
+        color: #7e7e7e;
+}
+/*________________________Profile_______________________*/
 /*Profile-page*/
 .img-profile {
     border-radius: 50%;
 }
 
 
-/*Collections*/
+/*____________________________Collections______________________*/
 
 /*My collections*/
 .collection-card {

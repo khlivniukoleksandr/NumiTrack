@@ -18,7 +18,8 @@ def index(request: HttpRequest) -> HttpResponse:
     count_collections = Collection.objects.count()
     num_banknotes = Banknote.objects.count()
     count_collectors = Collector.objects.count()
-    num_country = Coin.objects.filter(country__isnull=False).count()
+    num_country = Coin.objects.filter(country__isnull=False).values('country').distinct().count()
+
     context = {
         "count_users": count_users,
         "count_collections": count_collections,
