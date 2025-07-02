@@ -367,13 +367,14 @@ button {
     border-radius: 5px;
     padding:5px 10px;
     font-size:18px;
+    margin-bottom:15px;
 }
 .profile-button-save:hover {
     background-color: #07cf70;
 }
 .edit-profile-link {
     border-radius: 8px;
-    background-color: #eaeaea;
+    background-color: #d7d7d7;
     color: #101012;
     padding: 5px 10px;
 }
@@ -398,18 +399,22 @@ button {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    margin-left: 20px;
 }
 
 .profile-name {
     font-size: 24px;
-    margin: 10px 50px 10px 10px;
+    margin: 10px 50px 10px 0;
     height: 32px;
     width: auto;
     font-weight: 400;
     font-family: Roboto sans-serif;
 }
-.profile-bio {
-    margin-left: 15px;
+.profile-links-items {
+    color: #34607b;
+}
+.profile-links-items:hover {
+    color: #129cf3;
 }
 .profile-name:hover {
     text-decoration: underline;
@@ -424,16 +429,9 @@ button {
     color: #6c6c6c;
 }
 .profile-stats-list {
-    padding:15px;
+    padding-left: 0;
     display: flex;
     gap:10px;
-}
-
-.profile-content {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
 }
 
 .img-profile {
@@ -454,7 +452,18 @@ button {
     background-color: #cc1111;
     transition: background-color 300ms ease;
 }
-
+.profile-button-logout-div {
+    display:flex;
+    justify-content: flex-end;
+}
+.favorite-items {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.favourite-items-title {
+    margin-bottom: 15px;
+}
 /*____________________________Collections______________________*/
 
 /*My collections*/
