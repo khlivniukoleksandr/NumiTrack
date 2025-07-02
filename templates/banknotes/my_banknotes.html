@@ -1,27 +1,31 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-  <h2>{{ user.username }}' Banknotes</h2>
+  <div class="container">
+    <h2>{{ user.username }}'s Banknotes</h2>
     <a href="{% url 'items:banknote-create' %}">Add new banknote</a>
-  {% if banknotes %}
-  {% for banknote in banknotes %}
-    <a href="{% url 'items:banknote-detail' pk=banknote.pk %}" class="collection-card">
-  {% if banknote.image %}
-  <img src="{{ banknote.image.url }}" alt="{{ banknote.name }}" width="150" height="150"/>
-       {% else %}
-  <img src="{% static 'images/default-cover-collections.png' %}" alt="{{ banknote.name }}" width="150" height="150"/>
-  {% endif %}
-  <h4>{{ banknote.name }}</h4>
-    <p>Year: {{ banknote.year }}</p>
-    <p>Country: {{ banknote.country }}</p>
-    <p>Value: {{ banknote.value }}</p>
-    <p>Tirage: {{ banknote.tirage }}</p>
-    </a>
-  {% endfor %}
-  {% else %}
-  <h4>No banknotes</h4>
-  {% endif %}
-{% endblock %}
 
-{% block footer %}
+    {% if banknotes %}
+      <div class="card-wrapper">
+        {% for banknote in banknotes %}
+          <div class="collection-card">
+            <a href="{% url 'items:banknote-detail' pk=banknote.pk %}">
+              {% if banknote.image %}
+                <img src="{{ banknote.image.url }}" alt="{{ banknote.name }}" class="card-image"/>
+              {% else %}
+                <img src="{% static 'images/default-cover-collections.png' %}" alt="{{ banknote.name }}" class="card-image"/>
+              {% endif %}
+              <h4>{{ banknote.name }}</h4>
+              <p>Year: {{ banknote.year }}</p>
+              <p>Country: {{ banknote.country }}</p>
+              <p>Value: {{ banknote.value }}</p>
+              <p>Tirage: {{ banknote.tirage }}</p>
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <h4>No banknotes</h4>
+    {% endif %}
+  </div>
 {% endblock %}

@@ -40,3 +40,10 @@ class CustomBanknoteForm(forms.ModelForm):
             "tirage": forms.TextInput(attrs={"class": "form-control my-custom-class"}),
             "image": forms.ClearableFileInput(attrs={"class": "form-control-file"}),
         }
+
+
+class CoinFilterForm(forms.Form):
+    year = forms.IntegerField(required=False, label="Year")
+    country = forms.CharField(required=False, label="Country")
+    material = forms.CharField(required=False, label="Material")
+    tirage = forms.CharField(required=False, label="Tirage")

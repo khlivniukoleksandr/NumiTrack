@@ -1,6 +1,5 @@
 from django.urls import path
 
-from items.models import Collection
 from items.views import (ProfileView,
                          CollectionListView,
                          CollectionCreateView,
@@ -19,8 +18,8 @@ from items.views import (ProfileView,
                          BanknoteUpdateView,
                          BanknoteDeleteView,
                          PublicCollectionListView,
-                         AddBanknoteToCollectionView,
-                         SearchView)
+                         AddBanknoteToCollectionView
+                         )
 
 urlpatterns = [
     path("profile/", ProfileView.as_view(), name="profile"),
@@ -55,9 +54,6 @@ urlpatterns = [
 
     path("collections/", PublicCollectionListView.as_view(), name="public-collections"),
 
-    #Search
-
-    path("search/coins/", SearchView.as_view(), name="search-coins"),
 ]
 
 app_name = "items"

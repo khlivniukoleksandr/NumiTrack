@@ -12,41 +12,46 @@
 {% block header %}
   <header>
     <div class="container">
-    <nav class="header-navigation">
-      <a href="{% url 'home' %}"><span class="span-title">Numi</span>Track</a>
-      <ul class="header-list">
-        <li>
-          <a href="{% url 'home' %}">Home</a>
-        </li>
-        <li>
-          {# Головна секція з описом функціоналу сторінки #}
-          <a href="{% url 'home' %}#about">About</a>
-        </li>
-        <li>
-          {# Опис можливостей сервісу#}
-          <a href="{% url 'home' %}#features">Features</a>
-        </li>
-        <li>
-          {#  статистика доданих монет {У колекції вже 235 монет із 47 країн} #}
-          <a href="{% url 'home' %}#stats">Stats</a>
-        </li>
-        <li>
-          {#  Контакти та форма зворотного зв'язку #}
-          <a href="{% url 'home' %}#contact">Contacts</a>
-        </li>
-      <li>
-      {% block sidebar %}
-        {% include "includes/sidebar.html" %}
-      {% endblock %}
-      </li>
-      </ul>
-    </nav>
+      <nav class="header-navigation">
+        <a href="{% url 'home' %}"><span class="span-title">Numi</span>Track</a>
+        <ul class="header-list">
+          <li>
+            <a href="{% url 'home' %}">Home</a>
+          </li>
+          <li>
+            {# Головна секція з описом функціоналу сторінки #}
+            <a href="{% url 'home' %}#about">About</a>
+          </li>
+          <li>
+            {# Опис можливостей сервісу#}
+            <a href="{% url 'home' %}#features">Features</a>
+          </li>
+          <li>
+            {#  статистика доданих монет {У колекції вже 235 монет із 47 країн} #}
+            <a href="{% url 'home' %}#stats">Stats</a>
+          </li>
+          <li>
+            {#  Контакти та форма зворотного зв'язку #}
+            <a href="{% url 'home' %}#contact">Contacts</a>
+          </li>
+          <li>
+            {% block sidebar %}
+              {% include "includes/sidebar.html" %}
+            {% endblock %}
+          </li>
+        </ul>
+      </nav>
     </div>
   </header>
 {% endblock %}
-<main id="main-content">
   {% block content %}
+
   {% endblock %}
+<div class="container">
+    {% block pagination %}
+      {% include "includes/pagination.html" %}
+    {% endblock %}
+</div>
 </main>
 {% block footer %}
   {% include "includes/footer.html" %}

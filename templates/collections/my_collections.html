@@ -1,20 +1,28 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-  <h2>{{ user.username }}' Collections</h2>
-    <a href="{% url "items:create-collection" %}">Create new collection</a>
+    <div class="container">
+  <h2>My Collections</h2>
+  <a href="{% url "items:create-collection" %}">Create new collection</a>
+  {% if collections %}
+  <div class="card-wrapper">
   {% for collection in collections %}
-    <a href="{{ collection.get_absolute_url }}" class="collection-card">
-  {% if collection.cover %}
-  <img src="{{ collection.cover.url }}" alt="{{ collection.name }}" width="150" height="150"/>
-       {% else %}
-  <img src="{% static 'images/default-cover-collections.png' %}" alt="{{ collection.name }}" width="150" height="150"/>
-  {% endif %}
-  <h4>{{ collection.name }}</h4>
-  <p>{{ collection.description }}</p>
-    </a>
+    <div class="collection-card">
+      <a href="{{ collection.get_absolute_url }}">
+        {% if collection.cover %}
+          <img src="{{ collection.cover.url }}" alt="{{ collection.name }}" width="100" height="100" class="card-image"/>
+        {% else %}
+          <img src="{% static 'images/default-cover-collections.png' %}" alt="{{ collection.name }}" width="150"
+               height="150" class="card-image"/>
+        {% endif %}
+        <h4>{{ collection.name }}</h4>
+        <p>{{ collection.description }}</p>
+      </a>
+    </div>
   {% endfor %}
-{% endblock %}
-
-{% block footer %}
+  {% else %}
+  <p>No collections</p>
+  {% endif %}
+</div>
+    </div>
 {% endblock %}

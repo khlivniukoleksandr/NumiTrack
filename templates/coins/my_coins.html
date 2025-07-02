@@ -1,14 +1,17 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-        <form method="get" action="{% url 'items:search-coins' %}" class="search-form">
-    <input type="text" name="q" placeholder="Search coins" />
-    <button type="submit">🔍</button>
-      </form>
+<div class="container">
   <h2>{{ user.username }}'s Coins</h2>
   <a href="{% url 'items:coin-create' %}">Add new coin</a>
-
+  <p>Filter</p>
+<form method="get" class="search-form">
+{{ form.as_p }}
+<button type="submit">Filter</button>
+<a href="{% url 'items:my-coins' %}" class="reset-btn">Clear</a>
+</form>
   {% if coins %}
+    <div class="card-wrapper">
     {% for coin in coins %}
       <div class="collection-card
         {% if coin.material|lower in 'silver срібло серебро' %}
@@ -21,9 +24,9 @@
       ">
         <a href="{% url 'items:coin-detail' pk=coin.pk %}" class="">
           {% if coin.image %}
-            <img src="{{ coin.image.url }}" alt="{{ coin.name }}" width="150" height="150"/>
+            <img src="{{ coin.image.url }}" alt="{{ coin.name }}" class="card-image"/>
           {% else %}
-            <img src="{% static 'images/default-cover-collections.png' %}" alt="{{ coin.name }}" width="150" height="150"/>
+            <img src="{% static 'images/default-cover-collections.png' %}" alt="{{ coin.name }}" class="card-image"/>
           {% endif %}
           <h4>{{ coin.name }}</h4>
           <p>Year: {{ coin.year }}</p>
@@ -33,7 +36,11 @@
         </a>
       </div>
     {% endfor %}
+    </div>
   {% else %}
     <h4>No coins</h4>
   {% endif %}
+
+  </div>
 {% endblock %}
+

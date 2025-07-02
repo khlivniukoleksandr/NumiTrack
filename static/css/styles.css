@@ -1,3 +1,7 @@
+* {
+    font-family: "Montserrat", Helvetica;
+}
+
 h1,
 h2,
 h3,
@@ -32,10 +36,10 @@ button {
 }
 
 .container {
-    width: 1136px;
-    padding-left: 33px;
-    padding-right: 33px;
+    max-width: 1200px;
     margin: 0 auto;
+    padding: 0 16px;
+
 }
 
 /*Sidebar*/
@@ -123,18 +127,60 @@ button {
     background-color: #0eb6df;
 }
 
-/*First section description*/
-.section-description {
+/* Home page */
+
+/* 1 section Hero-section*/
+.hero-section {
     background-color: black;
-    background-image: url(/static/images/hero-banner.jpg);
+    background-image: linear-gradient(to top, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05)),
+    url(/static/images/hero-banner.jpg);
+    background-position: center;
     width: 1200px;
     height: 800px;
     background-size: contain;
     border-radius: 20px;
     margin-bottom: 72px;
     background-repeat: no-repeat;
-    color: #fff;
 }
+
+.hero-section-title {
+    font-size: 42px;
+    padding-top: 150px;
+    color: #ffffff;
+    margin-bottom: 170px;
+    text-align: center;
+}
+
+.hero-section-text {
+    padding: 80px 40px 40px 40px;
+}
+
+.hero-section-description {
+    color: #efecec;
+}
+
+.hero-section-button {
+    display: inline-block;
+    padding: 15px 24px;
+    background-color: #004225;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 40px;
+
+}
+
+.hero-section-button:hover {
+    background-color: #006b3c;
+    transform: scale(1.05);
+    text-decoration: none;
+    color: #00fa8a;
+}
+
 
 /*Profile-page*/
 .img-profile {
@@ -146,131 +192,135 @@ button {
 
 /*My collections*/
 .collection-card {
-    display: block;
-    margin-bottom: 10px;
+    display: flex;
+    margin-bottom: 2px;
     width: 200px;
     border: 2px solid #004225;
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: #faf7f7;
 }
 
+.card-image {
+    border-radius: 12px;
+    object-fit: contain;
+    display: block;
+    width: 100%;
+    height: 150px;
+}
+
+.card-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
 
 /*Coins*/
 /*Silver card*/
 .card-silver {
-  position: relative;
-  overflow: hidden;
-  border: 2px solid #C0C0C0;
-  border-radius: 12px;
-  box-shadow: 0 0 6px #C0C0C0, 0 0 12px rgba(192, 192, 192, 0.4);
-  background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 50%, #f5f5f5 100%);
+    position: relative;
+    overflow: hidden;
+    border: 2px solid #C0C0C0;
+    border-radius: 12px;
+    box-shadow: 0 0 6px #C0C0C0, 0 0 12px rgba(192, 192, 192, 0.4);
+    background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 50%, #f5f5f5 100%);
 }
 
 .card-silver::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -50%;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(
-    120deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.5) 50%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  transform: skewX(-20deg);
-  animation: shimmer-silver 3s infinite;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+            120deg,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.5) 50%,
+            rgba(255, 255, 255, 0) 100%
+    );
+    transform: skewX(-20deg);
+    animation: shimmer-silver 3s infinite;
 }
 
 @keyframes shimmer-silver {
-  0% {
-    left: -50%;
-  }
-  100% {
-    left: 120%;
-  }
+    0% {
+        left: -50%;
+    }
+    100% {
+        left: 120%;
+    }
 }
+
 /*Gold card*/
 .card-gold {
-  position: relative;
-  overflow: hidden;
-  border: 2px solid #FFD700;
-  border-radius: 12px;
-  background: linear-gradient(
-    135deg,
-    #ffcc00 0%,
-    #fff8a0 30%,
-    #fff9b8 50%,
-    #fff8a0 70%,
-    #ffcc00 100%
-  );
-  box-shadow: 0 0 6px #ffd700, 0 0 12px rgba(255, 215, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+    border: 2px solid #FFD700;
+    border-radius: 12px;
+    background: linear-gradient(
+            135deg,
+            #ffcc00 0%,
+            #fff8a0 30%,
+            #fff9b8 50%,
+            #fff8a0 70%,
+            #ffcc00 100%
+    );
+    box-shadow: 0 0 6px #ffd700, 0 0 12px rgba(255, 215, 0, 0.5);
 }
 
 .card-gold::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -50%;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(
-    120deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.6) 50%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  transform: skewX(-20deg);
-  animation: shimmer-gold 3s infinite;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+            120deg,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.6) 50%,
+            rgba(255, 255, 255, 0) 100%
+    );
+    transform: skewX(-20deg);
+    animation: shimmer-gold 3s infinite;
 }
 
 @keyframes shimmer-gold {
-  0% {
-    left: -50%;
-  }
-  100% {
-    left: 120%;
-  }
+    0% {
+        left: -50%;
+    }
+    100% {
+        left: 120%;
+    }
 }
- /*Bronze card*/
+
+/*Bronze card*/
 .card-bronze {
-  position: relative;
-  overflow: hidden;
-  border: 2px solid #CD7F32;
-  border-radius: 12px;
-  box-shadow: 0 0 6px #cd7f32, 0 0 12px rgba(205, 127, 50, 0.4);
-  background: linear-gradient(
-    135deg,
-    #cd7f32 0%,
-    #e0a15a 30%,
-    #f5c292 50%,
-    #e0a15a 70%,
-    #cd7f32 100%
-  );
+    position: relative;
+    overflow: hidden;
+    border: 2px solid #CD7F32;
+    border-radius: 12px;
+    box-shadow: 0 0 6px #cd7f32, 0 0 12px rgba(205, 127, 50, 0.4);
+    background: linear-gradient(
+            135deg,
+            #cd7f32 0%,
+            #e0a15a 40%,
+            #f5c292 50%,
+            #e0a15a 70%,
+            #cd7f32 100%
+    );
 }
 
-/* shimmer смуга */
-.card-bronze::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -50%;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(
-    120deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.4) 50%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  transform: skewX(-20deg);
-  animation: shimmer-bronze 3s infinite;
+.pagination {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
 }
 
-@keyframes shimmer-bronze {
-  0% {
-    left: -50%;
-  }
-  100% {
-    left: 120%;
-  }
+.page-item {
+    border: 1px solid #c1bdbd;
+    padding: 5px;
+    border-radius: 12px;
 }

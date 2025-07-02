@@ -1,15 +1,16 @@
 {% extends "base.html" %}
 {% block content %}
   <div class="container">
-    <section id="about" class="section-description">
-      <h1>A site for those who create real digital treasures</h1>
-      <h2>Keep your own collection. View others'. Join forces with numismatists.</h2>
-      <a href="{% url 'items:create-collection' %}">Create collection</a>
-      <a href="{% url 'items:public-collections' %}">View all collections</a>
+    <section id="about" class="hero-section">
+      <div class="hero-section-text">
+        <h1 class="hero-section-title">A site for those <br>Who create real digital treasures</h1>
+        <h2 class="hero-section-description">Keep your own collection<br>View others'.<br>Join forces with numismatists.</h2>
+        <a href="{% url 'items:create-collection' %}" class="hero-section-button">Create collection</a>
+        <a href="{% url 'items:public-collections' %}" class="hero-section-button">View all collections</a>
+      </div>
     </section>
-  </div>
-  <section id="features" class="section-features">
-    <div class="container">
+    <section id="features" class="section-features">
+
       <h2>Create, browse, connect with like-minded people and store information about your treasures in one place.</h2>
       <h3>What you can do with NumiTrack?</h3>
       <ul>
@@ -30,10 +31,8 @@
           <p>Stay tuned for interesting news in the field of numismatics.</p>
         </li>
       </ul>
-    </div>
-  </section>
-  <section id="stats" class="section-stats">
-    <div class="container">
+    </section>
+    <section id="stats" class="section-stats">
       <h2>Statistics</h2>
       <ul>
         <li>
@@ -47,9 +46,9 @@
         </li>
       </ul>
       {% if not user.is_authenticated %}
-      <h3>Become part of the community</h3>
-      <a href="{% url 'login' %}">Join us</a>
+        <h3>Become part of the community</h3>
+        <a href="{% url 'login' %}">Join us</a>
       {% endif %}
-    </div>
-  </section>
+    </section>
+  </div>
 {% endblock %}

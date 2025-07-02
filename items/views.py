@@ -1,13 +1,11 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django import forms
-from django.db.models import Q
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.views import generic
 from django.views.generic import UpdateView, CreateView, DeleteView, TemplateView
 
-from items.forms import CustomCollectionForm, CustomCoinForm, CustomBanknoteForm
+from items.forms import CustomCollectionForm, CustomCoinForm, CustomBanknoteForm, CoinFilterForm
 from items.models import (Collector,
                           Collection,
                           Coin, Banknote
@@ -44,6 +42,7 @@ class CollectionListView(LoginRequiredMixin, generic.ListView):
     model = Collection
     template_name = "collections/my_collections.html"
     context_object_name = "collections"
+    paginate_by = 15
 
     def get_queryset(self):
         return Collection.objects.filter(owner=self.request.user)
@@ -142,9 +141,26 @@ class CoinListView(LoginRequiredMixin, generic.ListView):
     model = Coin
     template_name = "coins/my_coins.html"
     context_object_name = "coins"
+    paginate_by = 15
 
     def get_queryset(self):
-        return Coin.objects.filter(owner=self.request.user)
+        queryset = Coin.objects.filter(owner=self.request.user)
+        year = self.request.GET.get("year")
+        country = self.request.GET.get("country")
+        material = self.request.GET.get("material")
+
+        if year:
+            queryset = queryset.filter(year=year)
+        if country:
+            queryset = queryset.filter(country__icontains=country)
+        if material:
+            queryset = queryset.filter(material__icontains=material)
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = CoinFilterForm(self.request.GET or None)
+        return context
 
 
 class CoinDetailView(LoginRequiredMixin, generic.DetailView):
@@ -173,6 +189,8 @@ class CoinCreateView(LoginRequiredMixin, CreateView):
         # Автоматично встановлюємо власника перед збереженням
         form.instance.owner = self.request.user
         return super().form_valid(form)
+
+
 class CoinUpdateView(LoginRequiredMixin, UpdateView):
     model = Coin
     form_class = CustomCoinForm
@@ -195,6 +213,7 @@ class BanknoteListView(LoginRequiredMixin, generic.ListView):
     model = Banknote
     template_name = "banknotes/my_banknotes.html"
     context_object_name = "banknotes"
+    paginate_by = 15
 
     def get_queryset(self):
         return Banknote.objects.filter(owner=self.request.user)
@@ -250,27 +269,9 @@ class PublicCollectionListView(generic.ListView):
     model = Collection
     template_name = "collections/public_collections.html"
     context_object_name = "public_collections"
+    paginate_by = 15
 
     def get_queryset(self):
         return Collection.objects.all()
-
-
-class SearchView(generic.ListView):
-    template_name = "search/results.html"
-    context_object_name = "coins"
-
-    def get_queryset(self):
-        query = self.request.GET.get("q", "")
-        return Coin.objects.filter(
-            Q(name__icontains=query) |
-            Q(country__icontains=query) |
-            Q(material__icontains=query) |
-            Q(denomination__icontains=query)
-        )
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["query"] = self.request.GET.get("q", "")
-        return context
 
 
