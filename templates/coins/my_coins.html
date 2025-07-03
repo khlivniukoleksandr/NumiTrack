@@ -4,12 +4,16 @@
 <div class="container">
   <h2>{{ user.username }}'s Coins</h2>
   <a href="{% url 'items:coin-create' %}">Add new coin</a>
-  <p>Filter</p>
-<form method="get" class="search-form">
+<div class="form-search-coins">
+  <p class="filter-coins-title">Filter</p>
+  <div class="filter-box">
+<form method="get" class="search-form-overlay">
 {{ form.as_p }}
 <button type="submit">Filter</button>
 <a href="{% url 'items:my-coins' %}" class="reset-btn">Clear</a>
 </form>
+      </div>
+</div>
   {% if coins %}
     <div class="card-wrapper">
     {% for coin in coins %}

@@ -43,7 +43,17 @@ class CustomBanknoteForm(forms.ModelForm):
 
 
 class CoinFilterForm(forms.Form):
-    year = forms.IntegerField(required=False, label="Year")
-    country = forms.CharField(required=False, label="Country")
-    material = forms.CharField(required=False, label="Material")
-    tirage = forms.CharField(required=False, label="Tirage")
+    name = forms.CharField(required=False,
+                              label="Name",
+                              widget=forms.TextInput(attrs={"class":"form-coin-filter-input",
+                                                                                            "placeholder":"1 cent"}))
+    year = forms.IntegerField(required=False,
+                              label="Year",
+                              widget=forms.NumberInput(attrs={"class":"form-coin-filter-input",
+                                                                                            "placeholder":"2000"}))
+    country = forms.CharField(required=False, label="Country",
+                              widget=forms.TextInput(attrs={"class":"form-coin-filter-input",
+                                                            "placeholder":"Ukraine"}))
+    material = forms.CharField(required=False, label="Material",
+                               widget=forms.TextInput(attrs={"class": "form-coin-filter-input",
+                                                             "placeholder": "Silver"}))

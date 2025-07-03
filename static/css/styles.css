@@ -355,29 +355,34 @@ button {
 /*________________________Profile_______________________*/
 /*Profile-page*/
 .profile-edit-buttons {
-    display:flex;
+    display: flex;
     align-items: center;
 }
+
 .profile-cancel-button {
     color: #555454;
 }
+
 .profile-button-save {
     background-color: #069c11;
-    border:none;
+    border: none;
     border-radius: 5px;
-    padding:5px 10px;
-    font-size:18px;
-    margin-bottom:15px;
+    padding: 5px 10px;
+    font-size: 18px;
+    margin-bottom: 15px;
 }
+
 .profile-button-save:hover {
     background-color: #07cf70;
 }
+
 .edit-profile-link {
     border-radius: 8px;
     background-color: #d7d7d7;
     color: #101012;
     padding: 5px 10px;
 }
+
 .profile-header {
     margin-left: 300px;
 }
@@ -410,12 +415,15 @@ button {
     font-weight: 400;
     font-family: Roboto sans-serif;
 }
+
 .profile-links-items {
     color: #34607b;
 }
+
 .profile-links-items:hover {
     color: #129cf3;
 }
+
 .profile-name:hover {
     text-decoration: underline;
     cursor: pointer;
@@ -424,14 +432,16 @@ button {
 .profile-stats {
     margin-top: 20px;
 }
+
 .stats {
-    font-size:14px;
+    font-size: 14px;
     color: #6c6c6c;
 }
+
 .profile-stats-list {
     padding-left: 0;
     display: flex;
-    gap:10px;
+    gap: 10px;
 }
 
 .img-profile {
@@ -452,19 +462,59 @@ button {
     background-color: #cc1111;
     transition: background-color 300ms ease;
 }
+
 .profile-button-logout-div {
-    display:flex;
+    display: flex;
     justify-content: flex-end;
 }
+
 .favorite-items {
     display: flex;
     align-items: center;
     flex-direction: column;
 }
+
 .favourite-items-title {
     margin-bottom: 15px;
 }
-/*____________________________Collections______________________*/
+
+/*________________________My coins__________________________*/
+/*My coins*/
+
+/*Filter*/
+.filter-coins-title {
+    font-size: 20px;
+    font-weight: 600;
+    border: 2px solid #dddddd;
+    border-radius: 8px;
+    padding:8px 65px;
+}
+.filter-coins-title:hover {
+    cursor:pointer;
+    background-color: #c1bdbd;
+    transition: background-color 350ms ease;
+}
+.form-search-coins {
+    display:flex;
+    align-items: flex-end;
+    flex-direction: column;
+}
+.form-coin-filter-input {
+    padding:8px;
+    display: flex;
+    border: 2px solid #dddddd;
+    border-radius: 8px;
+}
+.form-coin-filter-input:hover{
+    border: 2px solid #d2ffe8;;
+}
+.filter-box {
+    position: relative;
+    height: 0;
+}
+
+
+    /*____________________________Collections______________________*/
 
 /*My collections*/
 .collection-card {
@@ -476,7 +526,10 @@ button {
     overflow: hidden;
     background-color: #faf7f7;
 }
-
+.collection-card:hover {
+    transform: scale(1.05);
+    transition:transform 350ms ease;
+}
 .card-image {
     border-radius: 12px;
     object-fit: contain;

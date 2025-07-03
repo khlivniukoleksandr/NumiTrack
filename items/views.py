@@ -159,12 +159,14 @@ class CoinListView(LoginRequiredMixin, generic.ListView):
 
     def get_queryset(self):
         queryset = Coin.objects.filter(owner=self.request.user)
+        name = self.request.GET.get("name")
         year = self.request.GET.get("year")
         country = self.request.GET.get("country")
         material = self.request.GET.get("material")
-
+        if name:
+            queryset = queryset.filter(name__icontains=name)
         if year:
-            queryset = queryset.filter(year=year)
+            queryset = queryset.filter(year__icontains=year)
         if country:
             queryset = queryset.filter(country__icontains=country)
         if material:
