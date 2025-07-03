@@ -3,14 +3,14 @@
 {% block content %}
 <div class="container">
   <h2>{{ user.username }}'s Coins</h2>
-  <a href="{% url 'items:coin-create' %}">Add new coin</a>
+  <a href="{% url 'items:coin-create' %}" class="button-add-new-item">Add new coin</a>
 <div class="form-search-coins">
   <p class="filter-coins-title">Filter</p>
   <div class="filter-box">
 <form method="get" class="search-form-overlay">
 {{ form.as_p }}
-<button type="submit">Filter</button>
-<a href="{% url 'items:my-coins' %}" class="reset-btn">Clear</a>
+<button type="submit" class="filter-button">Filter</button>
+<a href="{% url 'items:my-coins' %}" class="reset-button">Clear</a>
 </form>
       </div>
 </div>
