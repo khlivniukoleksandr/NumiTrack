@@ -1,7 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-  <div class="form-search-coins">
+  <div class="all-coins-content">
+    <div class="side-panel">
+  <h2 class="coin-title">{{ user.username }}'s Coins</h2>
+  <a href="{% url 'items:coin-create' %}" class="button-add-new-item button-add-coins">Add new coin</a>
+    <div class="form-search-coins">
     <p class="filter-coins-title">Filter</p>
     <div class="filter-box">
       <form method="get" class="search-form-overlay">
@@ -11,11 +15,9 @@
       </form>
     </div>
   </div>
-  <h2>{{ user.username }}'s Coins</h2>
-  <a href="{% url 'items:coin-create' %}" class="button-add-new-item">Add new coin</a>
-  <div class="container">
+  </div>
+  <div class="container-coins">
     {% if coins %}
-      <div class="card-wrapper">
         {% for coin in coins %}
           <div class="card
         {% if coin.material|lower in 'silver срібло серебро' %}
@@ -35,9 +37,7 @@
                        class="card-image"/>
                 {% endif %}
                 <div class="card-content-wrapper">
-                  <div class="card-text">
                     <h4 class="card-coin-name">{{ coin.name }}</h4>
-                  </div>
                   <div class="coin-description-card">
                     <p class="coin-material">Material: {{ coin.material }}</p>
                     <p class="coin-year">Year: {{ coin.year }}</p>
@@ -55,5 +55,6 @@
     {% endif %}
 
   </div>
+
 {% endblock %}
 

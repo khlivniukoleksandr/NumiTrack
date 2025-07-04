@@ -478,9 +478,100 @@ button {
 }
 
 /*________________________My coins__________________________*/
-/*My coins*/
+/*_______________________________________________Filter items_____________________________________________-*/
+/*Filter*/
 
-/*Card coins*/
+.filter-coins-title {
+    font-size: 20px;
+    font-weight: 600;
+    border: 2px solid #dddddd;
+    border-radius: 8px;
+    padding: 8px 73px;
+    margin-top:10px;
+}
+
+
+.filter-coins-title:hover {
+    cursor: pointer;
+    background-color: #c1bdbd;
+    transition: background-color 350ms ease;
+}
+
+.form-search-coins {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.form-coin-filter-input {
+    padding: 8px;
+    display: flex;
+    border: 2px solid #dddddd;
+    border-radius: 8px;
+}
+
+.form-coin-filter-input:hover {
+    border: 2px solid #d2ffe8;;
+}
+
+.filter-box {
+}
+
+.search-form-overlay {
+    background-color: #e4e4e4;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.filter-button {
+    padding: 3px 10px;
+}
+
+.reset-button {
+    color: #454545;
+}
+
+.reset-button:hover {
+    color: #050505;
+}
+
+/*__________________________________________________End filter___________________________________________*/
+/*My coins*/
+.all-coins-content {
+    display:flex;
+    margin: 90px 40px;
+}
+.side-panel {
+    width:400px;
+    height: 100%;
+}
+.button-add-new-item {
+    border: 2px solid #919191;
+    border-radius: 8px;
+    padding: 5px 10px;
+    color: #2b2b2b;
+}
+
+.button-add-new-item:hover {
+    cursor: pointer;
+    background-color: #c1bdbd;
+    transition: background-color 350ms ease;
+    color: #ffffff;
+}
+.coin-title {
+    margin-bottom:15px;
+}
+.container-coins {
+        display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 100px;
+}
 
 /*Silver card*/
 .card-silver {
@@ -578,95 +669,27 @@ button {
     );
 }
 
-/*_______________________________________________Filter items_____________________________________________-*/
-/*Filter*/
-
-.filter-coins-title {
-    font-size: 20px;
-    font-weight: 600;
-    border: 2px solid #dddddd;
-    border-radius: 8px;
-    padding: 8px 73px;
-}
-
-
-.filter-coins-title:hover {
-    cursor: pointer;
-    background-color: #c1bdbd;
-    transition: background-color 350ms ease;
-}
-
-.form-search-coins {
-    display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-}
-
-.form-coin-filter-input {
-    padding: 8px;
-    display: flex;
-    border: 2px solid #dddddd;
-    border-radius: 8px;
-}
-
-.form-coin-filter-input:hover {
-    border: 2px solid #d2ffe8;;
-}
-
-.filter-box {
-    position: relative;
-    height: 0;
-}
-
-.search-form-overlay {
-    background-color: #e4e4e4;
-    border-radius: 5px;
-    padding: 10px;
-}
-
-.filter-button {
-    padding: 3px 10px;
-}
-
-.reset-button {
-    color: #454545;
-}
-
-.reset-button:hover {
-    color: #050505;
-}
-
-/*__________________________________________________End filter___________________________________________*/
-.button-add-new-item {
-    border: 2px solid #919191;
-    border-radius: 8px;
-    padding: 5px 10px;
-    color: #2b2b2b;
-}
-
-.button-add-new-item:hover {
-    cursor: pointer;
-    background-color: #c1bdbd;
-    transition: background-color 350ms ease;
-    color: #ffffff;
-}
-
 /*________________________________Cards for collections, banknotes, coins________________________________*/
+
 .card {
-display: inline-block;
-  width: 305px;
-  border: 1px solid #d2d2d2;
-  border-radius: 12px;
-  overflow: hidden;
-  background-color: #faf7f7;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  height: 405px;
-  position: relative;
-    transition: transform 0.3s ease;
+    display: inline-block;
+    width: 305px;
+    border: 1px solid #d2d2d2;
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: #faf7f7;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    height: 405px;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
 }
+
 .card:hover {
-    transform: scale(1.10);
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
+
 .card-link {
     display: flex;
     flex-direction: column;
@@ -679,9 +702,6 @@ display: inline-block;
     flex-direction: column;
     height: 100%;
     width: 100%;
-    transition: transform 350ms ease, box-shadow 350ms ease;
-    transform-origin: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     overflow: hidden;
 }
 
@@ -708,24 +728,22 @@ display: inline-block;
 }
 
 .card-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-    background-color: #eaeaea;;
-}
 
-.card-text {
-    padding: 0 30px;
 }
 
 .card-coin-name {
     font-family: 'Playfair Display', serif;
-    font-size: 16px;
+    font-size: 15px;
     margin-top: 10px;
     font-weight: 600;
     margin-bottom: 10px;
     color: #000000;
+    padding: 0 20px;
+    transition: color 0.3s ease;
+}
+
+.card:hover .card-coin-name {
+    color: #0f5c05;
 }
 
 .coin-description-card {
@@ -738,6 +756,11 @@ display: inline-block;
     color: #555;
 }
 
+.card:hover .coin-description-card {
+    color: black;
+}
+
+/*/
 /*____________________________Collections______________________*/
 .collections-div-title {
     display: flex;

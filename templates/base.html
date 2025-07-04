@@ -7,48 +7,51 @@
     <title>Numismatics</title>
   {% endblock %}
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 {% block header %}
   <header>
-      <nav class="header-navigation">
+    <nav class="header-navigation">
       <ul class="header-list">
-      <li>
-        <a href="{% url 'home' %}"><span class="span-title">Numi</span>Track</a>
-      </li>
-          <li>
-            <a href="{% url 'home' %}">Home</a>
-          </li>
-          <li>
-            {# Опис можливостей сервісу#}
-            <a href="{% url 'home' %}#features">Features</a>
-          </li>
-          <li>
-            {#  статистика доданих монет {У колекції вже 235 монет із 47 країн} #}
-            <a href="{% url 'home' %}#stats">Stats</a>
-          </li>
-          <li>
-            {#  Контакти та форма зворотного зв'язку #}
-            <a href="{% url 'home' %}#contact">Contacts</a>
-          </li>
-          <li>
-            {% block sidebar %}
-              {% include "includes/sidebar.html" %}
-            {% endblock %}
-          </li>
-        </ul>
-      </nav>
+        <li>
+          <a href="{% url 'home' %}"><span class="span-title">Numi</span>Track</a>
+        </li>
+        <li>
+          <a href="{% url 'home' %}">Home</a>
+        </li>
+        <li>
+          {# Опис можливостей сервісу#}
+          <a href="{% url 'home' %}#features">Features</a>
+        </li>
+        <li>
+          {#  статистика доданих монет {У колекції вже 235 монет із 47 країн} #}
+          <a href="{% url 'home' %}#stats">Stats</a>
+        </li>
+        <li>
+          {#  Контакти та форма зворотного зв'язку #}
+          <a href="{% url 'home' %}#contact">Contacts</a>
+        </li>
+        <li>
+          {% block sidebar %}
+            {% include "includes/sidebar.html" %}
+          {% endblock %}
+        </li>
+      </ul>
+    </nav>
   </header>
 {% endblock %}
-    <main>
+<main>
   {% block content %}
 
   {% endblock %}
-        </main>
-    {% block pagination %}
-      {% include "includes/pagination.html" %}
-    {% endblock %}
+</main>
+{% block pagination %}
+  {% include "includes/pagination.html" %}
+{% endblock %}
 
 {% block footer %}
   {% include "includes/footer.html" %}
