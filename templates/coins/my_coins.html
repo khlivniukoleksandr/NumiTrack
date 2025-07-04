@@ -1,23 +1,23 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<div class="container">
+  <div class="form-search-coins">
+    <p class="filter-coins-title">Filter</p>
+    <div class="filter-box">
+      <form method="get" class="search-form-overlay">
+        {{ form.as_p }}
+        <button type="submit" class="filter-button">Filter</button>
+        <a href="{% url 'items:my-coins' %}" class="reset-button">Clear</a>
+      </form>
+    </div>
+  </div>
   <h2>{{ user.username }}'s Coins</h2>
   <a href="{% url 'items:coin-create' %}" class="button-add-new-item">Add new coin</a>
-<div class="form-search-coins">
-  <p class="filter-coins-title">Filter</p>
-  <div class="filter-box">
-<form method="get" class="search-form-overlay">
-{{ form.as_p }}
-<button type="submit" class="filter-button">Filter</button>
-<a href="{% url 'items:my-coins' %}" class="reset-button">Clear</a>
-</form>
-      </div>
-</div>
-  {% if coins %}
-    <div class="card-wrapper">
-    {% for coin in coins %}
-      <div class="collection-card
+  <div class="container">
+    {% if coins %}
+      <div class="card-wrapper">
+        {% for coin in coins %}
+          <div class="card
         {% if coin.material|lower in 'silver срібло серебро' %}
           card-silver
         {% elif coin.material|lower in 'gold золото' %}
@@ -26,24 +26,33 @@
           card-bronze
         {% endif %}
       ">
-        <a href="{% url 'items:coin-detail' pk=coin.pk %}" class="">
-          {% if coin.image %}
-            <img src="{{ coin.image.url }}" alt="{{ coin.name }}" class="card-image"/>
-          {% else %}
-            <img src="{% static 'images/default-cover-collections.png' %}" alt="{{ coin.name }}" class="card-image"/>
-          {% endif %}
-          <h4>{{ coin.name }}</h4>
-          <p>Year: {{ coin.year }}</p>
-          <p>Country: {{ coin.country }}</p>
-          <p>Material: {{ coin.material }}</p>
-          <p>Tirage: {{ coin.tirage }}</p>
-        </a>
+            <a href="{% url 'items:coin-detail' pk=coin.pk %}" class="card-link">
+              <div class="card-inner-scale-wrapper">
+                {% if coin.image %}
+                  <img src="{{ coin.image.url }}" alt="{{ coin.name }}" class="card-image"/>
+                {% else %}
+                  <img src="{% static 'images/default-cover-collections.png' %}" alt="{{ coin.name }}"
+                       class="card-image"/>
+                {% endif %}
+                <div class="card-content-wrapper">
+                  <div class="card-text">
+                    <h4 class="card-coin-name">{{ coin.name }}</h4>
+                  </div>
+                  <div class="coin-description-card">
+                    <p class="coin-material">Material: {{ coin.material }}</p>
+                    <p class="coin-year">Year: {{ coin.year }}</p>
+                    <p class="coin-country">Country: {{ coin.country }}</p>
+                    <p class="coin-tirage">Tirage: {{ coin.tirage }}</p>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        {% endfor %}
       </div>
-    {% endfor %}
-    </div>
-  {% else %}
-    <h4>No coins</h4>
-  {% endif %}
+    {% else %}
+      <h4>No coins</h4>
+    {% endif %}
 
   </div>
 {% endblock %}

@@ -27,12 +27,13 @@ class Collector(AbstractUser):
             return "Legendary collector ✨"
 
 class Coin(models.Model):
-    name = models.CharField(max_length=60)
-    country = models.CharField(max_length=60)
+    description = models.TextField(blank=True, null=True)
+    name = models.CharField(max_length=100)
+    country = models.CharField(max_length=20)
     year = models.PositiveIntegerField()
-    denomination = models.CharField(max_length=25)
-    material = models.CharField(max_length=65, default="Unknown", blank=True, null=True)
-    tirage = models.CharField(max_length=65, default="Unknown", blank=True, null=True)
+    denomination = models.CharField(max_length=15)
+    material = models.CharField(max_length=30, default="Unknown", blank=True, null=True)
+    tirage = models.CharField(max_length=20, default="Unknown", blank=True, null=True)
     image = models.ImageField(upload_to="coins/", blank=True, null=True)
     owner = models.ForeignKey(Collector, on_delete=models.CASCADE, related_name="coins")
 
@@ -43,11 +44,12 @@ class Coin(models.Model):
         return reverse("items:coin-detail", args=[str(self.id)])
 
 class Banknote(models.Model):
-    name = models.CharField(max_length=60)
-    country = models.CharField(max_length=60)
+    description = models.TextField(blank=True, null=True)
+    name = models.CharField(max_length=100)
+    country = models.CharField(max_length=20)
     year = models.PositiveIntegerField()
-    value = models.CharField(max_length=65)
-    tirage = models.CharField(max_length=65, default="Unknown", blank=True, null=True)
+    value = models.CharField(max_length=25)
+    tirage = models.CharField(max_length=15, default="Unknown", blank=True, null=True)
     image = models.ImageField(upload_to="banknotes/", blank=True, null=True)
     owner = models.ForeignKey(Collector, on_delete=models.CASCADE, related_name="banknotes")
 

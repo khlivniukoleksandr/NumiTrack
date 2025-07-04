@@ -5,7 +5,7 @@ from django.urls import reverse_lazy
 from django.views import generic
 from django.views.generic import UpdateView, CreateView, DeleteView, TemplateView
 
-from items.forms import CustomCollectionForm, CustomCoinForm, CustomBanknoteForm, CoinFilterForm
+from items.forms import CustomCollectionForm, CustomCoinForm, CustomBanknoteForm, CoinFilterForm, CollectionFilterForm
 from items.models import (Collector,
                           Collection,
                           Coin, Banknote
@@ -59,8 +59,19 @@ class CollectionListView(LoginRequiredMixin, generic.ListView):
     paginate_by = 15
 
     def get_queryset(self):
-        return Collection.objects.filter(owner=self.request.user)
+        queryset = Collection.objects.filter(owner=self.request.user)
+        name = self.request.GET.get("name")
+        description = self.request.GET.get("description")
+        if name:
+            queryset = queryset.filter(name__icontains=name)
+        if description:
+            queryset = queryset.filter(description__icontains=description)
+        return queryset
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = CollectionFilterForm(self.request.GET or None)
+        return context
 
 
 

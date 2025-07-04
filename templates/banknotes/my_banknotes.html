@@ -8,7 +8,7 @@
     {% if banknotes %}
       <div class="card-wrapper">
         {% for banknote in banknotes %}
-          <div class="collection-card">
+          <div class="card">
             <a href="{% url 'items:banknote-detail' pk=banknote.pk %}">
               {% if banknote.image %}
                 <img src="{{ banknote.image.url }}" alt="{{ banknote.name }}" class="card-image"/>

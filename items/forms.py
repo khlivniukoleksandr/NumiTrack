@@ -57,3 +57,12 @@ class CoinFilterForm(forms.Form):
     material = forms.CharField(required=False, label="Material",
                                widget=forms.TextInput(attrs={"class": "form-coin-filter-input",
                                                              "placeholder": "Silver"}))
+
+class CollectionFilterForm(forms.Form):
+    name = forms.CharField(required=False,
+                              label="Name",
+                              widget=forms.TextInput(attrs={"class":"form-coin-filter-input",
+                                                                                            "placeholder":"Name"}))
+    description = forms.CharField(required=False, label="Description",
+                              widget=forms.TextInput(attrs={"class":"form-coin-filter-input",
+                                                            "placeholder":"Description"}))

@@ -6,7 +6,7 @@
 
    <div class="card-wrapper">
   {% for collection in public_collections %}
-    <div class="collection-card">
+    <div class="card">
     <a href="{% url 'items:collection-detail' pk=collection.pk%}">
       {% if collection.cover %}
         <img src="{{ collection.cover.url }}" alt="{{ collection.name }}"/>

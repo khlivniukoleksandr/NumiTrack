@@ -29,7 +29,7 @@
       <a href="{% url 'items:add-coin-to-collection' pk=collection.pk %}">Add coin to this collection</a>
     {% endif %}
     {% for coin in collection.coins.all %}
-      <div class="collection-card
+      <div class="card
         {% if coin.material|lower in 'silver срібло серебро' %}
           card-silver
         {% elif coin.material|lower in 'gold золото' %}
