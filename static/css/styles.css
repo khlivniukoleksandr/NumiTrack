@@ -44,9 +44,11 @@ button {
 }
 
 .container {
-    box-sizing: border-box;
-    margin: 50px 130px;
-    padding: 40px;
+box-sizing: border-box;
+  margin: 50px 130px;
+  padding: 40px;
+  background-color: #fff;
+  height: 100vh;
 }
 
 
@@ -481,7 +483,7 @@ button {
 /*_______________________________________________Filter items_____________________________________________-*/
 /*Filter*/
 
-.filter-coins-title {
+.filter-items-title {
     font-size: 20px;
     font-weight: 600;
     border: 2px solid #dddddd;
@@ -490,14 +492,7 @@ button {
     margin-top:10px;
 }
 
-
-.filter-coins-title:hover {
-    cursor: pointer;
-    background-color: #c1bdbd;
-    transition: background-color 350ms ease;
-}
-
-.form-search-coins {
+.form-search-items {
     display: flex;
     align-items: flex-start;
     flex-direction: column;
@@ -520,7 +515,7 @@ button {
 .search-form-overlay {
     background-color: #e4e4e4;
     border-radius: 5px;
-    padding: 10px;
+    padding: 20px;
 }
 
 .filter-button {
@@ -537,13 +532,29 @@ button {
 
 /*__________________________________________________End filter___________________________________________*/
 /*My coins*/
-.all-coins-content {
+.all-items-content {
     display:flex;
     margin: 90px 40px;
+    flex-direction: column;
+    align-items:flex-start;
+}
+.top-section-items {
+    display:flex;
+    align-items: flex-start;
+    margin-bottom:20px;
+    gap:20px;
+    width:100%;
+}
+.main-content-area {
+    display: flex;
+    width: 100%;
+    gap: 20px;
+    align-items: flex-start;
+    margin-top:70px;
 }
 .side-panel {
-    width:400px;
-    height: 100%;
+    width:300px;
+    flex-shrink: 0;
 }
 .button-add-new-item {
     border: 2px solid #919191;
@@ -558,19 +569,18 @@ button {
     transition: background-color 350ms ease;
     color: #ffffff;
 }
-.coin-title {
-    margin-bottom:15px;
+.item-title {
+    margin-bottom:0;
+    margin-left:400px;
 }
-.container-coins {
+.container-items {
         display: flex;
     flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
-    margin-right: auto;
-    margin-left: auto;
-    padding-left: 15px;
+    flex-grow: 1;
     padding-right: 15px;
-    margin-top: 100px;
+    margin-top: 0;
 }
 
 /*Silver card*/
@@ -677,7 +687,7 @@ button {
     border: 1px solid #d2d2d2;
     border-radius: 12px;
     overflow: hidden;
-    background-color: #faf7f7;
+    background-color: rgba(255, 255, 255, 0.31);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     height: 405px;
     position: relative;
@@ -731,7 +741,7 @@ button {
 
 }
 
-.card-coin-name {
+.card-item-name {
     font-family: 'Playfair Display', serif;
     font-size: 15px;
     margin-top: 10px;
@@ -742,11 +752,11 @@ button {
     transition: color 0.3s ease;
 }
 
-.card:hover .card-coin-name {
+.card:hover .card-item-name {
     color: #0f5c05;
 }
 
-.coin-description-card {
+.item-description-card {
     padding: 0 20px;
     display: flex;
     flex-direction: column;
@@ -756,18 +766,19 @@ button {
     color: #555;
 }
 
-.card:hover .coin-description-card {
+.card:hover .item-description-card {
     color: black;
 }
 
 /*/
 /*____________________________Collections______________________*/
-.collections-div-title {
-    display: flex;
-    justify-content: flex-start;
-    gap: 20px;
+.collection-name {
 }
 
+.collection-card {
+    width:270px;
+    height: 350px;
+}
 .pagination {
     display: flex;
     gap: 5px;

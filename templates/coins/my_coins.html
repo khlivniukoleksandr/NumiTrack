@@ -1,23 +1,27 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-  <div class="all-coins-content">
+ <div class="all-items-content">
+  <div class="top-section-items">
+    <h2 class="item-title">{{ user.username }}'s Coins</h2>
+    <a href="{% url 'items:coin-create' %}" class="button-add-new-item button-add-coins">Add new coin</a>
+  </div>
+  <div class="main-content-area">
     <div class="side-panel">
-  <h2 class="coin-title">{{ user.username }}'s Coins</h2>
-  <a href="{% url 'items:coin-create' %}" class="button-add-new-item button-add-coins">Add new coin</a>
-    <div class="form-search-coins">
-    <p class="filter-coins-title">Filter</p>
-    <div class="filter-box">
-      <form method="get" class="search-form-overlay">
-        {{ form.as_p }}
-        <button type="submit" class="filter-button">Filter</button>
-        <a href="{% url 'items:my-coins' %}" class="reset-button">Clear</a>
-      </form>
+      <div class="form-search-items">
+        <p class="filter-items-title">Search</p>
+        <div class="filter-box">
+          <form method="get" class="search-form-overlay">
+            {{ form.as_p }}
+            <button type="submit" class="filter-button">Filter</button>
+            <a href="{% url 'items:my-coins' %}" class="reset-button">Clear</a>
+          </form>
+        </div>
+      </div>
     </div>
-  </div>
-  </div>
-  <div class="container-coins">
-    {% if coins %}
+
+    <div class="container-items">
+      {% if coins %}
         {% for coin in coins %}
           <div class="card
         {% if coin.material|lower in 'silver срібло серебро' %}
@@ -37,8 +41,8 @@
                        class="card-image"/>
                 {% endif %}
                 <div class="card-content-wrapper">
-                    <h4 class="card-coin-name">{{ coin.name }}</h4>
-                  <div class="coin-description-card">
+                  <h4 class="card-item-name">{{ coin.name }}</h4>
+                  <div class="item-description-card">
                     <p class="coin-material">Material: {{ coin.material }}</p>
                     <p class="coin-year">Year: {{ coin.year }}</p>
                     <p class="coin-country">Country: {{ coin.country }}</p>
@@ -49,12 +53,11 @@
             </a>
           </div>
         {% endfor %}
-      </div>
-    {% else %}
-      <h4>No coins</h4>
-    {% endif %}
-
+      {% else %}
+        <h4>No coins</h4>
+      {% endif %}
+    </div>
   </div>
-
+</div>
 {% endblock %}
 

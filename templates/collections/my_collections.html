@@ -1,40 +1,56 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-    <div class="container">
-    <div class="collections-div-title">
-  <h2 class="collection-title">My Collections</h2>
-  <a href="{% url "items:create-collection" %}" class="button-add-new-item">Create new collection</a>
+
+  <div class="all-items-content">
+    <div class="top-section-items">
+      <h2 class="item-title">My Collections</h2>
+      <a href="{% url "items:create-collection" %}" class="button-add-new-item">Create new collection</a>
     </div>
-    <div class="form-search-coins">
-  <p class="filter-coins-title">Filter</p>
-  <div class="filter-box">
-<form method="get" class="search-form-overlay">
-{{ form.as_p }}
-<button type="submit" class="filter-button">Filter</button>
-<a href="{% url 'items:my-collections' %}" class="reset-button">Clear</a>
-</form>
+
+    <div class="main-content-area">
+      <div class="side-panel">
+        <div class="form-search-items">
+          <p class="filter-items-title">Search</p>
+          <div class="filter-box">
+            <form method="get" class="search-form-overlay">
+              {{ form.as_p }}
+              <button type="submit" class="filter-button">Filter</button>
+              <a href="{% url 'items:my-collections' %}" class="reset-button">Clear</a>
+            </form>
+          </div>
+        </div>
       </div>
-</div>
-  {% if collections %}
-  <div class="card-wrapper">
-  {% for collection in collections %}
-    <div class="card collection-card">
-      <a href="{{ collection.get_absolute_url }}" class="card-link">
-        {% if collection.cover %}
-          <img src="{{ collection.cover.url }}" alt="{{ collection.name }}" width="100" height="100" class="card-image"/>
+
+      <div class="container-items">
+        {% if collections %}
+
+          {% for collection in collections %}
+            <div class="card collection-card">
+              <a href="{{ collection.get_absolute_url }}" class="card-link">
+                <div class="card-inner-scale-wrapper">
+                  {% if collection.cover %}
+                    <img src="{{ collection.cover.url }}" alt="{{ collection.name }}"
+                         class="card-image"/>
+                  {% else %}
+                    <img src="{% static 'images/default-cover-collections.png' %}" alt="{{ collection.name }}"
+                         class="card-image"/>
+                  {% endif %}
+                  <div class="card-content-wrapper">
+                    <h4 class="card-item-name collection-name">{{ collection.name }}</h4>
+                    <div class="item-description-card">
+                      <p class="card-collection-description">{{ collection.description }}</p>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          {% endfor %}
+          </div>
         {% else %}
-          <img src="{% static 'images/default-cover-collections.png' %}" alt="{{ collection.name }}" width="150"
-               height="150" class="card-image"/>
+          <p>No collections</p>
         {% endif %}
-        <h4>{{ collection.name }}</h4>
-        <p>{{ collection.description }}</p>
-      </a>
+
     </div>
-  {% endfor %}
-  {% else %}
-  <p>No collections</p>
-  {% endif %}
-</div>
-    </div>
+  </div>
 {% endblock %}
