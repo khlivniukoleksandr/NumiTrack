@@ -1,33 +1,62 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-   <div class="container">
-   <ul>
-      <li>
-        <a href="{% url 'items:my-banknotes' %}">Back to my banknotes</a>
-      </li>
-      <li>
-        {% if banknote.owner == user %}
-        <a href="{% url 'items:banknote-edit' pk=banknote.id %}">Update banknote</a>
+  <div class="container container-item-detail">
+
+    <div class="item-detail-header">
+      <a href="{% url 'items:my-coins' %}" class="coin-detail-back">
+        <svg width="24" height="24">
+          <use href="/static/images/icons.svg#icon-back"></use>
+        </svg>
+        Back to my banknotes
+      </a>
+      <h2 class="item-detail-name">{{ banknote.name }}</h2>
+    </div>
+
+    <div class="all-items-item-detail-content">
+      <div class="item-image-block">
+
+        {% if banknote.image %}
+          <img src="{{ banknote.image.url }}" alt="{{ banknote.name }}" width="400" height="300">
+        {% else %}
+          <img src="{% static 'images/default-cover-collections.png' %}" alt="No image" width="400" height="300">
         {% endif %}
-      </li>
-      <li>
+
         {% if banknote.owner == user %}
-        <a href="{% url 'items:banknote-delete' pk=banknote.pk %}">
-          Delete Banknote
-        </a>
+          <a href="{% url 'items:banknote-delete' pk=banknote.pk %}">
+            Delete Banknote
+          </a>
         {% endif %}
-      </li>
-    </ul>
-   {% if banknote.image %}
-  <img src="{{ banknote.image.url }}" alt="{{ banknote.name }}" width="100" height="100">
-{% else %}
-  <img src="{% static 'images/default-cover-collections.png' %}" alt="No image" width="100" height="100">
-{% endif %}
-   <p>Coin name: {{ banknote.name }}</p>
-   <p>Country: {{ banknote.country }} </p>
-   <p>Year: {{ banknote.year }}</p>
-   <p>Value: {{ banknote.value }}</p>
-   <p>Tirage: {{ coin.tirage }}</p>
-   </div>
+
+        {% if banknote.owner == user %}
+          <a href="{% url 'items:coin-edit' pk=banknote.id %}">Update banknote</a>
+        {% endif %}
+      </div>
+
+      <div class="item-details-block">
+        <h4 class="item-detail-description-title">Description</h4>
+        {% if banknote.description %}
+          <p class="item-detail-description-subtitle">{{ banknote.description }}</p>
+        {% else %}
+          <p class="item-detail-description-subtitle">No description yet</p>
+        {% endif %}
+
+        <ul class="item-detail-list">
+          <li class="item-detail-list-item">
+            <p>Country: {{ banknote.country }} </p>
+          </li>
+          <li class="item-detail-list-item">
+            <p>Year: {{ banknote.year }}</p>
+          </li>
+          <li class="item-detail-list-item">
+            <p>Denomination: {{ banknote.denomination }}</p>
+          </li>
+          <li class="item-detail-list-item">
+            <p>Tirage: {{ banknote.tirage }}</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
 {% endblock %}

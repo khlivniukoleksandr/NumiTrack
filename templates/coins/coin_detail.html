@@ -1,54 +1,58 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-  <div class="container container-coin-detail">
-  <div class="coin-detail-header">
+  <div class="container container-item-detail">
+  <div class="item-detail-header">
 <a href="{% url 'items:my-coins' %}" class="coin-detail-back">
   <svg width="24" height="24">
     <use href="/static/images/icons.svg#icon-back"></use>
   </svg>
   Back to my coins
 </a>
-  <h2 class="coin-detail-name">{{ coin.name }}</h2>
+  <h2 class="item-detail-name">{{ coin.name }}</h2>
 </div>
-    <div class="all-items-coin-detail-content">
-      <div class="coin-image-block">
+    <div class="all-items-item-detail-content">
+      <div class="item-image-block">
+
         {% if coin.image %}
           <img src="{{ coin.image.url }}" alt="{{ coin.name }}" width="400" height="300">
         {% else %}
           <img src="{% static 'images/default-cover-collections.png' %}" alt="No image" width="400" height="300">
         {% endif %}
+
         {% if coin.owner == user %}
           <a href="{% url 'items:coin-delete' pk=coin.pk %}">
             Delete Coin
           </a>
         {% endif %}
+
       {% if coin.owner == user %}
         <a href="{% url 'items:coin-edit' pk=coin.id %}">Update coin</a>
       {% endif %}
       </div>
-      <div class="coin-details-block">
-        <h4 class="coin-detail-description-title">Description</h4>
+
+      <div class="item-details-block">
+        <h4 class="item-detail-description-title">Description</h4>
         {% if coin.description %}
-          <p class="coin-detail-description-subtitle">{{ coin.description }}</p>
+          <p class="item-detail-description-subtitle">{{ coin.description }}</p>
         {% else %}
-          <p class="coin-detail-description-subtitle">No description yet</p>
+          <p class="item-detail-description-subtitle">No description yet</p>
         {% endif %}
 
-        <ul class="coin-detail-list">
-          <li class="coin-detail-list-item">
+        <ul class="item-detail-list">
+          <li class="item-detail-list-item">
             <p>Country: {{ coin.country }} </p>
           </li>
-          <li class="coin-detail-list-item">
+          <li class="item-detail-list-item">
             <p>Year: {{ coin.year }}</p>
           </li>
-          <li class="coin-detail-list-item">
+          <li class="item-detail-list-item">
             <p>Denomination: {{ coin.denomination }}</p>
           </li>
-          <li class="coin-detail-list-item">
+          <li class="item-detail-list-item">
             <p>Material: {{ coin.material }}</p>
           </li>
-          <li class="coin-detail-list-item">
+          <li class="item-detail-list-item">
             <p>Tirage: {{ coin.tirage }}</p>
           </li>
         </ul>
