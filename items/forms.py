@@ -46,17 +46,17 @@ class CoinFilterForm(forms.Form):
     name = forms.CharField(required=False,
                               label="Name",
                               widget=forms.TextInput(attrs={"class":"form-coin-filter-input",
-                                                                                            "placeholder":"1 cent"}))
+                                                                                            "placeholder":"Name"}))
     year = forms.IntegerField(required=False,
                               label="Year",
                               widget=forms.NumberInput(attrs={"class":"form-coin-filter-input",
-                                                                                            "placeholder":"2000"}))
+                                                                                            "placeholder":"Year"}))
     country = forms.CharField(required=False, label="Country",
                               widget=forms.TextInput(attrs={"class":"form-coin-filter-input",
-                                                            "placeholder":"Ukraine"}))
+                                                            "placeholder":"Country"}))
     material = forms.CharField(required=False, label="Material",
                                widget=forms.TextInput(attrs={"class": "form-coin-filter-input",
-                                                             "placeholder": "Silver"}))
+                                                             "placeholder": "Material"}))
 
 class CollectionFilterForm(forms.Form):
     name = forms.CharField(required=False,
@@ -66,3 +66,17 @@ class CollectionFilterForm(forms.Form):
     description = forms.CharField(required=False, label="Description",
                               widget=forms.TextInput(attrs={"class":"form-coin-filter-input",
                                                             "placeholder":"Description"}))
+
+
+class BanknoteFilterForm(forms.Form):
+    name = forms.CharField(required=False,
+                           label="Name",
+                           widget=forms.TextInput(attrs={"class": "form-coin-filter-input",
+                                                         "placeholder": "Name"}))
+    year = forms.IntegerField(required=False,
+                              label="Year",
+                              widget=forms.NumberInput(attrs={"class": "form-coin-filter-input",
+                                                              "placeholder": "Year"}))
+    country = forms.CharField(required=False, label="Country",
+                              widget=forms.TextInput(attrs={"class": "form-coin-filter-input",
+                                                            "placeholder": "Country"}))

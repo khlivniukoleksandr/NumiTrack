@@ -5,7 +5,12 @@ from django.urls import reverse_lazy
 from django.views import generic
 from django.views.generic import UpdateView, CreateView, DeleteView, TemplateView
 
-from items.forms import CustomCollectionForm, CustomCoinForm, CustomBanknoteForm, CoinFilterForm, CollectionFilterForm
+from items.forms import (CustomCollectionForm,
+                         CustomCoinForm,
+                         CustomBanknoteForm,
+                         CoinFilterForm,
+                         CollectionFilterForm,
+                         BanknoteFilterForm)
 from items.models import (Collector,
                           Collection,
                           Coin, Banknote
@@ -246,10 +251,30 @@ class BanknoteListView(LoginRequiredMixin, generic.ListView):
     model = Banknote
     template_name = "banknotes/my_banknotes.html"
     context_object_name = "banknotes"
-    paginate_by = 15
+    paginate_by = 12
 
     def get_queryset(self):
-        return Banknote.objects.filter(owner=self.request.user)
+        queryset = Banknote.objects.filter(owner=self.request.user)
+        name = self.request.GET.get("name")
+        year = self.request.GET.get("year")
+        country = self.request.GET.get("country")
+        sort_by = self.request.GET.get("sort_by", "year")
+        order = self.request.GET.get("order", "asc")
+        if name:
+            queryset = queryset.filter(name__icontains=name)
+        if year:
+            queryset = queryset.filter(year__icontains=year)
+        if country:
+            queryset = queryset.filter(country__icontains=country)
+        if order == "desc":
+            sort_by = "-" + sort_by
+        queryset = queryset.order_by(sort_by)
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = BanknoteFilterForm(self.request.GET or None)
+        return context
 
 
 class BanknoteCreateView(LoginRequiredMixin, CreateView):
@@ -258,7 +283,6 @@ class BanknoteCreateView(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy('items:my-banknotes')
 
     def form_valid(self, form):
-        # Автоматично встановлюємо власника перед збереженням
         form.instance.owner = self.request.user
         return super().form_valid(form)
 
