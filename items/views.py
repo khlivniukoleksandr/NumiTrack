@@ -61,7 +61,7 @@ class CollectionListView(LoginRequiredMixin, generic.ListView):
     model = Collection
     template_name = "collections/my_collections.html"
     context_object_name = "collections"
-    paginate_by = 15
+    paginate_by = 12
 
     def get_queryset(self):
         queryset = Collection.objects.filter(owner=self.request.user)
@@ -94,6 +94,8 @@ class CollectionCreateView(LoginRequiredMixin, CreateView):
 class CollectionDetailView(LoginRequiredMixin, generic.DetailView):
     model = Collection
     template_name = "collections/collection_detail.html"
+
+
 
 
 class CollectionUpdateView(LoginRequiredMixin, UpdateView):

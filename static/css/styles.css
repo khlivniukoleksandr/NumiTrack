@@ -1,5 +1,5 @@
 * {
-    font-family: "Montserrat", Helvetica;
+    font-family: "Montserrat", "Helvetica", sans-serif;
 }
 
 body {
@@ -49,67 +49,95 @@ box-sizing: border-box;
   margin: 50px 130px;
   padding: 40px;
   background-color: #fff;
-  height: 100vh;
+  height: 100%;
 }
 
 
 /*_________________________________Sidebar__________________________________*/
 /*Sidebar*/
-.div-sidebar {
-    display: flex;
-    justify-content: flex-end;
+.sidebar-toggle {
+    display: none;
 }
 
-.sidebar-list {
-    display: none;
-    flex-direction: column;
 
+.sidebar-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    z-index: 1000;
 }
 
 .hamburger-menu {
-    position: relative;
-    z-index: 1100;
     cursor: pointer;
+    padding: 5px;
+    display: inline-block;
 }
 
-.hamburger-icon {
-    font-size: 28px;
-    color: #4d5ae5;
-    transition: color 200ms ease;
+.hamburger-icon svg {
+    width: 28px;
+    height: 28px;
+    fill: #2b2b2b;
+    transition: fill 200ms ease;
 }
 
-.hamburger-icon:hover {
-    color: #31d0aa;
+.hamburger-icon:hover svg {
+    fill: #05472d;
 }
 
 .div-sidebar {
     position: absolute;
-    top: 100%;
-    left: 0;
-    width: 150px;
-    height: 100%;
-    transform: translateY(-100%);
-    transition: transform 250ms;
-    z-index: 1000;
-}
+    top: calc(100% + 10px);
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    min-width: 180px;
+    padding: 10px 0;
 
-.sidebar-list-item {
-    background-color: white;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 250ms ease, transform 250ms ease, visibility 250ms ease;
+    z-index: 999;
 }
 
 .sidebar-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
     display: flex;
     flex-direction: column;
-    transform: translateY(-20px);
-    opacity: 0;
-    visibility: hidden;
-    transition: all 250ms ease;
 }
 
-.hamburger-menu:hover .sidebar-list {
-    transform: translateY(0);
+.sidebar-list-item a {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    color: #333;
+    text-decoration: none;
+    transition: background-color 200ms ease, color 200ms ease;
+}
+
+.sidebar-list-item a:hover {
+    background-color: #f0f0f0;
+    color: #05472d;
+}
+
+.sidebar-list-item a svg {
+    margin-right: 10px;
+    fill: #666;
+    transition: fill 200ms ease;
+}
+
+.sidebar-list-item a:hover svg {
+    fill: #05472d;
+}
+
+.sidebar-toggle:checked + .hamburger-menu + .div-sidebar {
     opacity: 1;
     visibility: visible;
+    transform: translateY(0);
 }
 
 /*___________________________Header__________________________________*/
@@ -117,14 +145,26 @@ box-sizing: border-box;
 .span-title {
     color: #05472d;
 }
-
-
+.hero-logo {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.5em;
+    color:#2b2b2b;
+}
+.hero-logo:hover,
+.hero-logo:focus {
+    color: #05472d
+}
+.hero-logo:hover .span-title,
+.hero-logo:focus .span-title {
+    color:#2b2b2b;
+}
 .header-list {
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 20px;
+    padding:10px;
 }
 
 .header-navigation {
@@ -142,19 +182,7 @@ box-sizing: border-box;
     z-index: 9999;
     width: 700px;
     max-height: 20px;
-
 }
-
-.icon-authenticate,
-.icon-not-authenticate {
-    border: 1px solid #c1bdbd;
-    border-radius: 10px;
-}
-
-.icon-authenticate {
-    background-color: #0eb6df;
-}
-
 /*___________________________Home page______________________________*/
 /* Home page */
 
@@ -685,6 +713,7 @@ box-sizing: border-box;
     align-items: flex-start;
     gap: 20px;
     margin-top: 50px;
+    margin-bottom: 60px;
 }
 
 .item-image-block img {
@@ -837,13 +866,22 @@ box-sizing: border-box;
 
 /*/
 /*____________________________Collections______________________*/
-.collection-name {
+.collection-add-item {
+    max-width: 133px;
+    margin-bottom: 10px;
+}
+.collection-description-area {
+    display:flex;
+    flex-direction:column;
+}
+.collection-items {
+    display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  flex-grow: 1;
 }
 
-.collection-card {
-    width:270px;
-    height: 350px;
-}
 .pagination {
     display: flex;
     gap: 5px;

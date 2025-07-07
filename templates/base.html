@@ -18,22 +18,7 @@
     <nav class="header-navigation">
       <ul class="header-list">
         <li>
-          <a href="{% url 'home' %}"><span class="span-title">Numi</span>Track</a>
-        </li>
-        <li>
-          <a href="{% url 'home' %}">Home</a>
-        </li>
-        <li>
-          {# Опис можливостей сервісу#}
-          <a href="{% url 'home' %}#features">Features</a>
-        </li>
-        <li>
-          {#  статистика доданих монет {У колекції вже 235 монет із 47 країн} #}
-          <a href="{% url 'home' %}#stats">Stats</a>
-        </li>
-        <li>
-          {#  Контакти та форма зворотного зв'язку #}
-          <a href="{% url 'home' %}#contact">Contacts</a>
+          <a href="{% url 'home' %}" class="hero-logo"><span class="span-title">Numi</span>Track</a>
         </li>
         <li>
           {% block sidebar %}

@@ -1,43 +1,58 @@
 {% load static %}
 <div class="sidebar-container">
-  <div class="hamburger-menu">
-    <span class="hamburger-icon">☰</span>
-    <div class="div-sidebar">
-      <ul class="sidebar-list">
-        {% if user.is_authenticated %}
-          <li class="sidebar-list-item">
-            <a href="{% url 'items:profile' %}"><img src="{% static 'images/authorize-icon.png' %}" width="25"
-                                                     class="icon-authenticate" alt="Icon"/>My
-              profile</a>
-          </li>
-        {% else %}
-          <li class="sidebar-list-item">
-            <a href="{% url 'login' %}"><img src="{% static 'images/authorize-icon.png' %}" width="25"
-                                             class="icon-not-authenticate" alt="Icon"/>Login</a>
-          </li>
-        {% endif %}
+
+  <input type="checkbox" id="sidebar-toggle" class="sidebar-toggle">
+
+  <label for="sidebar-toggle" class="hamburger-menu">
+    <span class="hamburger-icon">
+      <svg width="25" height="25" fill="black">
+        <use href="{% static 'images/icons.svg' %}#icon-menu"></use>
+      </svg>
+    </span>
+  </label>
+
+  <div class="div-sidebar">
+    <ul class="sidebar-list">
+
+      {% if user.is_authenticated %}
         <li class="sidebar-list-item">
-          <a href="{% url 'items:my-collections' %}">My collections</a>
+          <a href="{% url 'items:profile' %}">
+            <svg width="24" height="20" fill="blue" class="icon-authenticate">
+              <use href="{% static 'images/icons.svg' %}#icon-user"></use>
+            </svg>
+            My Profile
+          </a>
         </li>
+      {% else %}
         <li class="sidebar-list-item">
-          <a href="{% url "items:my-coins" %}">My coins</a>
+          <a href="{% url 'account_login' %}">
+            <svg width="24" height="20" fill="black" class="icon-authenticate">
+              <use href="{% static 'images/icons.svg' %}#icon-user"></use>
+            </svg>
+            Login</a>
         </li>
-        <li class="sidebar-list-item">
-          <a href="{% url 'items:my-banknotes' %}">My banknotes</a>
-        </li>
-        <li class="sidebar-list-item">
-          <a href="{% url 'items:public-collections' %}">All collections</a>
-        </li>
-        <li class="sidebar-list-item">
-          <a href="#">View collectors</a>
-        </li>
-        <li class="sidebar-list-item">
-          <a href="#">News</a>
-        </li>
-        <li class="sidebar-list-item">
-          <a href="#">Guides & FAQs</a>
-        </li>
-      </ul>
-    </div>
+      {% endif %}
+      <li class="sidebar-list-item">
+        <a href="{% url 'items:my-collections' %}">My collections</a>
+      </li>
+      <li class="sidebar-list-item">
+        <a href="{% url "items:my-coins" %}">My coins</a>
+      </li>
+      <li class="sidebar-list-item">
+        <a href="{% url 'items:my-banknotes' %}">My banknotes</a>
+      </li>
+      <li class="sidebar-list-item">
+        <a href="{% url 'items:public-collections' %}">All collections</a>
+      </li>
+      <li class="sidebar-list-item">
+        <a href="#">View collectors</a>
+      </li>
+      <li class="sidebar-list-item">
+        <a href="#">News</a>
+      </li>
+      <li class="sidebar-list-item">
+        <a href="#">Guides & FAQs</a>
+      </li>
+    </ul>
   </div>
 </div>

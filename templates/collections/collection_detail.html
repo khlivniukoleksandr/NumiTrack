@@ -1,78 +1,114 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-  <div class="container">
-    {% if collection.owner == user %}
-      <ul>
-        <li>
-          <a href="{% url 'items:my-collections' %}">Back to my collections</a>
-        </li>
-        <li>
+  <div class="container container-item-detail">
+  <div class="item-detail-header">
+    <a href="{% url 'items:my-collections' %}" class="coin-detail-back">
+      <svg width="24" height="24">
+        <use href="/static/images/icons.svg#icon-back"></use>
+      </svg>
+      Back to all collections
+    </a>
+    <h2 class="item-detail-name">{{ collection.name }}</h2>
+  </div>
+
+  <div class="all-items-item-detail-content">
+  <div class="item-image-block">
+
+  {% if collection.cover %}
+    <img src="{{ collection.cover.url }}" alt="{{ collection.name }}" width="400" height="300"/>
+  {% else %}
+    <img src="{% static 'images/default-cover-collections.png' %}" alt="No image" width="400" height="300">
+  {% endif %}
+
+  {% if collection.owner == user %}
+    <a href="{% url 'items:collection-delete' pk=collection.pk %}">
+      Delete Collection
+    </a>
+  {% endif %}
+
+  {% if collection.owner == user %}
           <a href="{% url 'items:collection-edit' pk=collection.id %}">Update collection</a>
-        </li>
-        <li>
-          <a href="{% url 'items:collection-delete' pk=collection.pk %}">
-            Delete Collection
-          </a>
-        </li>
-      </ul>
-    {% else %}
-      <a href="{% url 'items:public-collections' %}">Back to all collections</a>
-    {% endif %}
-    {% if collection.cover %}
-      <img src="{{ collection.cover.url }}" alt="{{ collection.name }}" width="150" height="150"/>
-    {% endif %}
-    <h3>{{ collection.name }}</h3>
-    <p>{{ collection.description }}</p>
-    <h3>Coins</h3>
-    {% if collection.owner == user %}
-      <a href="{% url 'items:add-coin-to-collection' pk=collection.pk %}">Add coin to this collection</a>
-    {% endif %}
-    {% for coin in collection.coins.all %}
-      <div class="card
-        {% if coin.material|lower in 'silver срібло серебро' %}
-          card-silver
-        {% elif coin.material|lower in 'gold золото' %}
-          card-gold
-        {% elif coin.material|lower in 'bronze бронза' %}
-          card-bronze
         {% endif %}
-      ">
-        <a href="{% url 'items:coin-detail' pk=coin.pk %}" class="">
-          {% if coin.image %}
-            <img src="{{ coin.image.url }}" alt="{{ coin.name }}" width="150" height="150"/>
-          {% else %}
-            <img src="{% static 'images/default-cover-collections.png' %}" alt="{{ coin.name }}" width="150" height="150"/>
-          {% endif %}
-          <h4>{{ coin.name }}</h4>
-          <p>Year: {{ coin.year }}</p>
-          <p>Country: {{ coin.country }}</p>
-          <p>Material: {{ coin.material }}</p>
-          <p>Tirage: {{ coin.tirage }}</p>
-        </a>
       </div>
+  <div class="collection-description-area">
+        <h4 class="item-detail-description-title">Description</h4>
+        {% if collection.description %}
+          <p class="item-detail-description-subtitle">{{ collection.description }}</p>
+        {% else %}
+          <p class="item-detail-description-subtitle">No description yet</p>
+        {% endif %}
+    <a href="{% url 'items:add-coin-to-collection' pk=collection.pk %}"
+          class="button-add-new-item button-add-coins collection-add-item">Add new coin</a>
+    <a href="{% url 'items:add-banknote-to-collection' pk=collection.pk %}"
+          class="button-add-new-item button-add-coins collection-add-item">Add new banknote</a>
+  </div>
+    </div>
+  </div>
+ <div class="item-details-block">
+  <div class="collection-items">
+  {% for coin in collection.coins.all %}
+  <div class="card
+  {% if coin.material|lower in 'silver срібло серебро' %}
+    card-silver
+  {% elif coin.material|lower in 'gold золото' %}
+    card-gold
+  {% elif coin.material|lower in 'bronze бронза' %}
+    card-bronze
+  {% endif %}
+">
+  <a href="{% url 'items:coin-detail' pk=coin.pk %}" class="card-link">
+    <div class="card-inner-scale-wrapper">
+      {% if coin.image %}
+        <img src="{{ coin.image.url }}" alt="{{ coin.name }}" class="card-image"/>
+      {% else %}
+        <img src="{% static 'images/default-cover-collections.png' %}" alt="{{ coin.name }}" class="card-image"/>
+      {% endif %}
+
+      <div class="card-content-wrapper">
+        <h4 class="card-item-name">{{ coin.name }}</h4>
+        <div class="item-description-card">
+          <p class="coin-material">Material: {{ coin.material }}</p>
+          <p class="coin-year">Year: {{ coin.year }}</p>
+          <p class="coin-country">Country: {{ coin.country }}</p>
+          <p class="coin-tirage">Tirage: {{ coin.tirage }}</p>
+        </div>
+      </div>
+    </div>
+  </a>
+</div>
     {% empty %}
       <p>No coins</p>
     {% endfor %}
-    <h3>Banknotes</h3>
-  {% if collection.owner == user %}
-  <a href="{% url 'items:add-banknote-to-collection' pk=collection.pk%}">Add banknote to collection</a>
-  {% endif %}
-    {% for banknote in collection.banknotes.all %}
-      <a href="{% url 'items:banknote-detail' pk=banknote.pk %}">
-        {% if banknote.image %}
-          <img src="{{ banknote.image.url }}" alt="{{ banknote.name }}" width="100" height="100"/>
-        {% else %}
-          <img src="{% static 'images/default-cover-collections.png' %}" alt="No image" width="100" height="100"/>
-        {% endif %}
 
-        <p>{{ banknote.name }}</p>
-        <p>Year: {{ banknote.year }}</p>
-        <p>Country: {{ banknote.country }}</p>
-        <p>Tirage: {{ banknote.tirage }}</p>
-      </a>
-    {% empty %}
-      <p>No banknotes</p>
-    {% endfor %}
+        {% for banknote in collection.banknotes.all %}
+          <div class="card">
+
+            <a href="{% url 'items:banknote-detail' pk=banknote.pk %}" class="card-link">
+              <div class="card-inner-scale-wrapper">
+
+                {% if banknote.image %}
+                  <img src="{{ banknote.image.url }}" alt="{{ banknote.name }}" class="card-image"/>
+                {% else %}
+                  <img src="{% static 'images/default-cover-collections.png' %}" alt="{{ banknote.name }}"
+                       class="card-image"/>
+                {% endif %}
+
+                <div class="card-content-wrapper">
+                  <h4 class="card-item-name">{{ banknote.name }}</h4>
+
+                  <div class="item-description-card">
+                    <p>Year: {{ banknote.year }}</p>
+                    <p>Country: {{ banknote.country }}</p>
+                    <p>Tirage: {{ banknote.tirage }}</p>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        {% endfor %}
+
   </div>
+{% endblock %}
+{% block footer %}
 {% endblock %}
