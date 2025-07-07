@@ -1,29 +1,50 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
- <div class="all-items-content">
-  <div class="top-section-items">
-    <h2 class="item-title">{{ user.username }}'s Coins</h2>
-    <a href="{% url 'items:coin-create' %}" class="button-add-new-item button-add-coins">Add new coin</a>
-  </div>
-  <div class="main-content-area">
-    <div class="side-panel">
-      <div class="form-search-items">
-        <p class="filter-items-title">Search</p>
-        <div class="filter-box">
-          <form method="get" class="search-form-overlay">
-            {{ form.as_p }}
-            <button type="submit" class="filter-button">Filter</button>
-            <a href="{% url 'items:my-coins' %}" class="reset-button">Clear</a>
-          </form>
+  <div class="all-items-content">
+    <div class="top-section-items">
+      <h2 class="item-title">{{ user.username }}'s Coins</h2>
+      <a href="{% url 'items:coin-create' %}" class="button-add-new-item button-add-coins">Add new coin</a>
+    </div>
+    <div class="main-content-area">
+
+      <div class="side-panel">
+        <form method="get" id="sort-form">
+
+        <input type="hidden" name="name" value="{{ request.GET.name|default:'' }}">
+        <input type="hidden" name="year" value="{{ request.GET.year|default:'' }}">
+        <input type="hidden" name="country" value="{{ request.GET.country|default:'' }}">
+        <input type="hidden" name="material" value="{{ request.GET.material|default:'' }}">
+
+        <select name="sort_by" id="sort_by" onchange="this.form.submit()">
+          <option value="year" {% if request.GET.sort_by == 'year' %}selected{% endif %}>Year</option>
+          <option value="name" {% if request.GET.sort_by == 'name' %}selected{% endif %}>Name</option>
+          <option value="country" {% if request.GET.sort_by == 'country' %}selected{% endif %}>Country</option>
+          <option value="material" {% if request.GET.sort_by == 'material' %}selected{% endif %}>Material</option>
+        </select>
+
+        <select name="order" id="order" onchange="this.form.submit()">
+          <option value="asc" {% if request.GET.order == 'asc' %}selected{% endif %}>+</option>
+          <option value="desc" {% if request.GET.order == 'desc' %}selected{% endif %}>-</option>
+        </select>
+
+      </form>
+        <div class="form-search-items">
+          <p class="filter-items-title">Search</p>
+          <div class="filter-box">
+            <form method="get" class="search-form-overlay">
+              {{ form.as_p }}
+              <button type="submit" class="filter-button">Filter</button>
+              <a href="{% url 'items:my-coins' %}" class="reset-button">Clear</a>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="container-items">
-      {% if coins %}
-        {% for coin in coins %}
-          <div class="card
+      <div class="container-items">
+        {% if coins %}
+          {% for coin in coins %}
+            <div class="card
         {% if coin.material|lower in 'silver срібло серебро' %}
           card-silver
         {% elif coin.material|lower in 'gold золото' %}
@@ -32,32 +53,33 @@
           card-bronze
         {% endif %}
       ">
-            <a href="{% url 'items:coin-detail' pk=coin.pk %}" class="card-link">
-              <div class="card-inner-scale-wrapper">
-                {% if coin.image %}
-                  <img src="{{ coin.image.url }}" alt="{{ coin.name }}" class="card-image"/>
-                {% else %}
-                  <img src="{% static 'images/default-cover-collections.png' %}" alt="{{ coin.name }}"
-                       class="card-image"/>
-                {% endif %}
-                <div class="card-content-wrapper">
-                  <h4 class="card-item-name">{{ coin.name }}</h4>
-                  <div class="item-description-card">
-                    <p class="coin-material">Material: {{ coin.material }}</p>
-                    <p class="coin-year">Year: {{ coin.year }}</p>
-                    <p class="coin-country">Country: {{ coin.country }}</p>
-                    <p class="coin-tirage">Tirage: {{ coin.tirage }}</p>
+
+              <a href="{% url 'items:coin-detail' pk=coin.pk %}" class="card-link">
+                <div class="card-inner-scale-wrapper">
+                  {% if coin.image %}
+                    <img src="{{ coin.image.url }}" alt="{{ coin.name }}" class="card-image"/>
+                  {% else %}
+                    <img src="{% static 'images/default-cover-collections.png' %}" alt="{{ coin.name }}"
+                         class="card-image"/>
+                  {% endif %}
+                  <div class="card-content-wrapper">
+                    <h4 class="card-item-name">{{ coin.name }}</h4>
+                    <div class="item-description-card">
+                      <p class="coin-material">Material: {{ coin.material }}</p>
+                      <p class="coin-year">Year: {{ coin.year }}</p>
+                      <p class="coin-country">Country: {{ coin.country }}</p>
+                      <p class="coin-tirage">Tirage: {{ coin.tirage }}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </a>
-          </div>
-        {% endfor %}
-      {% else %}
-        <h4>No coins</h4>
-      {% endif %}
+              </a>
+            </div>
+          {% endfor %}
+        {% else %}
+          <h4>No coins</h4>
+        {% endif %}
+      </div>
     </div>
   </div>
-</div>
 {% endblock %}
 

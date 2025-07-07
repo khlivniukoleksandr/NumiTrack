@@ -166,7 +166,7 @@ class CoinListView(LoginRequiredMixin, generic.ListView):
     model = Coin
     template_name = "coins/my_coins.html"
     context_object_name = "coins"
-    paginate_by = 10
+    paginate_by = 12
 
     def get_queryset(self):
         queryset = Coin.objects.filter(owner=self.request.user)
@@ -174,6 +174,8 @@ class CoinListView(LoginRequiredMixin, generic.ListView):
         year = self.request.GET.get("year")
         country = self.request.GET.get("country")
         material = self.request.GET.get("material")
+        sort_by = self.request.GET.get("sort_by", "year")
+        order = self.request.GET.get("order", "asc")
         if name:
             queryset = queryset.filter(name__icontains=name)
         if year:
@@ -182,12 +184,16 @@ class CoinListView(LoginRequiredMixin, generic.ListView):
             queryset = queryset.filter(country__icontains=country)
         if material:
             queryset = queryset.filter(material__icontains=material)
+        if order == "desc":
+            sort_by = "-" + sort_by
+        queryset = queryset.order_by(sort_by)
         return queryset
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['form'] = CoinFilterForm(self.request.GET or None)
         return context
+
 
 
 class CoinDetailView(LoginRequiredMixin, generic.DetailView):
