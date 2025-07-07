@@ -697,9 +697,33 @@ box-sizing: border-box;
     flex-grow: 1;
     margin-left:60px;
 }
+.coin-detail-header {
+    margin-top:60px;
+    margin-bottom:70px;
+    display:flex;
+}
+.coin-detail-back {
+    color:#2b2b2b;
+    display:flex;
+    align-items: center;
+    gap:5px;
+}
+.coin-detail-back svg {
+    fill:#2b2b2b;
+}
+.coin-detail-back:hover,
+.coin-detail-back:focus {
+    color:#c1bdbd;
+}
+.coin-detail-back:hover svg,
+.coin-detail-back:focus svg{
+    fill: #6c6c6c;
+}
 .coin-detail-name {
-    margin-top: 110px;
-    text-align: center;
+    margin:auto;
+}
+.coin-detail-back {
+    justify-self: flex-start;
 }
 .coin-detail-description-title {
     margin-bottom: 40px;

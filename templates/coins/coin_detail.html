@@ -1,12 +1,18 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-
-  <h2 class="coin-detail-name">{{ coin.name }}</h2>
   <div class="container container-coin-detail">
+  <div class="coin-detail-header">
+<a href="{% url 'items:my-coins' %}" class="coin-detail-back">
+  <svg width="24" height="24">
+    <use href="/static/images/icons.svg#icon-back"></use>
+  </svg>
+  Back to my coins
+</a>
+  <h2 class="coin-detail-name">{{ coin.name }}</h2>
+</div>
     <div class="all-items-coin-detail-content">
       <div class="coin-image-block">
-        <a href="{% url 'items:my-coins' %}" class="button-back-to">Back to my coins</a>
         {% if coin.image %}
           <img src="{{ coin.image.url }}" alt="{{ coin.name }}" width="400" height="300">
         {% else %}
