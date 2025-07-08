@@ -382,6 +382,136 @@ box-sizing: border-box;
     color: #7e7e7e;
 }
 
+/*____________________________Footer________________________________*/
+footer {
+    background-image: linear-gradient(to top, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05));
+    background-color: black;
+}
+.footer {
+    margin:30px 300px 30px 300px;
+    display:flex;
+    gap:25px;
+}
+
+.hero-logo-footer {
+    color:#fff;
+}
+
+.footer-text {
+    flex-direction: column;
+}
+.footer-description {
+    color:#c1bdbd;
+    margin-top:10px;
+    max-width:345px;
+}
+
+.footer-navigation-list {
+    padding:0;
+    display:flex;
+    flex-direction: column;
+    gap:5px;
+}
+/*Footer form*/
+.footer-form-subscribe {
+  margin-bottom: 16px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: #fff;
+}
+
+.footer-form {
+  display: flex;
+  gap: 24px;
+    margin-left: 40px;
+    align-items: center;
+}
+
+.footer-form-input {
+  width: 240px;
+  height: 40px;
+  font-size: 12px;
+  line-height: 2;
+  letter-spacing: 0.04em;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
+  background-color: transparent;
+  padding-left: 16px;
+  color: #fff;
+}
+
+.footer-form-input::placeholder {
+  color: #fff;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 2;
+  letter-spacing: 0.04em;
+}
+.footer-button-form {
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  border: none;
+  gap: 16px;
+  border-radius: 4px;
+  padding: 8px 24px;
+  min-width: 165px;
+  height: 40px;
+  background-color: #4d5ae5;
+}
+.subscribe-svg {
+  fill: #fff;
+  margin-left: 16px;
+}
+/*Form end*/
+.footer-social-svg {
+    border:1px solid transparent;
+    border-radius:30%;
+    transition: background-color 250ms ease, fill 250ms ease;
+}
+
+.footer-svg-instagram {
+    fill:#f700ff;
+}
+.footer-svg-instagram:focus,
+.footer-svg-instagram:hover {
+    fill:#fff;
+    background-color: #f700ff;
+}
+
+.footer-svg-linkedin {
+    fill: #10f;
+}
+.footer-svg-linkedin:focus,
+.footer-svg-linkedin:hover {
+    fill:#fff;
+    background-color: #10f;
+}
+.footer-list-link {
+    color:#c1bdbd;
+}
+.footer-list-link:hover,
+.footer-list-link:focus {
+    color: #178af1;
+    text-decoration: underline;
+}
+.footer-list-item-link {
+    color:#c1bdbd;
+}
+.footer-social {
+    display:flex;
+    gap:15px;
+}
 /*________________________Profile_______________________*/
 /*Profile-page*/
 .profile-edit-buttons {

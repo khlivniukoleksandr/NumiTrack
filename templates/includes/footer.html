@@ -1,53 +1,72 @@
 {% load static %}
 <footer>
-    <div class="container">
     <hr>
-    <a href="#"><span class="span-title">Numi</span>Track</a>
-    <h3>Try NumiTrack now and store your own collections at your convenience.</h3>
-    <address>
-      <ul id="contact">
-        <li>
-          <a href="https://www.instagram.com/ffooxxyy/?next=%2F"><img src="{% static "images/instagram.svg" %}"
-                                                                      alt="instagram"/></a>
-        </li>
-        <li>
-          <a href="https://www.linkedin.com/in/oleksandr-khlivniuk-27a413352/"><img
-              src="{% static 'images/linkedin.svg' %}" alt="linkedin" height="35px" width="27px"></a>
-        </li>
-        <li>
-        </li>
-      </ul>
-      <ul>
-        <li>
-          <a href="tel:380997577256">+38 (099) 75-77-256</a>
-        </li>
-        <li>
-          <a href="mailto:sasha2056083@gmail.com">sasha2056083@gmail.com</a>
-        </li>
-      </ul>
-    </address>
+  <div class="footer">
+    <div class="footer-text">
+    <a href="#" class="hero-logo hero-logo-footer"><span class="span-title">Numi</span>Track</a>
+    <h3 class="footer-description">Try NumiTrack now and store your own collections at your convenience.</h3>
+      </div>
     <nav class="footer-navigation">
-      <ul>
-        <li>
-          <a href="{% url 'home' %}">Home</a>
+      <ul class="footer-navigation-list">
+        <li class="footer-list-item">
+          <a href="{% url 'home' %}" class="footer-list-item-link">Home</a>
         </li>
-        <li>
-          {# Головна секція з описом функціоналу сторінки #}
-          <a href="#about">About</a>
+        <li class="footer-list-item">
+          <a href="{% url 'home' %}#about" class="footer-list-item-link">About</a>
         </li>
-        <li>
-          {# Опис можливостей сервісу#}
-          <a href="#features">Features</a>
+        <li class="footer-list-item">
+          <a href="{% url 'home' %}#features" class="footer-list-item-link">Features</a>
         </li>
-        <li>
-          {#  статистика доданих монет {У колекції вже 235 монет із 47 країн} #}
-          <a href="#stats">Stats</a>
+        <li class="footer-list-item">
+          <a href="{% url 'home' %}#stats" class="footer-list-item-link">Stats</a>
         </li>
-        <li>
-          {#  Контакти та форма зворотного зв'язку #}
-          <a href="#contact">Contacts</a>
+        <li class="footer-list-item">
+          <a href="{% url 'home' %}#contacts" class="footer-list-item-link">Contacts</a>
         </li>
       </ul>
     </nav>
+    <form class="footer-form">
+              <label for="email" class="footer-label">
+                <input
+                  id="email"
+                  type="email"
+                  name="email"
+                  placeholder="E-mail"
+                  class="footer-form-input"
+                />
+              </label>
+              <button type="submit" class="footer-button-form">
+                Subscribe
+                <svg class="subscribe-svg" width="24" height="24">
+                  <use href="{% static 'images/icons.svg' %}#icon-send"></use>
+                </svg>
+              </button>
+            </form>
+    <address>
+      <ul>
+        <li>
+          <a href="tel:380997577256" class="footer-list-link">Tel: +38 (099) 75-77-256</a>
+        </li>
+        <li>
+          <a href="mailto:sasha2056083@gmail.com" class="footer-list-link">Mail: sasha2056083@gmail.com</a>
+        </li>
+      </ul>
+      <ul class="footer-social">
+        <li>
+          <a href="https://www.instagram.com/ffooxxyy/?next=%2F">
+            <svg height="24" width="24" class="footer-social-svg footer-svg-instagram">
+              <use href="{% static 'images/icons.svg' %}#icon-instagram"></use>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/oleksandr-khlivniuk-27a413352/">
+            <svg height="24" width="24" class="footer-social-svg footer-svg-linkedin">
+              <use href="{% static 'images/icons.svg' %}#icon-linkedin"></use>
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </address>
     </div>
   </footer>
