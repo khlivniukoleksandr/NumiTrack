@@ -10,10 +10,14 @@
     <div class="main-content-area">
       <div class="side-panel">
         <div class="form-search-items">
-          <p class="filter-items-title">Search</p>
+          <p class="filter-items-title">Filter</p>
           <div class="filter-box">
             <form method="get" class="search-form-overlay">
-              {{ form.as_p }}
+              <label for="id_name"></label>
+              <input type="text" name="name" class="form-coin-filter-input" placeholder="Name" id="id_name">
+              <label for="id_description"></label>
+              <input type="text" name="description" class="form-coin-filter-input" placeholder="Description"
+                     id="id_description">
               <button type="submit" class="filter-button">Filter</button>
               <a href="{% url 'items:my-collections' %}" class="reset-button">Clear</a>
             </form>

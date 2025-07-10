@@ -18,7 +18,7 @@ h6,
 p,
 div,
 a,
-hr{
+hr {
     margin-top: 0;
     margin-bottom: 0;
 }
@@ -45,11 +45,11 @@ button {
 }
 
 .container {
-box-sizing: border-box;
-  margin: 50px 130px;
-  padding: 40px;
-  background-color: #fff;
-  height: 100%;
+    box-sizing: border-box;
+    margin: 50px 130px;
+    padding: 40px;
+    background-color: #fff;
+    height: 100%;
 }
 
 
@@ -145,26 +145,30 @@ box-sizing: border-box;
 .span-title {
     color: #05472d;
 }
+
 .hero-logo {
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     font-size: 1.5em;
-    color:#2b2b2b;
+    color: #2b2b2b;
 }
+
 .hero-logo:hover,
 .hero-logo:focus {
     color: #05472d
 }
+
 .hero-logo:hover .span-title,
 .hero-logo:focus .span-title {
-    color:#2b2b2b;
+    color: #2b2b2b;
 }
+
 .header-list {
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding:10px;
+    padding: 10px;
 }
 
 .header-navigation {
@@ -183,6 +187,7 @@ box-sizing: border-box;
     width: 700px;
     max-height: 20px;
 }
+
 /*___________________________Home page______________________________*/
 /* Home page */
 
@@ -238,6 +243,7 @@ box-sizing: border-box;
 }
 
 /* 2 Second section description*/
+
 .section-features {
     background-color: #fcfffa;
     border-radius: 10px;
@@ -272,14 +278,12 @@ box-sizing: border-box;
 
 .features-list {
     display: flex;
+    justify-content: center;
     gap: 24px;
     margin-top: 40px;
     margin-right: 24px;
 }
 
-.features-list-item {
-    width: calc((100% - 72px) / 4);
-}
 
 .features-list-title {
     font-size: 22px;
@@ -387,133 +391,173 @@ footer {
     background-image: linear-gradient(to top, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05));
     background-color: black;
 }
+
 .footer {
-    margin:30px 300px 30px 300px;
-    display:flex;
-    gap:25px;
+    margin: 30px 300px 0 300px;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    min-height: 250px;
 }
 
 .hero-logo-footer {
-    color:#fff;
+    color: #fff;
 }
 
 .footer-text {
     flex-direction: column;
 }
+
 .footer-description {
-    color:#c1bdbd;
-    margin-top:10px;
-    max-width:345px;
+    color: #c1bdbd;
+    margin-top: 10px;
+    max-width: 345px;
 }
 
 .footer-navigation-list {
-    padding:0;
-    display:flex;
+    padding: 0;
+    display: flex;
     flex-direction: column;
-    gap:5px;
+    gap: 5px;
 }
+
 /*Footer form*/
 .footer-form-subscribe {
-  margin-bottom: 16px;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 1.5;
-  letter-spacing: 0.02em;
-  color: #fff;
+    margin-bottom: 16px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+    color: #fff;
 }
 
 .footer-form {
-  display: flex;
-  gap: 24px;
+    display: flex;
+    gap: 24px;
     margin-left: 40px;
     align-items: center;
 }
 
 .footer-form-input {
-  width: 240px;
-  height: 40px;
-  font-size: 12px;
-  line-height: 2;
-  letter-spacing: 0.04em;
-  border: 1px solid #fff;
-  border-radius: 4px;
-  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
-  background-color: transparent;
-  padding-left: 16px;
-  color: #fff;
+    width: 240px;
+    height: 40px;
+    font-size: 12px;
+    line-height: 2;
+    letter-spacing: 0.04em;
+    border: 1px solid #fff;
+    border-radius: 4px;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
+    background-color: transparent;
+    padding-left: 16px;
+    color: #fff;
 }
 
 .footer-form-input::placeholder {
-  color: #fff;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 2;
-  letter-spacing: 0.04em;
+    color: #fff;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 2;
+    letter-spacing: 0.04em;
 }
+
 .footer-button-form {
-  cursor: pointer;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 1.5;
-  letter-spacing: 0.04em;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-  border: none;
-  gap: 16px;
-  border-radius: 4px;
-  padding: 8px 24px;
-  min-width: 165px;
-  height: 40px;
-  background-color: #4d5ae5;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.04em;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    border: none;
+    gap: 16px;
+    border-radius: 4px;
+    padding: 8px 24px;
+    min-width: 165px;
+    height: 40px;
+    background-color: #4d5ae5;
 }
+
+.footer-button-form:hover,
+.footer-button-form:focus {
+    background-color: #638aff;
+}
+
 .subscribe-svg {
-  fill: #fff;
-  margin-left: 16px;
+    fill: #fff;
+    margin-left: 16px;
 }
+
 /*Form end*/
 .footer-social-svg {
-    border:1px solid transparent;
-    border-radius:30%;
+    border: 1px solid transparent;
+    border-radius: 30%;
     transition: background-color 250ms ease, fill 250ms ease;
 }
 
 .footer-svg-instagram {
-    fill:#f700ff;
+    fill: #f700ff;
 }
+
 .footer-svg-instagram:focus,
 .footer-svg-instagram:hover {
-    fill:#fff;
+    fill: #fff;
     background-color: #f700ff;
 }
 
 .footer-svg-linkedin {
     fill: #10f;
 }
+
 .footer-svg-linkedin:focus,
 .footer-svg-linkedin:hover {
-    fill:#fff;
+    fill: #fff;
     background-color: #10f;
 }
+
 .footer-list-link {
-    color:#c1bdbd;
+    color: #c1bdbd;
 }
+
 .footer-list-link:hover,
 .footer-list-link:focus {
     color: #178af1;
     text-decoration: underline;
 }
+
 .footer-list-item-link {
-    color:#c1bdbd;
+    color: #c1bdbd;
 }
+
 .footer-social {
-    display:flex;
-    gap:15px;
+    display: flex;
+    gap: 15px;
 }
+
 /*________________________Profile_______________________*/
 /*Profile-page*/
+.sidebar-profile {
+    min-width: 200px;
+}
+
+.profile-sidebar {
+    border: 1px solid black;
+    margin-right: 10px;
+    padding: 0;
+    flex-shrink: 0;
+}
+
+.profile-sidebar-item {
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+.profile-content {
+    display: flex;
+}
+
 .profile-edit-buttons {
     display: flex;
     align-items: center;
@@ -541,10 +585,7 @@ footer {
     background-color: #d7d7d7;
     color: #101012;
     padding: 5px 10px;
-}
-
-.profile-header {
-    margin-left: 300px;
+    margin-right: 10px;
 }
 
 .profile-info {
@@ -641,26 +682,29 @@ footer {
 /*________________________My coins__________________________*/
 /*_______________________________________________Filter items_____________________________________________-*/
 /*Filter*/
+.form-search-items {
+    max-width: 235px;
+}
 
 .filter-items-title {
     font-size: 20px;
     font-weight: 600;
     border: 2px solid #dddddd;
     border-radius: 8px;
-    padding: 8px 73px;
-    margin-top:10px;
+    padding: 8px 85px;
 }
 
 
 .form-coin-filter-input {
     padding: 8px;
-    display: flex;
     border: 2px solid #dddddd;
     border-radius: 8px;
+    margin-bottom: 15px;
+    transition: border 250ms ease;
 }
 
 .form-coin-filter-input:hover {
-    border: 2px solid #d2ffe8;;
+    border: 2px solid #0056b3;
 }
 
 .filter-box {
@@ -669,46 +713,108 @@ footer {
 .search-form-overlay {
     background-color: #f7f7f7;
     border-radius: 5px;
-    padding: 20px;
+    padding: 10px;
 }
 
+.filter-button,
+.reset-button {
+    display: block;
+    width: 100%;
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box;
+}
 .filter-button {
-    padding: 3px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: 1px solid #007bff;
+    margin-top: 20px;
+    box-shadow: 0 2px 5px rgba(0, 123, 255, 0.2);
+}
+
+.filter-button:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+}
+
+.filter-button:active {
+    background-color: #004085;
+    border-color: #002752;
+    transform: translateY(1px);
+    box-shadow: none;
 }
 
 .reset-button {
-    color: #454545;
+    background-color: #f8f9fa;
+    color: #495057;
+    border: 1px solid #ced4da;
+    margin-top: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 .reset-button:hover {
-    color: #050505;
+    background-color: #e2e6ea;
+    border-color: #dae0e5;
+    color: #212529;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.reset-button:active {
+    background-color: #d3d9df;
+    border-color: #c6cdd4;
+    transform: translateY(1px);
+    box-shadow: none;
 }
 
 /*__________________________________________________End filter___________________________________________*/
 /*My coins*/
 .all-items-content {
-    display:flex;
+    display: flex;
     margin: 90px 40px;
     flex-direction: column;
-    align-items:flex-start;
-}
-.top-section-items {
-    display:flex;
     align-items: flex-start;
-    margin-bottom:20px;
-    gap:20px;
-    width:100%;
 }
+
+.top-section-items {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    gap: 20px;
+    width: 100%;
+}
+
 .main-content-area {
     display: flex;
     width: 100%;
     gap: 20px;
     align-items: flex-start;
-    margin-top:70px;
+    margin-top: 70px;
 }
+
 .side-panel {
-    width:300px;
+    width: 280px;
     flex-shrink: 0;
+}
+.content-display-area {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.sort-form-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px 0;
+    margin-right:110px;
+    gap:5px;
 }
 .button-add-new-item {
     border: 2px solid #919191;
@@ -723,12 +829,14 @@ footer {
     transition: background-color 350ms ease;
     color: #ffffff;
 }
+
 .item-title {
-    margin-bottom:0;
-    margin-left:400px;
+    margin-bottom: 0;
+    margin-left: 400px;
 }
+
 .container-items {
-        display: flex;
+    display: flex;
     flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
@@ -832,10 +940,11 @@ footer {
             #cd7f32 100%
     );
 }
+
 /*__________________________________Coins detail*___________________________________/ */
 
 .container-item-detail {
-    margin:10px 130px;
+    margin: 10px 130px;
 }
 
 .all-items-item-detail-content {
@@ -854,55 +963,67 @@ footer {
 
 .item-details-block {
     flex-grow: 1;
-    margin-left:60px;
+    margin-left: 60px;
 }
+
 .item-detail-header {
-    margin-top:60px;
-    margin-bottom:70px;
-    display:flex;
+    margin-top: 60px;
+    margin-bottom: 70px;
+    display: flex;
 }
+
 .coin-detail-back {
-    color:#2b2b2b;
-    display:flex;
+    color: #2b2b2b;
+    display: flex;
     align-items: center;
-    gap:5px;
+    gap: 5px;
 }
+
 .coin-detail-back svg {
-    fill:#2b2b2b;
+    fill: #2b2b2b;
 }
+
 .coin-detail-back:hover,
 .coin-detail-back:focus {
-    color:#c1bdbd;
+    color: #c1bdbd;
 }
+
 .coin-detail-back:hover svg,
-.coin-detail-back:focus svg{
+.coin-detail-back:focus svg {
     fill: #6c6c6c;
 }
+
 .item-detail-name {
-    margin:auto;
+    margin: auto;
 }
+
 .coin-detail-back {
     justify-self: flex-start;
 }
+
 .item-detail-description-title {
     margin-bottom: 40px;
 }
+
 .item-detail-description-subtitle {
     max-width: 500px;
     margin-bottom: 30px;
 }
+
 .item-detail-list {
     margin: 0;
     display: flex;
     flex-direction: column;
     gap: 10px;
-    padding:0;
+    padding: 0;
 }
+
 .button-back-to {
-    position:absolute;
+    position: absolute;
     top: 35px;
-  left: 350px;
+    left: 350px;
 }
+
 /*________________________________Cards for collections, banknotes, coins________________________________*/
 
 .card {
@@ -1000,17 +1121,157 @@ footer {
     max-width: 133px;
     margin-bottom: 10px;
 }
+
 .collection-description-area {
-    display:flex;
-    flex-direction:column;
+    display: flex;
+    flex-direction: column;
 }
+
 .collection-items {
     display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-  flex-grow: 1;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    flex-grow: 1;
 }
+
+
+/*_______________________________________LOGIN______________________________________*/
+.login-all-page {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(147deg, rgba(68, 117, 68, 1) 0%, rgba(86, 153, 86, 1) 11%, rgba(113, 194, 99, 1) 25%, rgba(122, 196, 120, 1) 45%, rgba(116, 230, 108, 1) 54%, rgba(118, 199, 95, 1) 71%, rgba(87, 189, 58, 1) 78%, rgba(61, 163, 33, 1) 89%);
+}
+
+.login-form-wrapper {
+    display: flex;
+    min-width: 30%;
+    min-height: 60%;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 1;
+    z-index: 999;
+    border-radius: 10px;
+    background: linear-gradient(147deg, rgba(108, 240, 245, 0.7) 16%, rgba(140, 222, 222, 0.7) 40%, rgba(119, 224, 224, 0.7) 65%, rgba(116, 214, 214, 0.6) 81%);
+}
+
+.form-group-login {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.input-login {
+    background-color: transparent;
+    border: 1px solid #000;
+    padding: 10px 10px 10px 40px;
+    width: 208px;
+    border-radius: 10px;
+    outline: transparent;
+}
+
+input:-webkit-autofill {
+    background-color: transparent;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.input-login:hover {
+    border: 1px solid #2b1df4;
+}
+
+.input-login:hover + .svg-login {
+    fill: #2b1df4;
+}
+
+.svg-login {
+    fill: black;
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.paragraph-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.paragraph-login::after,
+.paragraph-login::before {
+    width: 55px;
+    height: 1px;
+    background-color: #050505;
+    content: "";
+}
+
+.google-login-button {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+
+    font-size: 15px;
+    font-weight: 600;
+    width: 262px;
+    padding: 10px;
+
+    background: linear-gradient(to right, #4D5AE5, #414BB2);
+    color: #fff;
+
+    border: none;
+    border-radius: 10px;
+
+    margin-bottom: 10px;
+}
+
+.google-login-button:hover,
+.google-login-button:focus {
+    background-color: #4d5ae5;
+}
+
+.button-login {
+    font-size: 17px;
+    font-weight: 600;
+    width: 262px;
+    padding: 10px;
+
+    text-align: center;
+    cursor: pointer;
+
+    background: linear-gradient(to right, #4D5AE5, #414BB2);
+    color: #fff;
+
+    border: none;
+    border-radius: 10px;
+
+    margin-bottom: 10px;
+}
+
+.dont-have-account-login,
+.forgot-password-login {
+    font-size: 15px;
+}
+
+.link-sign-up,
+.forgot-password-login {
+    color: #4d5ae5;
+}
+
+.login-title {
+    color: #fff;
+    font-size: 30px;
+}
+
+/*_________________Pagination____________________*/
 
 .pagination {
     display: flex;
@@ -1019,7 +1280,16 @@ footer {
 }
 
 .page-item {
-    border: 1px solid #c1bdbd;
+        border: none;
     padding: 5px;
     border-radius: 12px;
+    background-color: #4d5ae5;
+}
+.page-item-nav {
+    border-radius: 12px;
+    padding: 5px;
+    background: linear-gradient(to right, #4D5AE5, #414BB2);
+}
+.page-link {
+    color:#fff;
 }

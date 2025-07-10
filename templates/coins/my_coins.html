@@ -11,29 +11,10 @@
 
       <div class="side-panel">
 
-        <form method="get" id="sort-form">
-          <input type="hidden" name="name" value="{{ request.GET.name|default:'' }}">
-          <input type="hidden" name="year" value="{{ request.GET.year|default:'' }}">
-          <input type="hidden" name="country" value="{{ request.GET.country|default:'' }}">
-          <input type="hidden" name="material" value="{{ request.GET.material|default:'' }}">
-
-          <select name="sort_by" id="sort_by" onchange="this.form.submit()">
-            <option value="year" {% if request.GET.sort_by == 'year' %}selected{% endif %}>Year</option>
-            <option value="name" {% if request.GET.sort_by == 'name' %}selected{% endif %}>Name</option>
-            <option value="country" {% if request.GET.sort_by == 'country' %}selected{% endif %}>Country</option>
-            <option value="material" {% if request.GET.sort_by == 'material' %}selected{% endif %}>Material</option>
-          </select>
-
-          <select name="order" id="order" onchange="this.form.submit()">
-            <option value="asc" {% if request.GET.order == 'asc' %}selected{% endif %}>+</option>
-            <option value="desc" {% if request.GET.order == 'desc' %}selected{% endif %}>-</option>
-          </select>
-
-        </form>
 
         <div class="form-search-items">
 
-          <p class="filter-items-title">Search</p>
+          <p class="filter-items-title">Filter</p>
           <div class="filter-box">
 
             <form method="get" class="search-form-overlay">
@@ -46,6 +27,28 @@
 
           </div>
         </div>
+      </div>
+
+    <div class="content-display-area">
+      <div class="sort-form-wrapper">
+      <label for="sort_by">Sort by:</label>
+        <form method="get" id="sort-form">
+          <input type="hidden" name="name" value="{{ request.GET.name|default:'' }}">
+          <input type="hidden" name="year" value="{{ request.GET.year|default:'' }}">
+          <input type="hidden" name="country" value="{{ request.GET.country|default:'' }}">
+          <input type="hidden" name="material" value="{{ request.GET.material|default:'' }}">
+
+          <select name="sort_by" id="sort_by" onchange="this.form.submit()">
+            <option value="year" {% if request.GET.sort_by == 'year' %}selected{% endif %}>Year</option>
+          <option value="-year" {% if request.GET.sort_by == '-year' %}selected{% endif %}>Year(decline)</option>
+
+            <option value="name" {% if request.GET.sort_by == 'name' %}selected{% endif %}>Name(a-z)</option>
+          <option value="-name" {% if request.GET.sort_by == '-name' %}selected{% endif %}>Name(z-a)</option>
+
+            <option value="country" {% if request.GET.sort_by == 'country' %}selected{% endif %}>Country</option>
+            <option value="material" {% if request.GET.sort_by == 'material' %}selected{% endif %}>Material</option>
+          </select>
+        </form>
       </div>
 
       <div class="container-items">
@@ -91,6 +94,7 @@
         {% endif %}
       </div>
     </div>
+        </div>
   </div>
 {% endblock %}
 

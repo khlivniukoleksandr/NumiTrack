@@ -182,7 +182,6 @@ class CoinListView(LoginRequiredMixin, generic.ListView):
         country = self.request.GET.get("country")
         material = self.request.GET.get("material")
         sort_by = self.request.GET.get("sort_by", "year")
-        order = self.request.GET.get("order", "asc")
         if name:
             queryset = queryset.filter(name__icontains=name)
         if year:
@@ -191,8 +190,7 @@ class CoinListView(LoginRequiredMixin, generic.ListView):
             queryset = queryset.filter(country__icontains=country)
         if material:
             queryset = queryset.filter(material__icontains=material)
-        if order == "desc":
-            sort_by = "-" + sort_by
+
         queryset = queryset.order_by(sort_by)
         return queryset
 
@@ -261,15 +259,12 @@ class BanknoteListView(LoginRequiredMixin, generic.ListView):
         year = self.request.GET.get("year")
         country = self.request.GET.get("country")
         sort_by = self.request.GET.get("sort_by", "year")
-        order = self.request.GET.get("order", "asc")
         if name:
             queryset = queryset.filter(name__icontains=name)
         if year:
             queryset = queryset.filter(year__icontains=year)
         if country:
             queryset = queryset.filter(country__icontains=country)
-        if order == "desc":
-            sort_by = "-" + sort_by
         queryset = queryset.order_by(sort_by)
         return queryset
 

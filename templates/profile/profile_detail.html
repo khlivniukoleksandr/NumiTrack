@@ -3,6 +3,8 @@
 
 {% block content %}
   <div class="container">
+  <div class="profile-content">
+
     <div class="profile-header">
       <div class="profile-info">
         {% if collector.avatar %}
@@ -52,6 +54,7 @@
               <h2 class="profile-name">{{ collector.first_name }} {{ collector.last_name }}</h2>
               {% if request.user == collector %}
                 <a href="?edit=true" class="edit-profile-link">Edit profile</a>
+                <a href="{% url 'password_change' %}" class="edit-profile-link">Change password</a>
               {% endif %}
             </div>
             <p class="profile-bio">{{ collector.bio }}</p>
@@ -83,33 +86,36 @@
           {% if request.user == collector %}
             <a href="{% url 'items:my-collections' %}" class="profile-links-items">My collections</a>
           {% else %}
-            <a href="{% url 'items:my-collections' %}" class="profile-links-items">View all {{ collector.username }} collections</a>
+            <a href="{% url 'items:my-collections' %}" class="profile-links-items">View all {{ collector.username }}
+              collections</a>
           {% endif %}
-        {% if request.user == collector %}
+          {% if request.user == collector %}
             <a href="{% url 'items:my-coins' %}" class="profile-links-items">My coins</a>
           {% else %}
             <a href="{% url 'items:my-coins' %}" class="profile-links-items">View all {{ collector.username }} coins</a>
           {% endif %}
-        {% if request.user == collector %}
+          {% if request.user == collector %}
             <a href="{% url 'items:my-banknotes' %}" class="profile-links-items">My banknotes</a>
           {% else %}
-            <a href="{% url 'items:my-banknotes' %}" class="profile-links-items">View all {{ collector.username }} banknotes</a>
+            <a href="{% url 'items:my-banknotes' %}" class="profile-links-items">View all {{ collector.username }}
+              banknotes</a>
           {% endif %}
         </div>
       </div>
       <div class="favorite-items">
         <h3 class="favourite-items-title">Favourite items</h3>
         <p>In development...</p>
+        <div class="profile-button-logout-div">
+          {% if request.user == collector %}
+            <form method="post" action="{% url 'logout' %}">
+              {% csrf_token %}
+              <button type="submit" class="button-profile-logout">Logout</button>
+            </form>
+          {% endif %}
+        </div>
       </div>
     </div>
-<div class="profile-button-logout-div">
-    {% if request.user == collector %}
-      <form method="post" action="{% url 'logout' %}">
-        {% csrf_token %}
-        <button type="submit" class="button-profile-logout">Logout</button>
-      </form>
-    {% endif %}
-</div>
+  </div>
   </div>
 {% endblock %}
 
