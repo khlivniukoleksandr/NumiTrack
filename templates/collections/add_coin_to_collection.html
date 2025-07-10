@@ -1,23 +1,82 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
+{% load static %}
 {% block content %}
-  <h2>Add coin to collection: {{ collection.name }}</h2>
+  <div class="all-items-content">
+    <div class="top-section-items">
+      <h2 class="item-title">Add coin to collection: {{ collection.name }}</h2>
+    </div>
+    <a href="{% url 'items:my-collections' %}" class="item-detail-back">
+      <svg width="24" height="24">
+        <use href="/static/images/icons.svg#icon-back"></use>
+      </svg>
+      Back to collections
+    </a>
 
-  {% if available_coins %}
-    <ul>
-      {% for coin in available_coins %}
-        <li>
-          {{ coin.name }} ({{ coin.year }})
-          <form method="post" style="display:inline;">
-            {% csrf_token %}
-            <input type="hidden" name="coin_id" value="{{ coin.id }}">
-            <button type="submit" class="btn btn-sm btn-outline-success">Add</button>
-          </form>
-        </li>
-      {% endfor %}
-    </ul>
-  {% else %}
-    <p>All your coins are already in this collection 🎉</p>
-  {% endif %}
+    <div class="main-content-area">
+      <div class="side-panel">
 
-  <a href="{% url 'items:collection-detail' pk=collection.pk %}">← Back to collection</a>
+        <div class="form-search-items">
+
+          <p class="filter-items-title">Filter</p>
+          <div class="filter-box">
+
+            <form method="get" class="search-form-overlay">
+              {{ form.as_p }}
+              <input type="hidden" name="sort_by" value="{{ request.GET.sort_by|default:'year' }}">
+              <input type="hidden" name="order" value="{{ request.GET.order|default:'asc' }}">
+              <button type="submit" class="filter-button">Filter</button>
+              <a href="{% url 'items:my-coins' %}" class="reset-button">Clear</a>
+            </form>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="container-items">
+
+        {% if available_coins %}
+        {% for coin in available_coins %}
+
+            <form method="post" style="display:inline;">
+        {% csrf_token %}
+        <input type="hidden" name="coin_id" value="{{ coin.id }}">
+        <button type="submit" class="button-add-item-to-collection">
+            <div class="card
+        {% if coin.material|lower in 'silver срібло серебро' %}
+          card-silver
+        {% elif coin.material|lower in 'gold золото' %}
+          card-gold
+        {% elif coin.material|lower in 'bronze бронза' %}
+          card-bronze
+        {% endif %}
+      ">
+                <div class="card-inner-scale-wrapper">
+
+                  {% if coin.image %}
+                    <img src="{{ coin.image.url }}" alt="{{ coin.name }}" class="card-image"/>
+                  {% else %}
+                    <img src="{% static 'images/default-cover-collections.png' %}" alt="{{ coin.name }}"
+                         class="card-image"/>
+                  {% endif %}
+
+                  <div class="card-content-wrapper">
+                    <h4 class="card-item-name">{{ coin.name }}</h4>
+
+                    <div class="item-description-card">
+                      <p class="coin-material">Material: {{ coin.material }}</p>
+                      <p class="coin-year">Year: {{ coin.year }}</p>
+                      <p class="coin-country">Country: {{ coin.country }}</p>
+                      <p class="coin-tirage">Tirage: {{ coin.tirage }}</p>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </button>
+            </form>
+          {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
 {% endblock %}
+

@@ -528,7 +528,7 @@ footer {
 }
 
 .footer-list-item-link {
-    color: #c1bdbd;
+    color: #ffffff;
 }
 
 .footer-social {
@@ -942,7 +942,48 @@ footer {
 }
 
 /*__________________________________Coins detail*___________________________________/ */
+.update-button {
+    background-color: #28a745;
+    color: #fff;
+    border: 1px solid #28a745;
+    box-shadow: 0 2px 5px rgba(40, 167, 69, 0.2);
+    border-radius: 10px;
+}
 
+.update-button:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+    box-shadow: 0 4px 10px rgba(40, 167, 69, 0.3);
+}
+
+.update-button:active {
+    background-color: #1e7e34;
+    border-color: #1c7430;
+    transform: translateY(1px);
+    box-shadow: none;
+}
+
+.delete-button {
+    background-color: #dc3545;
+    color: #fff;
+    border: 1px solid #dc3545;
+    box-shadow: 0 2px 5px rgba(220, 53, 69, 0.2);
+        border-radius: 10px;
+    margin-right:10px;
+}
+
+.delete-button:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+    box-shadow: 0 4px 10px rgba(220, 53, 69, 0.3);
+}
+
+.delete-button:active {
+    background-color: #bd2130;
+    border-color: #ac222e;
+    transform: translateY(1px);
+    box-shadow: none;
+}
 .container-item-detail {
     margin: 10px 130px;
 }
@@ -972,24 +1013,24 @@ footer {
     display: flex;
 }
 
-.coin-detail-back {
+.item-detail-back {
     color: #2b2b2b;
     display: flex;
     align-items: center;
     gap: 5px;
 }
 
-.coin-detail-back svg {
+.item-detail-back svg {
     fill: #2b2b2b;
 }
 
-.coin-detail-back:hover,
-.coin-detail-back:focus {
+.item-detail-back:hover,
+.item-detail-back:focus {
     color: #c1bdbd;
 }
 
-.coin-detail-back:hover svg,
-.coin-detail-back:focus svg {
+.item-detail-back:hover svg,
+.item-detail-back:focus svg {
     fill: #6c6c6c;
 }
 
@@ -997,7 +1038,7 @@ footer {
     margin: auto;
 }
 
-.coin-detail-back {
+.item-detail-back {
     justify-self: flex-start;
 }
 
@@ -1121,7 +1162,10 @@ footer {
     max-width: 133px;
     margin-bottom: 10px;
 }
-
+.button-add-item-to-collection {
+    border:none;
+    background-color:transparent;
+}
 .collection-description-area {
     display: flex;
     flex-direction: column;
@@ -1292,4 +1336,126 @@ input:-webkit-autofill {
 }
 .page-link {
     color:#fff;
+}
+
+/*_________________________Coin Form_____________________*/
+.form-container {
+    max-width: 600px;
+    margin: 90px auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+    box-sizing: border-box;
+}
+
+.form-title {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 2.2em;
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.form-title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(to right, #ffd700, #b8860b);
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+
+
+.form-input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #333;
+    background-color: #fcfcfc;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box;
+}
+
+.form-input:focus {
+    border-color: #b8860b;
+    box-shadow: 0 0 0 3px rgba(184, 134, 11, 0.25);
+    outline: none;
+}
+
+
+.submit-button {
+    display: block;
+    width: 100%;
+    padding: 15px 25px;
+    font-size: 1.15em;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    background: linear-gradient(to bottom, #ffd700, #b8860b);
+    color: #4a3c22;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 18px rgba(255, 215, 0, 0.35);
+}
+
+.submit-button:hover {
+    background: linear-gradient(to bottom, #b8860b, #ffd700);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.45);
+}
+
+.submit-button:active {
+    transform: translateY(0);
+    box-shadow: none;
+    background: linear-gradient(to bottom, #a88719, #a37c00);
+}
+
+/*Collection Form*/
+
+.form-text-area {
+    resize:none;
+}
+.form-collection-title::after {
+        background: linear-gradient(to right, #0761ff, #00ffbc);
+}
+.submit-collection-button {
+    background: linear-gradient(to right, #0761ff, #00ffbc);
+    color: #4a3c22;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 18px rgba(7, 179, 228, 0.35);
+}
+
+
+.submit-collection-button:hover {
+    background: linear-gradient(to right, #10fb00, #205c08);
+    box-shadow: 0 8px 25px rgba(5, 232, 9, 0.45);
+}
+
+/*Banknote form*/
+.form-banknote-title::after {
+        background: linear-gradient(to right, #10fb00, #205c08);
+}
+.submit-banknote-button {
+        background: linear-gradient(to right, #10fb00, #205c08);
+    color: #4a3c22;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 18px rgba(47, 220, 8, 0.35);
+}
+.submit-banknote-button:hover {
+   background: linear-gradient(to bottom, #285e0a, #00ff09);
+    box-shadow: 0 8px 25px rgba(5, 232, 9, 0.45);
 }

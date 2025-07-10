@@ -53,6 +53,7 @@ class Banknote(models.Model):
     image = models.ImageField(upload_to="banknotes/", blank=True, null=True)
     owner = models.ForeignKey(Collector, on_delete=models.CASCADE, related_name="banknotes")
 
+
     def __str__(self):
         return f"Banknote {self.name} (Country:{self.country} Year: {self.year})"
 

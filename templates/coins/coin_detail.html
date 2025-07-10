@@ -3,7 +3,7 @@
 {% block content %}
   <div class="container container-item-detail">
   <div class="item-detail-header">
-<a href="{% url 'items:my-coins' %}" class="coin-detail-back">
+<a href="{% url 'items:my-coins' %}" class="item-detail-back">
   <svg width="24" height="24">
     <use href="/static/images/icons.svg#icon-back"></use>
   </svg>
@@ -21,14 +21,11 @@
         {% endif %}
 
         {% if coin.owner == user %}
-          <a href="{% url 'items:coin-delete' pk=coin.pk %}">
+          <a href="{% url 'items:coin-delete' pk=coin.pk %}" class="delete-button">
             Delete Coin
           </a>
+        <a href="{% url 'items:coin-edit' pk=coin.id %}" class="update-button">Update coin</a>
         {% endif %}
-
-      {% if coin.owner == user %}
-        <a href="{% url 'items:coin-edit' pk=coin.id %}">Update coin</a>
-      {% endif %}
       </div>
 
       <div class="item-details-block">

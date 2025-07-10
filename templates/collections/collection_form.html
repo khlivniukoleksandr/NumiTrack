@@ -2,13 +2,80 @@
 {% load static %}
 
 {% block content %}
-<form method="post" enctype="multipart/form-data">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Submit</button>
-</form>
+  <div class="form-container">
+<a href="{% url 'items:my-collections' %}" class="item-detail-back">
+  <svg width="24" height="24">
+    <use href="/static/images/icons.svg#icon-back"></use>
+  </svg>
+  Back to my collections
+</a>
+    <h2 class="form-title form-collection-title">
+      {% if form.instance.pk %}
+        Edit collection: {{ form.instance.name }}
+      {% else %}
+        Add new collection
+      {% endif %}
+    </h2>
+    <form method="post" enctype="multipart/form-data" class="coin-form">
+      {% csrf_token %}
 
+      {% for field in form %}
+        <div class="form-group">
+          {{ field.label_tag }}
+
+          {% if field.name == 'image' %}
+            {% if form.instance.pk %}
+              <div class="file-input-group django-default-image-field">
+                  {{ field }}
+                  {% if field.help_text %}
+                    <small class="form-text text-muted">{{ field.help_text }}</small>
+                  {% endif %}
+                  {% if field.errors %}
+                    <div class="form-error">{{ field.errors }}</div>
+                  {% endif %}
+              </div>
+            {% else %}
+
+              <div class="file-input-group custom-image-field">
+
+                {{ field }}
+
+                <span class="file-input-label">
+                  <span class="file-input-text">Select a file</span>
+                </span>
+
+                {% if field.help_text %}
+                  <small class="form-text text-muted">{{ field.help_text }}</small>
+                {% endif %}
+                {% if field.errors %}
+                  <div class="form-error">{{ field.errors }}</div>
+                {% endif %}
+              </div>
+            {% endif %}
+          {% else %}
+
+            {{ field }}
+            {% if field.help_text %}
+              <small class="form-text text-muted">{{ field.help_text }}</small>
+            {% endif %}
+            {% if field.errors %}
+              <div class="form-error">{{ field.errors }}</div>
+            {% endif %}
+          {% endif %}
+        </div>
+      {% endfor %}
+
+      <button type="submit" class="submit-button submit-collection-button">
+        {% if form.instance.pk %}
+          Update Collection
+        {% else %}
+          Add Collection
+        {% endif %}
+      </button>
+    </form>
+  </div>
 {% endblock %}
 
 {% block footer %}
+
 {% endblock %}

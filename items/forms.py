@@ -8,8 +8,8 @@ class CustomCollectionForm(forms.ModelForm):
         model = Collection
         fields = ["name", "description", "cover"]
         widgets = {
-            "name": forms.TextInput(attrs={"class": "form-control my-custom-class"}),
-            "description": forms.Textarea(attrs={"class": "form-control my-custom-class"}),
+            "name": forms.TextInput(attrs={"class": "form-input"}),
+            "description": forms.Textarea(attrs={"class": "form-input form-text-area"}),
             "cover": forms.ClearableFileInput(attrs={"class": "form-control-file"}),
         }
 
@@ -18,14 +18,24 @@ class CustomCoinForm(forms.ModelForm):
         model = Coin
         fields = ["name", "country", "year", "denomination", "material", "tirage", "image"]
         widgets = {
-            "name": forms.TextInput(attrs={"class": "form-control my-custom-class"}),
-            "country": forms.TextInput(attrs={"class": "form-control my-custom-class"}),
-            "year": forms.TextInput(attrs={"class": "form-control my-custom-class"}),
-            "denomination": forms.TextInput(attrs={"class": "form-control my-custom-class"}),
-            "material": forms.TextInput(attrs={"class": "form-control my-custom-class"}),
-            "tirage": forms.TextInput(attrs={"class": "form-control my-custom-class"}),
-            "image": forms.ClearableFileInput(attrs={"class": "form-control-file"}),
+            "name": forms.TextInput(attrs={"class": "form-input"}),
+            "country": forms.TextInput(attrs={"class": "form-input"}),
+            "year": forms.TextInput(attrs={"class": "form-input"}),
+            "denomination": forms.TextInput(attrs={"class": "form-input"}),
+            "material": forms.TextInput(attrs={"class": "form-input"}),
+            "tirage": forms.TextInput(attrs={"class": "form-input"}),
+            "image": forms.ClearableFileInput(attrs={
+                "class": "form-file-input",
+                "data-initial-file-name": "django_placeholder"
+            }),
         }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        if self.instance and self.instance.image:
+            self.fields['image'].widget.attrs['data-initial-file-name'] = self.instance.image.name
+        else:
+            self.fields['image'].widget.attrs['data-initial-file-name'] = ''
 
 
 class CustomBanknoteForm(forms.ModelForm):
@@ -33,12 +43,13 @@ class CustomBanknoteForm(forms.ModelForm):
         model = Banknote
         fields = ["name", "country", "year", "value", "tirage", "image"]
         widgets = {
-            "name": forms.TextInput(attrs={"class": "form-control my-custom-class"}),
-            "country": forms.TextInput(attrs={"class": "form-control my-custom-class"}),
-            "year": forms.TextInput(attrs={"class": "form-control my-custom-class"}),
-            "value": forms.TextInput(attrs={"class": "form-control my-custom-class"}),
-            "tirage": forms.TextInput(attrs={"class": "form-control my-custom-class"}),
-            "image": forms.ClearableFileInput(attrs={"class": "form-control-file"}),
+            "name": forms.TextInput(attrs={"class": "form-input"}),
+            "country": forms.TextInput(attrs={"class": "form-input"}),
+            "year": forms.TextInput(attrs={"class": "form-input"}),
+            "value": forms.TextInput(attrs={"class": "form-input"}),
+            "tirage": forms.TextInput(attrs={"class": "form-input"}),
+            "image": forms.ClearableFileInput(attrs={"class": "form-file-input",
+                "data-initial-file-name": "django_placeholder"}),
         }
 
 

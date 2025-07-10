@@ -4,7 +4,7 @@
   <div class="container container-item-detail">
 
     <div class="item-detail-header">
-      <a href="{% url 'items:my-coins' %}" class="coin-detail-back">
+      <a href="{% url 'items:my-banknotes' %}" class="item-detail-back">
         <svg width="24" height="24">
           <use href="/static/images/icons.svg#icon-back"></use>
         </svg>
@@ -23,13 +23,10 @@
         {% endif %}
 
         {% if banknote.owner == user %}
-          <a href="{% url 'items:banknote-delete' pk=banknote.pk %}">
+          <a href="{% url 'items:banknote-delete' pk=banknote.pk %}" class="delete-button">
             Delete Banknote
           </a>
-        {% endif %}
-
-        {% if banknote.owner == user %}
-          <a href="{% url 'items:coin-edit' pk=banknote.id %}">Update banknote</a>
+          <a href="{% url 'items:banknote-edit' pk=banknote.id %}" class="update-button">Update banknote</a>
         {% endif %}
       </div>
 

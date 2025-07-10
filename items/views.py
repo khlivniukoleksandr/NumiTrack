@@ -3,7 +3,7 @@ from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.views import generic
-from django.views.generic import UpdateView, CreateView, DeleteView, TemplateView
+from django.views.generic import UpdateView, CreateView, DeleteView, ListView
 
 from items.forms import (CustomCollectionForm,
                          CustomCoinForm,
@@ -87,7 +87,7 @@ class CollectionCreateView(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy("items:my-collections")
 
     def form_valid(self, form):
-        # Автоматично встановлюємо власника перед збереженням
+
         form.instance.owner = self.request.user
         return super().form_valid(form)
 
@@ -127,15 +127,41 @@ class CollectionDeleteView(LoginRequiredMixin, DeleteView):
         return get_object_or_404(Collection, pk=self.kwargs["pk"], owner=self.request.user)
 
 
-class AddCoinToCollectionView(LoginRequiredMixin, TemplateView):
+class AddCoinToCollectionView(LoginRequiredMixin, ListView):
     template_name = "collections/add_coin_to_collection.html"
+    context_object_name = "available_coins"
+    paginate_by = 15
+
+    def get_queryset(self):
+        collection_pk = self.kwargs["pk"]
+        self.collection = get_object_or_404(Collection, pk=collection_pk, owner=self.request.user)
+
+        queryset = self.request.user.coins.exclude(
+            pk__in=self.collection.coins.values_list("pk", flat=True)
+        )
+
+        self.form = CoinFilterForm(self.request.GET)
+        if self.form.is_valid():
+            name = self.form.cleaned_data.get("name")
+            year = self.form.cleaned_data.get("year")
+            country = self.form.cleaned_data.get("country")
+            material = self.form.cleaned_data.get("material")
+
+            if name:
+                queryset = queryset.filter(name__icontains=name)
+            if year:
+                queryset = queryset.filter(year__icontains=year)
+            if country:
+                queryset = queryset.filter(country__icontains=country)
+            if material:
+                queryset = queryset.filter(material__icontains=material)
+        return queryset
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        collection = get_object_or_404(Collection, pk=self.kwargs["pk"], owner=self.request.user)
-        available_coins = self.request.user.coins.exclude(pk__in=collection.coins.values_list("pk", flat=True))
-        context["collection"] = collection
-        context["available_coins"] = available_coins
+
+        context["collection"] = self.collection
+        context['form'] = self.form
         return context
 
     def post(self, request, *args, **kwargs):
@@ -148,15 +174,38 @@ class AddCoinToCollectionView(LoginRequiredMixin, TemplateView):
 
 
 
-class AddBanknoteToCollectionView(LoginRequiredMixin, TemplateView):
+class AddBanknoteToCollectionView(LoginRequiredMixin, ListView):
     template_name = "collections/add_banknote_to_collection.html"
+    context_object_name = "available_banknotes"
+    paginate_by = 15
+
+    def get_queryset(self):
+        collection_pk = self.kwargs["pk"]
+        self.collection = get_object_or_404(Collection, pk=collection_pk, owner=self.request.user)
+
+        queryset = self.request.user.banknotes.exclude(
+            pk__in=self.collection.banknotes.values_list("pk", flat=True)
+        )
+
+        self.form = BanknoteFilterForm(self.request.GET)
+        if self.form.is_valid():
+            name = self.form.cleaned_data.get("name")
+            year = self.form.cleaned_data.get("year")
+            country = self.form.cleaned_data.get("country")
+
+            if name:
+                queryset = queryset.filter(name__icontains=name)
+            if year:
+                queryset = queryset.filter(year__icontains=year)
+            if country:
+                queryset = queryset.filter(country__icontains=country)
+        return queryset
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        collection = get_object_or_404(Collection, pk=self.kwargs["pk"], owner=self.request.user)
-        available_banknotes = self.request.user.banknotes.exclude(pk__in=collection.banknotes.values_list("pk", flat=True))
-        context["collection"] = collection
-        context["available_banknotes"] = available_banknotes
+
+        context["collection"] = self.collection
+        context['form'] = self.form
         return context
 
     def post(self, request, *args, **kwargs):
@@ -166,7 +215,6 @@ class AddBanknoteToCollectionView(LoginRequiredMixin, TemplateView):
             banknote = get_object_or_404(Banknote, pk=banknote_id, owner=request.user)
             collection.banknotes.add(banknote)
         return redirect("items:add-banknote-to-collection", pk=collection.pk)
-
 
 
 class CoinListView(LoginRequiredMixin, generic.ListView):
@@ -224,7 +272,6 @@ class CoinCreateView(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy('items:my-coins')
 
     def form_valid(self, form):
-        # Автоматично встановлюємо власника перед збереженням
         form.instance.owner = self.request.user
         return super().form_valid(form)
 
@@ -326,6 +373,18 @@ class PublicCollectionListView(generic.ListView):
     paginate_by = 15
 
     def get_queryset(self):
-        return Collection.objects.all()
+        queryset = Collection.objects.all()
+        name = self.request.GET.get("name")
+        description = self.request.GET.get("description")
+        if name:
+            queryset = queryset.filter(name__icontains=name)
+        if description:
+            queryset = queryset.filter(description__icontains=description)
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = CollectionFilterForm(self.request.GET or None)
+        return context
 
 
