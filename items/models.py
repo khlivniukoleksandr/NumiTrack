@@ -43,6 +43,12 @@ class Coin(models.Model):
     def get_absolute_url(self):
         return reverse("items:coin-detail", args=[str(self.id)])
 
+    def delete(self, *args, **kwargs):
+        if self.image:
+            self.image.delete()
+        super().delete(*args, **kwargs)
+
+
 class Banknote(models.Model):
     description = models.TextField(blank=True, null=True)
     name = models.CharField(max_length=100)
@@ -60,6 +66,12 @@ class Banknote(models.Model):
     def get_absolute_url(self):
         return reverse("items:banknote-detail", args=[str(self.id)])
 
+    def delete(self, *args, **kwargs):
+        if self.image:
+            self.image.delete()
+        super().delete(*args, **kwargs)
+
+
 class Collection(models.Model):
     cover = CloudinaryField('image', blank=True, null=True)
     owner = models.ForeignKey(Collector, on_delete=models.CASCADE)
@@ -73,4 +85,10 @@ class Collection(models.Model):
 
     def get_absolute_url(self):
         return reverse("items:collection-detail", args=[str(self.id)])
+
+    def delete(self, *args, **kwargs):
+        if self.cover:
+            self.cover.delete()
+        super().delete(*args, **kwargs)
+
 
