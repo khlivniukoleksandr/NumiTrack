@@ -32,10 +32,12 @@ class CustomCoinForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+
+        initial_name = ""
         if self.instance and self.instance.image:
-            self.fields['image'].widget.attrs['data-initial-file-name'] = self.instance.image.name
-        else:
-            self.fields['image'].widget.attrs['data-initial-file-name'] = ''
+            initial_name = getattr(self.instance.image, "public_id", "")
+
+        self.fields['image'].widget.attrs['data-initial-file-name'] = initial_name
 
 
 class CustomBanknoteForm(forms.ModelForm):
