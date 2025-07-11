@@ -2,7 +2,6 @@ from .base import  *
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
-DEBUG = False
 
 ALLOWED_HOSTS = ["127.0.0.1"]
 
@@ -26,12 +25,17 @@ DATABASES = {
         },
     }
 }
+# Для локального редагування закомітити ці рядки_____________________
 
-# Налаштування безпеки
+# DEBUG = False
+#
+# # Налаштування безпеки
+#
+# SECURE_SSL_REDIRECT = True
+# SESSION_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True
 
-SECURE_SSL_REDIRECT = True
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
+# _____________________________________________________________________
 
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': os.environ['CLOUDINARY_CLOUD_NAME'],
