@@ -5,6 +5,9 @@ django-debug-toolbar==5.2.0
 django-extensions==4.1
 graphviz==0.21
 pillow==11.2.1
+psycopg2-binary==2.9.10
 python-decouple==3.8
+python-dotenv==1.1.1
 sqlparse==0.5.3
 tzdata==2025.2
+whitenoise==6.9.0

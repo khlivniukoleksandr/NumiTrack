@@ -1,0 +1,402 @@
+[
+{
+    "model": "items.collector",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$Bv59mO3XtmRw3mJXaZc3nu$+3VUnClQSRTDCxrue0ydOj4ZyoFhMWWMd5oFzVRg4zM=",
+        "last_login": "2025-07-10T14:43:55.445Z",
+        "is_superuser": true,
+        "username": "khlivniukoleksandr",
+        "first_name": "Oleksandr",
+        "last_name": "Khlivniuk",
+        "email": "sasha2056083@gmail.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2025-06-27T16:12:04Z",
+        "bio": "Hello my name is Khlivniuk Oleksandr and it's my first project.Here you can save yours coins and banknotes, and search another's coins and banknotes of another's user's",
+        "avatar": "avatars/My_photo.jpg",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "items.collector",
+    "pk": 3,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$VHJQXcVG8a0vG8ck4pD0w5$NzN/87Rb5ivk6P0n61VaSB0wbEWovKyV6gZvyBmyDz0=",
+        "last_login": "2025-07-01T20:32:10.261Z",
+        "is_superuser": false,
+        "username": "sasha2056",
+        "first_name": "sasha",
+        "last_name": "khlivniuk",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-06-30T20:14:22Z",
+        "bio": "test",
+        "avatar": "",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "items.coin",
+    "pk": 1,
+    "fields": {
+        "description": null,
+        "name": "Боспорське царство у футлярі",
+        "country": "Україна",
+        "year": 2010,
+        "denomination": "200 гривень",
+        "material": "Gold",
+        "tirage": "10 000",
+        "image": "coins/Боспорське_царство.webp",
+        "owner": 1
+    }
+},
+{
+    "model": "items.coin",
+    "pk": 2,
+    "fields": {
+        "description": null,
+        "name": "1 cent",
+        "country": "USA",
+        "year": 2010,
+        "denomination": "1 cent",
+        "material": "Bronze",
+        "tirage": "100 000 000",
+        "image": "coins/1_cent.jpg",
+        "owner": 1
+    }
+},
+{
+    "model": "items.coin",
+    "pk": 4,
+    "fields": {
+        "description": null,
+        "name": "Києво-печерська лавра у сувенірному пакуванні",
+        "country": "Ukraine",
+        "year": 1996,
+        "denomination": "200 гривень",
+        "material": "Gold",
+        "tirage": "20 000",
+        "image": "coins/kyevo-pecherska_lavra-200-a.webp",
+        "owner": 1
+    }
+},
+{
+    "model": "items.coin",
+    "pk": 6,
+    "fields": {
+        "description": null,
+        "name": "Батьківське щастя у подарунковому пакованні",
+        "country": "Україна",
+        "year": 2024,
+        "denomination": "10 гривень",
+        "material": "Срібло",
+        "tirage": "5 000",
+        "image": "coins/c38r.webp",
+        "owner": 1
+    }
+},
+{
+    "model": "items.coin",
+    "pk": 7,
+    "fields": {
+        "description": null,
+        "name": "1 Гривня",
+        "country": "Україна",
+        "year": 1998,
+        "denomination": "1",
+        "material": "Срібло",
+        "tirage": "8 000",
+        "image": "",
+        "owner": 3
+    }
+},
+{
+    "model": "items.coin",
+    "pk": 8,
+    "fields": {
+        "description": null,
+        "name": "Новорічна іграшка в сувенірному пакуванні",
+        "country": "Україна",
+        "year": 2024,
+        "denomination": "10 гривень",
+        "material": "Silver",
+        "tirage": "15 000",
+        "image": "coins/novori4na_igr_av.webp",
+        "owner": 1
+    }
+},
+{
+    "model": "items.coin",
+    "pk": 9,
+    "fields": {
+        "description": null,
+        "name": "Зодіак",
+        "country": "Україна",
+        "year": 2024,
+        "denomination": "10 гривень",
+        "material": "Silver",
+        "tirage": "70 000",
+        "image": "coins/c67r.webp",
+        "owner": 1
+    }
+},
+{
+    "model": "items.coin",
+    "pk": 10,
+    "fields": {
+        "description": null,
+        "name": "1 копійка",
+        "country": "Царська Росія",
+        "year": 1908,
+        "denomination": "1",
+        "material": "Bronze",
+        "tirage": "Unknown",
+        "image": "coins/thumb_511663_products_medium.webp",
+        "owner": 1
+    }
+},
+{
+    "model": "items.coin",
+    "pk": 11,
+    "fields": {
+        "description": null,
+        "name": "Ой у лузі червона калина у сувенірній упаковці",
+        "country": "Україна",
+        "year": 2023,
+        "denomination": "10 гривень",
+        "material": "Нейзильбер",
+        "tirage": "90 000",
+        "image": "coins/c02a.webp",
+        "owner": 1
+    }
+},
+{
+    "model": "items.coin",
+    "pk": 14,
+    "fields": {
+        "description": null,
+        "name": "Українська бавовна. БТР-4Е `Буцефал` у сувенірному пакованні",
+        "country": "Україна",
+        "year": 2024,
+        "denomination": "10 гривень",
+        "material": "Нейзильбер",
+        "tirage": "50 000",
+        "image": "coins/c62a.webp",
+        "owner": 1
+    }
+},
+{
+    "model": "items.coin",
+    "pk": 17,
+    "fields": {
+        "description": null,
+        "name": "1 dollar",
+        "country": "USA",
+        "year": 1993,
+        "denomination": "1$",
+        "material": "Silver",
+        "tirage": "2 000",
+        "image": "coins/d82886033682f152093eeab18fe0c5e14e755f6e_original.jpeg",
+        "owner": 1
+    }
+},
+{
+    "model": "items.coin",
+    "pk": 19,
+    "fields": {
+        "description": null,
+        "name": "Срібна монета в сувенірному пакуванні Бокораш",
+        "country": "Україна",
+        "year": 2018,
+        "denomination": "10 гривень",
+        "material": "Silver",
+        "tirage": "15 000",
+        "image": "coins/бокораш.jpg",
+        "owner": 1
+    }
+},
+{
+    "model": "items.coin",
+    "pk": 20,
+    "fields": {
+        "description": null,
+        "name": "1 копійка",
+        "country": "Україна",
+        "year": 1992,
+        "denomination": "1",
+        "material": "Latun",
+        "tirage": "Unknown",
+        "image": "coins/1_копійка.jpg",
+        "owner": 1
+    }
+},
+{
+    "model": "items.coin",
+    "pk": 22,
+    "fields": {
+        "description": null,
+        "name": "10 гривень в сувенірному пакуванні \"Рік бика\"",
+        "country": "Україна",
+        "year": 2008,
+        "denomination": "10 гривень",
+        "material": "Silver",
+        "tirage": "10 000",
+        "image": "coins/Рік_бика.webp",
+        "owner": 1
+    }
+},
+{
+    "model": "items.coin",
+    "pk": 23,
+    "fields": {
+        "description": null,
+        "name": "3 копійки",
+        "country": "Italy",
+        "year": 1878,
+        "denomination": "3",
+        "material": "Bronze",
+        "tirage": "20 000 000",
+        "image": "coins/990939_img_1946.jpeg",
+        "owner": 1
+    }
+},
+{
+    "model": "items.banknote",
+    "pk": 1,
+    "fields": {
+        "description": null,
+        "name": "100 Гривень",
+        "country": "Україна",
+        "year": 2017,
+        "value": "100",
+        "tirage": "100 000 000",
+        "image": "banknotes/100_гривень_2015_01.jpg",
+        "owner": 1
+    }
+},
+{
+    "model": "items.banknote",
+    "pk": 6,
+    "fields": {
+        "description": null,
+        "name": "20 гривень",
+        "country": "Україна",
+        "year": 2010,
+        "value": "20",
+        "tirage": "Unknown",
+        "image": "banknotes/Фото_20_гривень.jpg",
+        "owner": 1
+    }
+},
+{
+    "model": "items.banknote",
+    "pk": 9,
+    "fields": {
+        "description": null,
+        "name": "100 гривень сувернірна банкнота",
+        "country": "Україна",
+        "year": 2015,
+        "value": "100 гривень",
+        "tirage": "20 000",
+        "image": "banknotes/Без_назви.jpg",
+        "owner": 1
+    }
+},
+{
+    "model": "items.banknote",
+    "pk": 10,
+    "fields": {
+        "description": null,
+        "name": "Пам`ятна банкнота номіналом 20 грн. до 160-річчя від дня народження І.Франка",
+        "country": "Україна",
+        "year": 2016,
+        "value": "20 гривень",
+        "tirage": "1 000 000",
+        "image": "banknotes/20_litso_160r_franko-1120x5954.webp",
+        "owner": 1
+    }
+},
+{
+    "model": "items.banknote",
+    "pk": 11,
+    "fields": {
+        "description": null,
+        "name": "Пам`ятна банкнота `Єдність рятує світ` у сувенірному пакованні",
+        "country": "Україна",
+        "year": 2024,
+        "value": "50 гривень",
+        "tirage": "299952",
+        "image": "banknotes/8fwr.webp",
+        "owner": 1
+    }
+},
+{
+    "model": "items.collection",
+    "pk": 1,
+    "fields": {
+        "cover": "collections/covers/Gold_coin.jpeg",
+        "owner": 1,
+        "name": "Gold coins",
+        "description": "Ця колекція містить лише золоті монети",
+        "coins": [
+            1,
+            2,
+            4,
+            6,
+            8,
+            9,
+            10,
+            11,
+            14,
+            17,
+            19,
+            20
+        ],
+        "banknotes": [
+            1,
+            6,
+            9
+        ]
+    }
+},
+{
+    "model": "items.collection",
+    "pk": 5,
+    "fields": {
+        "cover": "collections/covers/100_гривень_2015_01.jpg",
+        "owner": 3,
+        "name": "Coins",
+        "description": "12345",
+        "coins": [],
+        "banknotes": []
+    }
+},
+{
+    "model": "items.collection",
+    "pk": 6,
+    "fields": {
+        "cover": "",
+        "owner": 3,
+        "name": "12345",
+        "description": "Test",
+        "coins": [],
+        "banknotes": []
+    }
+},
+{
+    "model": "items.collection",
+    "pk": 12,
+    "fields": {
+        "cover": "collections/covers/ukraine.jpg",
+        "owner": 1,
+        "name": "Ukrainian coins",
+        "description": "Ця колекція містить лише українські монети та банкноти.",
+        "coins": [],
+        "banknotes": []
+    }
+}
+]
