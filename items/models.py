@@ -1,11 +1,11 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.urls import reverse
-
+from cloudinary.models import CloudinaryField
 
 class Collector(AbstractUser):
     bio = models.CharField(max_length=500, blank=True, null=True)
-    avatar = models.ImageField(upload_to="avatars/", blank=True, null=True)
+    avatar = CloudinaryField('image', blank=True, null=True)
 
     def total_items(self):
         return self.coins.count() + self.banknotes.count()
@@ -34,7 +34,7 @@ class Coin(models.Model):
     denomination = models.CharField(max_length=15)
     material = models.CharField(max_length=30, default="Unknown", blank=True, null=True)
     tirage = models.CharField(max_length=20, default="Unknown", blank=True, null=True)
-    image = models.ImageField(upload_to="coins/", blank=True, null=True)
+    image = CloudinaryField('image', blank=True, null=True)
     owner = models.ForeignKey(Collector, on_delete=models.CASCADE, related_name="coins")
 
     def __str__(self):
@@ -50,7 +50,7 @@ class Banknote(models.Model):
     year = models.PositiveIntegerField()
     value = models.CharField(max_length=25)
     tirage = models.CharField(max_length=15, default="Unknown", blank=True, null=True)
-    image = models.ImageField(upload_to="banknotes/", blank=True, null=True)
+    image = CloudinaryField('image', blank=True, null=True)
     owner = models.ForeignKey(Collector, on_delete=models.CASCADE, related_name="banknotes")
 
 
@@ -61,7 +61,7 @@ class Banknote(models.Model):
         return reverse("items:banknote-detail", args=[str(self.id)])
 
 class Collection(models.Model):
-    cover = models.ImageField(upload_to="collections/covers/", blank=True, null=True)
+    cover = CloudinaryField('image', blank=True, null=True)
     owner = models.ForeignKey(Collector, on_delete=models.CASCADE)
     name = models.CharField(max_length=60)
     description = models.CharField(max_length=100)
