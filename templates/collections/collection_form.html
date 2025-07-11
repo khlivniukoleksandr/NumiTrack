@@ -23,7 +23,8 @@
         <div class="form-group">
           {{ field.label_tag }}
 
-          {% if field.name == 'image' %}
+          {% if field.field.widget.input_type == 'file' %}
+
             {% if form.instance.pk %}
               <div class="file-input-group django-default-image-field">
                   {{ field }}
