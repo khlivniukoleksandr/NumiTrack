@@ -50,7 +50,3 @@ class FormTests(TestCase):
         self.assertEqual(response.status_code, 302)
         banknote = Banknote.objects.get(name="20 UAH")
         self.assertEqual(banknote.owner, self.user)
-
-
-
-
