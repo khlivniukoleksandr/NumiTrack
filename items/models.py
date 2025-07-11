@@ -44,8 +44,11 @@ class Coin(models.Model):
         return reverse("items:coin-detail", args=[str(self.id)])
 
     def delete(self, *args, **kwargs):
-        if self.image:
-            self.image.delete()
+        try:
+            if self.image:
+                self.image.delete(save=False)
+        except Exception as e:
+            print(f"Cloudinary deletion error: {e}")
         super().delete(*args, **kwargs)
 
 
@@ -67,8 +70,11 @@ class Banknote(models.Model):
         return reverse("items:banknote-detail", args=[str(self.id)])
 
     def delete(self, *args, **kwargs):
-        if self.image:
-            self.image.delete()
+        try:
+            if self.image:
+                self.image.delete(save=False)
+        except Exception as e:
+            print(f"Cloudinary deletion error: {e}")
         super().delete(*args, **kwargs)
 
 
@@ -87,8 +93,11 @@ class Collection(models.Model):
         return reverse("items:collection-detail", args=[str(self.id)])
 
     def delete(self, *args, **kwargs):
-        if self.cover:
-            self.cover.delete()
+        try:
+            if self.cover:
+                self.cover.delete(save=False)
+        except Exception as e:
+            print(f"Cloudinary deletion error: {e}")
         super().delete(*args, **kwargs)
 
 
