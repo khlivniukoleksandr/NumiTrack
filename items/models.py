@@ -2,6 +2,7 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.urls import reverse
 from cloudinary.models import CloudinaryField
+import cloudinary.uploader
 
 class Collector(AbstractUser):
     bio = models.CharField(max_length=500, blank=True, null=True)
@@ -45,8 +46,9 @@ class Coin(models.Model):
 
     def delete(self, *args, **kwargs):
         try:
-            if self.image:
-                self.image.delete(save=False)
+            if self.image and hasattr(self.image, 'public_id'):
+                public_id = self.image.public_id
+                cloudinary.uploader.destroy(public_id)
         except Exception as e:
             print(f"Cloudinary deletion error: {e}")
         super().delete(*args, **kwargs)
@@ -71,8 +73,8 @@ class Banknote(models.Model):
 
     def delete(self, *args, **kwargs):
         try:
-            if self.image:
-                self.image.delete(save=False)
+            if self.image and hasattr(self.image, 'public_id'):
+                cloudinary.uploader.destroy(self.image.public_id)
         except Exception as e:
             print(f"Cloudinary deletion error: {e}")
         super().delete(*args, **kwargs)
@@ -94,8 +96,8 @@ class Collection(models.Model):
 
     def delete(self, *args, **kwargs):
         try:
-            if self.cover:
-                self.cover.delete(save=False)
+            if self.cover and hasattr(self.cover, 'public_id'):
+                cloudinary.uploader.destroy(self.cover.public_id)
         except Exception as e:
             print(f"Cloudinary deletion error: {e}")
         super().delete(*args, **kwargs)
