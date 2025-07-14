@@ -1828,6 +1828,7 @@ input:-webkit-autofill {
         transform: translateY(-10px);
         transition: opacity 250ms ease, transform 250ms ease, visibility 250ms ease;
         z-index: 999;
+        display: none;
     }
 
     .filter-toggle-checkbox:checked + label + .filter-box {
@@ -1844,16 +1845,16 @@ input:-webkit-autofill {
         border-bottom: 1px solid #ccc;
     }
 
-      .container-items {
-    margin-top: 50px;
-    justify-content: flex-start;
-    gap: 2px;
-    min-width: 320px;
-    max-width: 1170px;
-    flex-wrap: wrap;
-    flex-direction: row;
-    padding-right: 0;
-  }
+    .container-items {
+        margin-top: 50px;
+        justify-content: flex-start;
+        gap: 2px;
+        min-width: 320px;
+        max-width: 1170px;
+        flex-wrap: wrap;
+        flex-direction: row;
+        padding-right: 0;
+    }
 
     .card {
         flex-basis: calc((100% - 6px) / 2);
