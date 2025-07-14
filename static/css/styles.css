@@ -1828,12 +1828,14 @@ input:-webkit-autofill {
         transform: translateY(-10px);
         transition: opacity 250ms ease, transform 250ms ease, visibility 250ms ease;
         z-index: 999;
+        display:none;
     }
 
     .filter-toggle-checkbox:checked + label + .filter-box {
         transform: translateY(0);
         opacity: 1;
         visibility: visible;
+        display: block;
     }
 
     .filter-items-title {
