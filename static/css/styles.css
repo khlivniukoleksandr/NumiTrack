@@ -1835,6 +1835,7 @@ input:-webkit-autofill {
         transform: translateY(0);
         opacity: 1;
         visibility: visible;
+        display: block;
     }
 
     .filter-items-title {
