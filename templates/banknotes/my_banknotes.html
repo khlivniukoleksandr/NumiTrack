@@ -59,8 +59,8 @@
                 {% if banknote.image %}
                   <img src="{{ banknote.image.url }}" alt="{{ banknote.name }}" class="card-image"/>
                 {% else %}
-                  <img src="{% static 'images/default-cover-collections.png' %}" alt="{{ banknote.name }}"
-                       class="card-image"/>
+                    <img src="https://res.cloudinary.com/ded0xzsg6/image/upload/v1752484502/empty-photo_dh8lsx.jpg" alt="{{ coin.name }}"
+                         class="card-image" loading="lazy"/>
                 {% endif %}
 
                 <div class="card-content-wrapper">

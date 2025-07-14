@@ -1,100 +1,125 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-    <section id="about" class="hero-section">
-      <div class="hero-section-text">
-        <h1 class="hero-section-title">A site for those <br>Who create real digital treasures</h1>
-        <h2 class="hero-section-description">Keep your own collection<br>View others'.<br>Join forces with numismatists.
-        </h2>
-        <a href="{% url 'items:create-collection' %}" class="hero-section-button">Create collection</a>
-        <a href="{% url 'items:public-collections' %}" class="hero-section-button">View all collections</a>
+  <section id="about" class="hero-section">
+    <div class="hero-section-text">
+      <h1 class="hero-section-title"><span class="span-title">Numi</span>Track is a space for coin collectors, where
+        every coin has its own story.
+        Build collections, research rare pieces,and connect with like-minded people.</h1>
+      <div class="hero-section-second-text-wrapper">
+        <h2 class="hero-section-title hero-second-title">This is the first platform, where you can store your own collections, and
+          share them with other like-minded people.</h2>
       </div>
-    </section>
-    <section id="features" class="section-features">
+      <h2 class="hero-section-description">Keep your own collection<br>View others'.<br>Join forces with numismatists.
+      </h2>
+      <a href="{% url 'items:create-collection' %}" class="hero-section-button">Create collection</a>
+      <a href="{% url 'items:public-collections' %}" class="hero-section-button">View all collections</a>
+    </div>
+  </section>
+  <section id="features" class="section-features">
 
-      <h2 class="features-title">Create, browse, connect with like-minded people and store information about your
-        treasures in one place.</h2>
-      <h3 class="features-subtitle">Explore all the ways <span class="span-title">Numi</span>Track empowers your
-        collecting journey.</h3>
-      <ul class="features-list">
+    <h2 class="features-title">Explore fascinating coin collections</h2>
+    <p class="features-subtitle">Discover new coin finds, collect rare specimens, and join a thriving numismatic
+      community</p>
+    <ul class="features-list">
+      <li>
+        <img src="https://res.cloudinary.com/ded0xzsg6/image/upload/v1752350374/coin-dollar_xr5fqs.png"
+             loading="lazy" alt="coin" class="section-features-image">
+        <p class="features-list-description">Early US Dollars</p>
+      </li>
+      <li>
+        <img src="https://res.cloudinary.com/ded0xzsg6/image/upload/v1752350785/roman-empire_dlztag.png"
+             loading="lazy" alt="coin" class="section-features-image">
+        <p class="features-list-description">Roman Empire</p>
+      </li>
+      <li>
+        <img src="https://res.cloudinary.com/ded0xzsg6/image/upload/v1752350941/panda-coin_ngltwk.png"
+             loading="lazy" alt="coin" class="section-features-image">
+        <p class="features-list-description">Animal coins</p>
+      </li>
+    </ul>
+    <a href="{% url 'items:public-collections' %}" class="hero-section-button button-features">View collections</a>
+  </section>
+  <section id="stats" class="section-stats">
+    <div class="stats-wrapper">
+      <h2 class="stats-title"><span class="span-title">Numi</span>Track</h2>
+      <h3 class="stats-subtitle">The Best numismatic system</h3>
 
-        <li class="features-list-item">
-          <div class="icon-second-section-wrapper">
-            <svg width="40" height="40">
-              <use href="/static/images/icons.svg#icon-pencil"></use>
-            </svg>
-          </div>
-          <h3 class="features-list-title">Create</h3>
-          <p class="features-list-subtitle">Create and store information about your own collections, coins and
-            banknotes</p>
+      <ul class="stats-list">
+        <li class="stats-list-item">
+          <a href="#Має бути посилання на всі монети" class="stats-list-link">
+            <p class="stats-number">{{ num_coins }}+</p>
+            <h3 class="stats-list-title">Coins</h3>
+            <p class="stats-list-description">More than {{ num_coins }} coins have already been added. Change this
+              number to a bigger one!</p>
+          </a>
         </li>
-
-        <li class="features-list-item">
-          <div class="icon-second-section-wrapper">
-            <svg width="40" height="40">
-              <use href="/static/images/icons.svg#icon-search"></use>
-            </svg>
-          </div>
-          <h3 class="features-list-title">Browse</h3>
-          <p class="features-list-subtitle">Browse other members' collections, find rare items, and get inspired.</p>
-        </li>
-
-        <li class="features-list-item">
-          <div class="icon-second-section-wrapper">
-            <svg width="40" height="40">
-              <use href="/static/images/icons.svg#icon-wishlist"></use>
-            </svg>
-          </div>
-          <h3 class="features-list-title">Wish list</h3>
-          <p class="features-list-subtitle">Keep a wishlist so you don't forget what you're after.</p>
-        </li>
-
-        <li class="features-list-item">
-          <div class="icon-second-section-wrapper">
-            <svg width="40" height="40">
-              <use href="/static/images/icons.svg#icon-newspaper"></use>
-            </svg>
-          </div>
-          <h3 class="features-list-title">News</h3>
-          <p class="features-list-subtitle">Stay tuned for interesting news in the field of numismatics.</p>
-        </li>
-
-      </ul>
-    </section>
-    <section id="stats" class="section-stats">
-      <div class="stats-wrapper">
-        <h2 class="stats-title"><span class="span-title">Numi</span>Track</h2>
-        <h3 class="stats-subtitle">The Best numismatic system</h3>
-
-        <ul class="stats-list">
-          <li class="stats-list-item">
-            <a href="Має бути посилання на всі монети" class="stats-list-link">
-              <p class="stats-number">{{ num_coins }}+</p>
-              <h3 class="stats-list-title">Coins</h3>
-              <p class="stats-list-description">More than {{ num_coins }} coins have already been added. Change this
-                number to a bigger one!</p>
-            </a>
-          </li>
-          <li class="stats-list-item">
-            <a href="Має бути посилання на всі банкноти" class="stats-list-link">
+        <li class="stats-list-item">
+          <a href="#Має бути посилання на всі банкноти" class="stats-list-link">
             <p class="stats-number">{{ num_banknotes }}+</p>
             <h3 class="stats-list-title">Banknotes</h3>
             <p class="stats-list-description">Collectors have added over {{ num_banknotes }} banknotes</p>
-            </a>
-          </li>
-          <li class="stats-list-item">
+          </a>
+        </li>
+        <li class="stats-list-item">
           <a href="{% url 'items:public-collections' %}" class="stats-list-link">
             <p class="stats-number">{{ count_collections }}</p>
             <h3 class="stats-list-title">Collections</h3>
             <p class="stats-list-description">Built by {{ count_collectors }} collectors across {{ count_collections }}
               unique collections</p>
-            </a>
-          </li>
-        </ul>
-        {% if not user.is_authenticated %}
-          <h3>Become part of the community</h3>
-          <a href="{% url 'login' %}">Join us</a>
-        {% endif %}
-      </div>
-    </section>
+          </a>
+        </li>
+      </ul>
+      {% if not user.is_authenticated %}
+        <h3>Become part of the community</h3>
+        <a href="{% url 'login' %}">Join us</a>
+      {% endif %}
+    </div>
+  </section>
+
+  <section id="news" class="section-news">
+  <div class="section-news-title-wrapper">
+    <h3 class="news-title">News</h3>
+    <a class="all-news">All news</a>
+    </div>
+    <ul class="news-list">
+      <li>
+        <div class="card-news">
+          <img src="https://res.cloudinary.com/ded0xzsg6/image/upload/v1752394231/Coins-news_vzc64l.jpg"
+               loading="lazy" alt="image" class="section-news-image">
+          <div class="card-news-content">
+            <h5 class="card-news-title">8 most expensive coins in the world worth millions of dollars</h5>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="card-news">
+          <img src="https://res.cloudinary.com/ded0xzsg6/image/upload/v1752394687/metalodetector-min_iqe1ex.jpg"
+               loading="lazy" alt="image" class="section-news-image">
+          <div class="card-news-content">
+            <h5 class="card-news-title">The best metal detectors for treasure hunting</h5>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="card-news">
+          <img src="https://res.cloudinary.com/ded0xzsg6/image/upload/v1752395139/rym-min_qmnjk1.jpg"
+               loading="lazy" alt="image" class="section-news-image">
+          <div class="card-news-content">
+            <h5 class="card-news-title">The coinage system of ancient Rome</h5>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="card-news">
+          <img src="https://res.cloudinary.com/ded0xzsg6/image/upload/v1752395567/ukrainian_coins-min_nsw1qq.jpg"
+               loading="lazy" alt="image" class="section-news-image">
+          <div class="card-news-content">
+            <h5 class="card-news-title">Ukrainian coins history</h5>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </section>
+
 {% endblock %}

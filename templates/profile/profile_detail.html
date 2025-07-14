@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block content %}
-  <div class="container">
+  <div class="container profile-container">
   <div class="profile-content">
 
     <div class="profile-header">
@@ -14,7 +14,7 @@
         {% endif %}
 
         <div class="profile-details">
-          <p class="profile-bio">Rank: {{ collector.level }}</p>
+          <p class="profile-bio rank">Rank: {{ collector.level }}</p>
 
           {% if edit_mode %}
             <form method="post">
@@ -53,8 +53,8 @@
             <div class="profile-edit-buttons">
               <h2 class="profile-name">{{ collector.first_name }} {{ collector.last_name }}</h2>
               {% if request.user == collector %}
-                <a href="?edit=true" class="edit-profile-link">Edit profile</a>
-                <a href="{% url 'password_change' %}" class="edit-profile-link">Change password</a>
+                <a href="?edit=true" class="edit-profile-link edit-profile">Edit profile</a>
+                <a href="{% url 'password_change' %}" class="edit-profile-link change-password">Change password</a>
               {% endif %}
             </div>
             <p class="profile-bio">{{ collector.bio }}</p>
@@ -79,7 +79,7 @@
                 </p>
               </li>
               <li>
-                <p class="stats">Total items: {{ collector.total_items }}</p>
+                <p class="stats">{{ collector.total_items }} Total items</p>
               </li>
             </ul>
           {% endif %}
@@ -102,19 +102,17 @@
           {% endif %}
         </div>
       </div>
-      <div class="favorite-items">
+    </div>
+        <div class="favorite-items">
         <h3 class="favourite-items-title">Favourite items</h3>
         <p>In development...</p>
-        <div class="profile-button-logout-div">
           {% if request.user == collector %}
             <form method="post" action="{% url 'logout' %}">
               {% csrf_token %}
               <button type="submit" class="button-profile-logout">Logout</button>
             </form>
           {% endif %}
-        </div>
       </div>
-    </div>
   </div>
   </div>
 {% endblock %}

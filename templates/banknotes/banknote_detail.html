@@ -19,7 +19,9 @@
         {% if banknote.image %}
           <img src="{{ banknote.image.url }}" alt="{{ banknote.name }}" width="400" height="300">
         {% else %}
-          <img src="{% static 'images/default-cover-collections.png' %}" alt="No image" width="400" height="300">
+          <img src="https://res.cloudinary.com/ded0xzsg6/image/upload/v1752484502/empty-photo_dh8lsx.jpg"
+               alt="{{ banknote.name }}"
+               class="card-image" loading="lazy"/>
         {% endif %}
 
         {% if banknote.owner == user %}
