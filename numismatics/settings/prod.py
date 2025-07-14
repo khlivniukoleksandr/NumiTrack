@@ -27,13 +27,13 @@ DATABASES = {
 }
 # Для локального редагування закомітити ці рядки та встановити Debug - True_____________________
 
-DEBUG = True
+DEBUG = False
 #
 # # Налаштування безпеки
-#
-# SECURE_SSL_REDIRECT = True
-# SESSION_COOKIE_SECURE = True
-# CSRF_COOKIE_SECURE = True
+
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
 
 # _____________________________________________________________________
 
