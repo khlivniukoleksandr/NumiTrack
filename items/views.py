@@ -1,3 +1,5 @@
+from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
@@ -10,7 +12,7 @@ from items.forms import (CustomCollectionForm,
                          CustomBanknoteForm,
                          CoinFilterForm,
                          CollectionFilterForm,
-                         BanknoteFilterForm)
+                         BanknoteFilterForm, CollectorCreationForm)
 from items.models import (Collector,
                           Collection,
                           Coin, Banknote
@@ -386,5 +388,16 @@ class PublicCollectionListView(generic.ListView):
         context = super().get_context_data(**kwargs)
         context['form'] = CollectionFilterForm(self.request.GET or None)
         return context
+
+def register_view(request):
+    if request.method == 'POST':
+        form = CollectorCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('home')
+    else:
+        form = CollectorCreationForm()
+    return render(request, 'registration/register.html', {'form': form})
 
 

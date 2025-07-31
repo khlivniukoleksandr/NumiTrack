@@ -1,4 +1,6 @@
 from django import forms
+from django.contrib.auth import get_user_model
+from django.contrib.auth.forms import UserCreationForm
 
 from items.models import Collection, Coin, Banknote
 
@@ -93,3 +95,11 @@ class BanknoteFilterForm(forms.Form):
     country = forms.CharField(required=False, label="Country",
                               widget=forms.TextInput(attrs={"class": "form-coin-filter-input",
                                                             "placeholder": "Country"}))
+
+
+User = get_user_model()
+
+class CollectorCreationForm(UserCreationForm):
+    class Meta:
+        model = User
+        fields = ("username", "email", "password1", "password2")

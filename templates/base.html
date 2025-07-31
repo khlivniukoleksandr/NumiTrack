@@ -15,12 +15,14 @@
 </head>
 <body>
 {% block header %}
-  <header>
-  <div class="container-header">
+<header>
+  <div class="container-header container">
     <nav class="header-navigation">
       <ul class="header-list">
         <li>
-          <a href="{% url 'home' %}" class="hero-logo"><span class="span-title">Numi</span>Track</a>
+          <a href="{% url 'home' %}" class="hero-logo">
+            <span class="span-title">Numi</span>Track
+          </a>
         </li>
         <li>
           {% block sidebar %}
@@ -30,7 +32,9 @@
       </ul>
     </nav>
   </div>
-  </header>
+</header>
+
+
 {% endblock %}
 <main>
   {% block content %}

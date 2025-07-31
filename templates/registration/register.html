@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+  {% block header %}
+  {% endblock %}
+  <div class="login-all-page">
+
+    <div class="login-form-wrapper">
+      <h2 class="login-title">Sign up</h2>
+      {% if form.errors %}
+        <p style="color: red">Please correct the errors below</p>
+      {% endif %}
+      <form method="post" action="{% url 'register' %}">
+        {% csrf_token %}
+        <div class="form-group-login">
+
+          <!-- Username -->
+          <label for="id_username"></label>
+          <div class="input-wrapper">
+            <input type="text" name="username"
+                   id="id_username"
+                   class="input-login"
+                   placeholder="Username"
+                   autocomplete="off"
+                   required
+                   value="{{ form.username.value|default_if_none:'' }}">
+            <svg width="18" height="18" class="svg-login">
+              <use href="{% static 'images/icons.svg' %}#icon-user-login"></use>
+            </svg>
+          </div>
+
+          <!-- Password 1 -->
+          <label for="id_password1"></label>
+          <div class="input-wrapper">
+            <input type="password" name="password1"
+                   id="id_password1"
+                   class="input-login"
+                   placeholder="Password"
+                   autocomplete="off"
+                   required>
+            <svg width="18" height="16" class="svg-login">
+              <use href="{% static 'images/icons.svg' %}#icon-key"></use>
+            </svg>
+          </div>
+
+          <!-- Password 2 -->
+          <label for="id_password2"></label>
+          <div class="input-wrapper">
+            <input type="password" name="password2"
+                   id="id_password2"
+                   class="input-login"
+                   placeholder="Confirm Password"
+                   autocomplete="off"
+                   required>
+            <svg width="18" height="16" class="svg-login">
+              <use href="{% static 'images/icons.svg' %}#icon-key"></use>
+            </svg>
+          </div>
+
+          <p class="paragraph-login">or</p>
+          <button type="submit" class="google-login-button">Sign up with Google
+            <svg width="20" height="20">
+              <use href="{% static 'images/icons.svg' %}#icon-google"></use>
+            </svg>
+          </button>
+          <input class="button-login" type="submit" value="Sign up">
+        </div>
+      </form>
+
+      <p class="dont-have-account-login">Already have account?
+        <a class="link-sign-up" href="{% url 'login' %}">Login</a>
+      </p>
+    </div>
+  </div>
+{% endblock %}
+{% block footer %}
+{% endblock %}
+
