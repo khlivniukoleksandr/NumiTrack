@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: django-app
+    env: python
+    buildCommand: pip install -r requirements.txt && python manage.py collectstatic --noinput
+    startCommand: gunicorn numismatics.wsgi:application --bind 0.0.0.0:$PORT
+    autoDeploy: true
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: numismatics.settings
+      - key: DEBUG
+        value: false
+      - key: SECRET_KEY
+        value: your-secret-key
+      - key: CLOUDINARY_URL
+        value: your-cloudinary-url
+      - key: DATABASE_URL
+        value: your-postgres-url
